@@ -1,0 +1,35 @@
+IKAMR-0z_tilleggstekster.txt
+
+Interkommunalt Arkiv for Møre og Romsdal IKS (IKAMR) mottok innmelding av digitalt arkivuttrekk den 03.01.2017:
+
+1519_4 Familia (2005) Volda kommune
+
+Vedlagt følger:
+1.	 Avtale om deponering av digitalt arkivmateriale
+•	Avklaringer rundt ansvarsforholdet. 
+•	IKAMR ber om skriftlig bekreftelse på at denne avtalen er lest og forstått.
+
+2.	Informasjon om innlevering.
+•	Skjema i MS Word som benyttes for å beskrive systemet og fylles ut av arkivleder og IT-avdeling. 
+•	Ber om at utfylt skjema returneres før SIP innleveringspakke sendes til depot IKAMR.
+•	Ber om at arkivleder/ansvarlig for arkivet bekrefter at materialets proveniens, samt informasjonsinnhold og medfølgende dokumentsjon er gyldig og korrekt.
+•	Ber om at arkivleder/ansvarlig for arkivet bekrefter at de er inneforstått med at systemet/materialet ikke kan slettes før de har mottatt status godkjent deponert fra depot IKAMR.
+
+3.	Deponering av digitalt arkivmateriale.
+•	Beskrivelse av tekniske krav ved overføring av arkivmateriale til depot IKAMR.
+•	Alle deponeringer av digitale arkivuttrekk til depot IKAMR skal bruke Arkivverkets verktøy Arkade 5 til å pakke inn SIP innleveringspakke <uuid>.tar samt medfølgende metadatafil info.xml.
+•	Alle metadatafelt i Arkade 5 skal fylles ut pertentlig nøyaktig fordi disse langtidsbevares i depot med sterk autensitets- og integritetssikring.
+•	Den første gangen eller ved behov sender IKAMR veiledning med utfylte metadata-verdier for uttrekket.
+•	Del 3.1: Generell brukerveiledning.
+•	Del 3.2: Arkade 5 brukerveiledning.
+•	Del 4: IKAMR instruks Fagsystem uttrekk.
+
+Ta kontakt hvis noe er uklart.
+
+IKAMR v/IT-rådgiver
+•	Kvalitetsikring av Arkade 5 metadata gjøres av IKAMR, arkivleder og IT-avdeling i Google Disk regneark før kommuna eller leverandør får registrert disse metadata inn i Arkade 5.
+•	Kommuna eller leverandør bruker siste Arkade 5 versjon til å lage Innleveringspakke SIP.
+•	Innleveringspakke SIP deponeres via sikret metode etter avtale med IKAMR.
+•	Info.xml skal sendes pr. epost til IKAMR slik at sender og mottaker journalfører den.
+•	Detaljer om uttrekk av systemet avtales med elarkivar IKAMR.
+•	IKAMR har gode erfaringer med innlevering av SIARD 2.1 uttrekk av Familia der uttrekks-produsent bruker verktøyet Spectral Core Full Convert (utført av IT-drift i kommune, regional IT drift eller leverandør).
