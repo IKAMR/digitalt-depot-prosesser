@@ -1,0 +1,52 @@
+# 15KK_n_E-15KK-2018-000n_depot-log_v1.1.txt
+
+# Logg for IKAMR depotoperasjoner iht. KDRS og IKAMR prosesser og rutiner
+# IKAMR v1.1 2018-10-22
+
+# System: 15KK_n <system> (yyyy-yyyy)
+# Arkivskaper: <navn> kommune
+
+# Depot: Interkommunalt Arkiv for Møre og Romsdal IKS (IKAMR)
+# Saksbehandler (mottak depot): <abc>
+# Dato (mottak depot): <dd.mm.yyyy>
+
+A1; ; Forberedelse deponering;
+A1-1; 2018-mm-ddThh:nn ; Kartlegging av system; Godkjent; IKAMR yy/xxx-zz Informasjon om SIP innleveringspakke
+A1-2; ; Bevaringsplanleging/vurdering; ;
+A1-3; ; Avtale innlevering; ;
+A1-4; ; Samle opplysninger; ;
+A1-5; ; Uttrekk ; ;
+A1-6; ; Oppretting SIP; ;
+A1-7; ; Innlevering SIP; ;
+
+A2; 2018-mm-ddThh:nn; Mottakskontroll; Godkjent;
+A2-1; 2018-mm-ddThh:nn; Håndtering av avtale; Godkjent; IKAMR YY/zzz-zz 15KK_n <system> (fra år-til år)
+A2-2; 2018-mm-ddThh:nn; Oppretting av depot-logg; Godkjent; E-15KK-2018-000n
+A2-3; 2018-mm-ddThh:nn; Mottak; Godkjent; <uuid>.zip
+A2-3.1.a; 2018-mm-ddThh:nn; Mottak; Godkjent; SHA-245 sjekk av kryptert pakket zip-fil
+A2-3.1.b; 2018-mm-ddThh:nn; Mottak; Godkjent; Lagt i Karantene etter mottak
+A2-3.2; 2018-mm-ddThh:nn; Mottak; Godkjent; info.xml  mottatt IKAMR YY/xxx-zz
+A2-4; 2018-mm-ddThh:nn; Registrering; Godkjent; IKAMR YY/xxx-zz E-15KK-2018-000n
+A2-5; 2018-mm-ddThh:nn; Utsending av kvittering; Godkjent; Mottatt SIP innleveringspakke
+A2-6; 2018-mm-ddThh:nn; Viruskontroll; Godkjent; Panda E-15KK-2018-000n-antivirus-log.txt
+A2-6.1; 2018-mm-ddThh:nn; Viruskontroll; Godkjent; Utpakking kryptert pakket zip-fil: \arkiv\work\15KK-kommune\E-15KK-2018-000n\work
+A2-6.2; 2018-mm-ddThh:nn; Viruskontroll; Godkjent; Panda antivirus sjekk
+A2-7; 2018-mm-ddThh:nn; Innholdskontroll; Godkjent; SIP.tar, info.xml, sysdoc, report
+A2-8; 2018-mm-ddThh:nn; Integritetssikring; Godkjent; SIP.tar sjekksum validerer mot sjekksum i info.xml
+
+A3; 2018-mm-ddThh:nn; Innsjekking depot; Godkjent;
+A3-1; 2018-mm-ddThh:nn; Data innhenting; Godkjent; Hentet SIP.tar, info.xml, sysdoc, report
+A3-2; 2018-mm-ddThh:nn; Integritetssiring; Utgår; Pakker ut fra samme medie
+A3-3; 2018-mm-ddThh:nn; Utpakking av SIP fra tar-format; Godkjent; \arkiv\work\15KK-kommune\E-15KK-2018-000n\work\
+A3-4; 2018-mm-ddThh:nn; Validering av xml mot DIAS skjemaer; ;
+
+A4; 2018-mm-ddThh:nn; Testing; ;
+A4-1; ; Oppretting av test-logg; ;
+A4-2; ; Teknisk konsistens, korrekt og komplett; ;
+A4-3; ; Struktur og formatkrav; ;
+A4-4; ; Teknisk- og bevarings-metadata; ;
+A4-5; ; Sjekksummer i enkeltfiler
+
+A5; 2018-mm-ddThh:nn; Oppretting AIP; ;
+
+A6; 2018-mm-ddThh:nn; Lagre AIP; ;
