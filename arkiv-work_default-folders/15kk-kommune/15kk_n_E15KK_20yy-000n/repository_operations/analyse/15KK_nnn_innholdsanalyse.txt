@@ -1,0 +1,165 @@
+1502_005_innholdsanalyse.txt
+
+# Innhold: Logg av IKAMR depotoperasjoner med KDRS og IKAMR prosesser og rutiner
+Navn; Innholdsanalyse
+Versjon; 0.2
+Dato; 2020-02-01
+
+# Header
+Arkivbeskrivelse; 1502_005 ephorte Pensjonskasse (2008-2019)
+Arkivskaper; 1502 Molde kommune
+Dato innlevering; 2020-01-31
+
+Depot navn; Interkommunalt Arkiv for Møre og Romsdal IKS
+Depot kortnavn; IKAMR
+
+Arkivar 1 navn; Torbjørn Aasen
+Arkivar 1 kortnavn; taa
+
+Arkivar 2 navn; Tore Fadnes
+Arkivar 2 kortnavn; tfa
+
+============================================================
+# Del I: KDRS XQuery
+
+5. oXygen XML Editor Xqueries
+Dokumenter avvik i analyse arbeidsdokument iht. maltekster der for de kjente problemområder
+	z. Utgangspunkt
+		i. Katalog: ..\repository_operations\analyse\..
+		ii. Standardspørringer <TAA legg inn link>
+
+============================================================
+	a. arkivstruktur.xml
+		i. XQuery for antall oppføringer pr. år
+------------------------------------------------------------
+Antall registreringer: XPath 2.0
+count(//registrering)
+
+Resultat: 621
+
+------------------------------------------------------------
+Antall registreringer, kategorisert pr. år:
+for $v in distinct-values(//registrering/opprettetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//registrering/opprettetDato/substring-before(., "-"), $v))))
+
+<liste med antall sortert stigende år>
+
+2010: 73
+2011: 42
+2008: 47
+2009: 108
+2014: 42
+2015: 38
+2012: 52
+2013: 33
+2017: 53
+2016: 75
+2019: 13
+2018: 45
+
+------------------------------------------------------------
+Antall registreringer type 'journalpost': 
+count(//registrering[@xsi:type='journalpost'])
+
+------------------------------------------------------------
+Antall registreringer type 'journalpost', kategorisert pr. år:
+for $v in distinct-values(//registrering[@xsi:type='journalpost']/opprettetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//registrering/opprettetDato/substring-before(., "-"), $v))))
+
+<liste med antall sortert stigende år>
+
+Resultat: 
+Notat: 
+
+============================================================
+	a. arkivstruktur.xml
+		ii. XQuery for avskrivningsmaate
+------------------------------------------------------------
+Avskrivningsmåte, kategorisert antall:
+for $v in distinct-values(//avskrivningsmaate)
+return
+(concat($v,": ", count(index-of(//avskrivningsmaate, $v))))
+
+<liste med antall sortert stigende år>
+
+Resultat: 
+Notat: 
+
+Arkivverket Noark 5 v4.0 metadatakatalog.xsd
+  <xs:simpleType name="avskrivningsmaate">
+    <xs:annotation>
+      <xs:documentation>M619</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Besvart med brev"/>
+      <xs:enumeration value="Besvart med e-post"/>
+      <xs:enumeration value="Besvart på telefon"/>
+      <xs:enumeration value="Tatt til etterretning"/>
+      <xs:enumeration value="Tatt til orientering"/>
+      <xs:enumeration value="Besvart med notat"/>
+      <xs:enumeration value="Saken ble avsluttet"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+Schema Mod-1 Noark 5 v4.0 metadatakatalog.xsd     <<< Eksempel der 2 verdier fra arkivstruktur.xml må legges til
+  <xs:simpleType name="avskrivningsmaate">
+    <xs:annotation>
+      <xs:documentation>M619</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Besvart med brev"/>
+      <xs:enumeration value="Besvart med e-post"/>
+      <xs:enumeration value="Besvart på telefon"/>
+      <xs:enumeration value="Tatt til etterretning"/>
+      <xs:enumeration value="Tatt til orientering"/>
+      <xs:enumeration value="Besvart med notat"/>
+      <xs:enumeration value="Saken ble avsluttet"/>
+      <!-- IKAMR depot: mod 1 -->
+      <xs:enumeration value="Midlertidig svar sendt"/>
+      <xs:enumeration value="Saken er avsluttet"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+============================================================
+	b. Endringslogg.xml
+		i. XQuery for antall oppføringer pr. år
+------------------------------------------------------------
+Antall endringer <endretDato>:
+for $v in distinct-values(//endring/endretDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//endring/endretDato/substring-before(., "-"), $v))))
+
+<liste med antall sortert stigende år>
+
+Resultat: 
+Notat: 
+
+============================================================
+	c. loependeJournal.xml
+		i. XQuery for antall oppføringer pr. år
+------------------------------------------------------------
+Antall registreringer, type 'journalpost':
+for $v in distinct-values(//journalregistrering/journalpost/journaldato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//journalregistrering/journalpost/journaldato/substring-before(., "-"), $v))))
+
+<liste med antall sortert stigende år>
+
+Resultat: 
+Notat: 
+
+============================================================
+	d. offentligJournal.xml
+		i. XQuery for antall oppføringer pr. år
+------------------------------------------------------------
+Antall registreringer, type 'journalpost':
+for $v in distinct-values(//journalregistrering/journalpost/journaldato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//journalregistrering/journalpost/journaldato/substring-before(., "-"), $v))))
+
+<liste med antall sortert stigende år>
+
+Resultat: 
+Notat: 

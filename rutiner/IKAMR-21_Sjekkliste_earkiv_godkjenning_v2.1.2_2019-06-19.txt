@@ -1,297 +1,0 @@
-
-
-SJEKKLISTE FOR GODKJENNING AV INNLEVERT ELEKTRONISK ARKIV
-
-System:		<FFKK_n System (yyyy-yyyy)>
-Arkivskaper:		<Navn> kommune
-
-Depot:			Interkommunalt Arkiv for Møre og Romsdal IKS (IKAMR)
-Avtalenummer:	IKAMR 18/nnn-n; 2018-mm-dd
-
-Dato sjekkliste:		<dd.mm.yyyy>
-Saksbehandler:		<Navn person>
-Konklusjon/Oppsummering
-(Identisk med, eller kortversjon av pkt. Oppsummering og godkjenning)
-Hjemmelsgrunnlag for godkjenningen
-Depot ivaretar arkivdepotfunksjonen for papirarkiv og elektronisk skapt arkiv for Arkivskaper med hjemmel i § 18 i "Forskrift om offentlege arkiv”. Det er med utgangspunkt i dette hjemmelsgrunnlaget at Depot har foretatt en gjennomgang av denne innleveringen av System.
-Kort om System, driftsperioden og innleveringen
-Kort system- og leverandør historikk:
-(tekst)   
-
-Kort beskrivelse av uttrekksmetode:
-(tekst)
-
-Driftsperiode:
-Start år for uttrekk: 	 <yyyy>
-Slutt år for uttrekk: 	 <yyyy>
-
-Merknader:
-(tekst)
-Gjennomgang av innleveringen mot regelverket
-For innlevering1  av eldre og avsluttet elektronisk arkiv til kommunalt arkivdepot gjelder følgende regelverk:
-A. "Forskrift om utfyllende tekniske og arkivfaglige bestemmelser om behandling av offentlige arkiver (riksarkivarens forskrift) (https://lovdata.no/dokument/SF/forskrift/2017-12-19-2286). Fastsatt av Riksarkivaren 19. desember 2017 med hjemmel i lov 4. desember 1992 nr. 126 om arkiv § 12, forskrift 15. desember 2017 nr. 2105 om offentlege arkiv § 3, § 4, § 5, § 6, § 7, § 11, § 12, § 13, § 16, § 18, § 19 og § 20.
-B. Normalinstruks for arkivdepot i kommunar og fylkeskommunar. Gitt med hjemmel i arkivforskriften § 5-12 av Riksarkivaren 01.06.2002.
-C. Egne instrukser/retningslinjer, iht. normalinstruksen. 
-
-I arbeidet med å få til et så godt som mulig vern av elektronisk arkivmateriale skapt av Depot sine eierkommuner, følger Depot de statlige bestemmelsene i "Bestemmelser om elektronisk arkivmateriale som avleveres eller overføres som depositum til Arkivverket" så langt dette er hensiktsmessig. Depot har derfor sjekket innleveringen fra Arkivskaper av data fra System opp mot paragrafene § 5-6 t.o.m. § 5-32 i A. (nevnt ovenfor).  De første 5 paragrafene er ikke relevante som testpunkt for en innlevering.
-
-«Arkivverket» er derfor konsekvent byttet ut med Depot i «lovteksten». Noen av kravene er klassifisert som struktur og/eller tekniske da det skilles på dette i prosessmodellen for testing. 
-
-
-Del II. Fremgangsmåte ved avlevering eller deponering
-§ 5-6 Arkivversjonen
-Krav:
-Ved avlevering eller deponering skal data eksporteres fra vedkommende system og konverteres til et standardisert format (arkivuttrekk) i samsvar med del III og IV. Dette arkivuttrekket skal overføres sammen med nødvendig dokumentasjon jf. del VI og VII, som en avleverings- eller deponeringspakke jf. del VIII, og bevares som systemets arkivversjon, uavhengig av det opprinnelige systemet.
-Arkivversjoner fra elektroniske systemer skal inneholde:Ok:Mangler:Merknad:a) et arkivuttrekk fra det opprinnelige systemets database, jf. § 5-10 til § 5-13b) eventuelle tilknyttede arkivdokumenter, jf. § 5-14 til § 5-20c) beskrivelse av arkivuttrekkets struktur og innhold, jf. § 5-24 til § 5-25d) dokumentasjon av det opprinnelige systemet og bruken av dette, jf. § 5-26 til § 5-29e) informasjon om avleveringen eller deponeringen, jf. § 5-28For arkivversjoner fra Noark 3-systemer og Noark 4-systemer gjelder ikke bokstav c, og for Noark 5-systemer skal det kun medfølge en overordnet beskrivelse. I henhold til bokstav d skal det for Noark-systemer bare gis opplysninger om bruken av det opprinnelige systemet.
-
-Informasjonen i bokstav e) skal også inngå i overføringsfilen.
-Depot kommentarer:
-pkt.Koark3Noark3Noark4Noark5fagsystema(?), § 5-21§ 5-21§ 5-21§ 5-21X, § 5-25b(X) § 5-14 - § 5-20(X) § 5-14 - § 5-20(X) § 5-14 - § 5-20(X) § 5-14 - § 5-20(X) § 5-14 - § 5-20c(?), § 5-24 og 25 ---§ 5-24 og 25d(§ 5-22 a?) § 5-26 og 27?§ 5-22 a, § 5-27 c)§ 5-22 a, § 5-27 c)§5-22 a+b, § 5-27 c)§ 5-26 og 27eX (§ 5-28)(tekst)
-
-§ 5-7 Gjennomføring
-Krav:
-Ok:Mangler:Merknad:Avlevering eller deponering av arkivmateriale skal på forhånd være avtalt med. Depot kan kreve at det først leveres en prøve av arkivuttrekket, dersom praktiske hensyn tilsier det.Kostnadene ved produksjon av en arkivversjon og avleveringen eller deponeringen av denne til KDSR skal dekkes av avgiver.Avgiver skal ikke slette grunnlagsdataene for arkivversjonen i sitt system før Depot har godkjent avleveringen eller deponeringen. Grunnlagsdataene kan ikke slettes så lenge materialet bare er deponert.Depot kommentarer:
-(tekst)
-§ 5-8 Godkjenning
-Krav:
-Ved avlevering eller deponering skal Depot godkjenne arkivversjonen, og kvittere for det mottatte materialet. Depot kan nekte å godkjenne arkivversjonen dersom:
-Ok:Mangler:Merknad:a) innholdet ikke omfatter de deler som er fastsatt i § 5-6b) arkivuttrekket ikke omfatter de opplysningene som følger av Noark-standarden eller i henhold til avtalec) feil eller mangler i dataene kan tilbakeføres til feil ved selve produksjonen av arkivuttrekketd) den medfølgende struktur- og innholdsbeskrivelsen er feilaktig eller ufullstendige) kravene til lagringsmedium, tegnsett, formater eller fil- og katalogstruktur ikke er oppfylt.Hvis materialet ikke blir godkjent, kan Depot kreve at avgiver produserer en ny arkivversjon, eller kreve refusjon for nødvendig arbeid for å bringe materialet i samsvar med bestemmelsene, jf. arkivloven § 11.
-
-Depot kommentarer:
-(tekst)
-§ 5-9 Tilgang for organ til avlevert elektronisk materiale
-Uaktuelt som testpunkt ved innlevering.
-
-
-
-
-Del III. Formatkrav m.m. ved uttak fra databasetabeller
-§ 5-10 Organisering av arkivuttrekk
-Strukturkrav:
-Ok:Mangler:Merknad:Arkivuttrekk fra databaser skal bestå av sekvensielle tekstfiler. Et uttrekk kan bestå av en eller flere filer. Relasjoner mellom filene i uttrekket skal være beskrevet i den medfølgende dokumentasjonen slik det fremgår av § 5-24.Data skal tas ut på en måte som gjør at hver posttype eksporteres til én enkelt sekvensiell fil. Opprinnelige fysiske pekere skal omgjøres til unike logiske nøkler (primær- og fremmednøkler). Felt som er repetert flere ganger innenfor en post, skal skilles ut fra den opprinnelige posten, og eksporteres som egne poster i en ny fil med tilhørende nøkler. Pakkede og binære tallfelt aksepteres ikke i arkivuttrekk ved avlevering og deponering. For øvrig henvises det til § 5-11 til § 5-20.For arkivuttrekk i XML-format kan ovennevnte krav avvikes etter avtale med Depot.For Noark-systemer gjelder § 5-21 til § 5-23.Depot kommentarer:
-(tekst)
-§ 5-11 Tegnsett i arkivuttrekk
-Ok:Mangler:Merknad:Arkivuttrekk og medfølgende struktur- og innholdsbeskrivelser skal overføres som ren tekst i ukryptert form, og benytte godkjent tegnsett.Tegnsett uttrekk:Kommentarer:Godkjente tegnsett er 
-a)Unicode UTF-8 (ISO/IEC 10646-1:2000 Annex D)b)ISO 8859-1:1998, Latin 1)c)ISO 8859-4:1998, Latin-4 for samiske tegn.
-Struktur og teknisk krav:
-Andre tegnsett aksepteres bare etter avtale med Depot.
-
-Depot kommentarer:
-(tekst)
-§ 5-12 Tekstfilformater i arkivuttrekk
-Teknisk krav:
-Tekstfiler med tabelluttrekk skal ha ett av følgende format:Ok:Mangler:Merknad:a) Fast format: Alle felt kommer i faste posisjoner innen postene. Lengde og/eller startposisjon for hvert felt skal spesifiseres i struktur- og innholdsbeskrivelsen, som skal følge med uttrekket slik det fremgår av § 5-24. Alle lengder og posisjoner angis ut fra antall tegn.b) Tegnseparert format (kommaseparert format) i henhold til standarden IETF RFC 4180: Poster og felt har variabel lengde og er atskilt med faste, entydige skilletegn. Postskille er påkrevd og skal angis i den medfølgende struktur- og innholdsbeskrivelsen. Feltskilletegnet, feltnavn og eventuelle overskriftslinjer skal spesifiseres i den medfølgende struktur- og innholdsbeskrivelsen, jf. § 5-24.c) XML – Extensible Markup Language versjon 1.0, med de presiseringer som fremgår av § 5-19.d) Databasedump tillates i henhold til SQL standard ISO/IEC 9075, 1999 eller senere. I den grad databasen inneholder binære objekter skal disse leveres separat i et format slik det er spesifisert i denne forskriften.e) Databasedump tillates også formatert i henhold til SIARD standard, versjon 1 eller 2 (eCH-0165). I den grad databasen inneholder binære objekter skal disse leveres separat i et format slik det er spesifisert i denne forskriften.Depot kommentarer:
-(tekst)
-§ 5-13.Eksport av ulike datatyper i arkivuttrekk
-Ved eksport til tekstfiler etter bestemmelsene i § 5-10 skal datatyper i den opprinnelige databasen legges ut slik:Ok:Mangler:Merknad:a) Ved bruk av fast format legges tekststrenger ut venstrejustert i feltene. Etterfølgende posisjoner fylles opp med blanke tegn. Heltall og desimaltall legges ut høyrejustert uten ledende nuller, og posisjonene foran fylles opp med blanke tegn.b) Negative heltall og desimaltall legges ut med et minustegn før første siffer. Positive tall skal ikke representeres med plusstegn.c) Desimaltall legges ut med komma som desimalskilletegn. Skilletegn for hver tusen skal ikke benyttesd) Dato legges ut i henhold til norsk standard NS-ISO 8601.Struktur/ teknisk krav:
-
-Depot kommentarer:
-(tekst)
-
-
-
-Del IV. Formatkrav m.m. for arkivdokumenter
-§ 5-14.Tilknytning av arkivdokumenter til arkivuttrekk
-Struktur krav:
-Ok:Mangler:Merknad:Arkivdokumenter skal være tilknyttet arkivuttrekket fra et journalføringssystem eller annet elektronisk system for registrering av dokumenter.Arkivdokumentene skal lagres som separate filer, og overføres sammen med arkivuttrekket. Arkivuttrekket skal inneholde referanse til filnavn for hvert enkelt dokument. Hvis fil- eller katalognavn endres ved eksport til arkivversjonen, skal endringene gjenspeiles i filreferansene for å opprettholde koblingene mellom dokumentene.Alle filstier for filreferanser skal være relative.Depot kommentarer:
-(tekst)
-§ 5-15.Bildekvalitet ved skanning
-Struktur krav:
-Ok:Mangler:Merknad:Skanning av dokumenter skal utføres uten informasjonstap, og oppløsningen skal være på minimum 300 dpi (100 %, RGB, 24 bit dybde, lavest mulig kompresjon).Depot kommentarer:
-(tekst)
-§ 5-16. OCR, sikkerhetsfunksjoner og digital signatur i arkivdokumenter
-
-Struktur krav:
-Ok:Mangler:Merknad:Ved skanning av dokumenter eller ved behandling av tidligere skannede dokumenter, kan ikke originalt innhold erstattes med OCR-lest tekst. En versjon som er gjort søkbar ved OCR-lesing, kan likevel medfølge i tillegg til en skannet versjon, eller som tilleggsinformasjon i det originale dokument.Sikkerhetsfunksjoner som er mulige i arkivdokumenter, herunder passord og kryptering, skal være deaktivert ved avlevering eller deponering til Depot. Arkivdokumenter kan bare overføres i kryptert form når det er gjort særskilt avtale om kryptering. En slik avtale skal omfatte regler om disponeringen av nøkler for dekryptering.Arkivdokumenter kan være påført digitale signaturer basert på offentlig nøkkelkryptografi. Dersom de digitale signaturer inngår i et ikke godkjent format må det inngås avtale med Depot.Depot kommentarer:
-(tekst)
-§ 5-17 Godkjente filformater for arkivdokumenter ved avlevering eller deponering
-
-Struktur krav:
-Følgende formater er godkjente ved avlevering eller deponering:Ok:Mangler:Merknad:a) Arkivdokumenter med ren tekst: 
-- TXT – ren tekstfil uten innkapslede objekter, ref. spesifikasjon i § 5-11. 
-- TIFF – Tag Image File Format versjon 6, avbildninger av tekst, med de presiseringer som fremgår av § 5-18, første ledd. 
-- PDF/A – med de presiseringer som fremgår av § 5-18, andre ledd. 
-- XML – Extensible Markup Language versjon 1.0, med de presiseringer som fremgår av § 5-19. 
-- For tekstdokumenter i OOXML eller ODF format bør en PDF/A-versjon leveres som tillegg.b) Arkivdokumenter inneholdende tekst med objekter: 
-- TIFF – Tag Image File Format versjon 6, avbildninger, med de presiseringer som fremgår av § 5-18, første ledd. 
-- PDF/A – med de presiseringer som fremgår av § 5-18, andre ledd.c) For digitale fotografier og bilder aksepteres følgende formater: 
-- TIFF versjon 6 med de presiseringer som fremgår av § 5-18, første ledd. 
-- JPEG (ISO/IEC 10918-1:1994). 
-- JPEG 2000 (ISO/IEC 15444-1). 
-- PNG (ISO/IEC15948). 
-- PDF/A – med de presiseringer som fremgår av § 5-18, andre ledd.d) For kart aksepteres følgende formater: 
-- TIFF versjon 6 med de presiseringer som fremgår av § 5-18, første ledd. 
-- SOSI versjon 2.2 (1995) eller nyere. 
-- GML (ISO 19136).e) For videosekvenser aksepteres følgende formater: 
-- MPEG-2 (ISO/IEC 13818-2). 
-- MPEG-4/H.264 Part 10: Advanced Video Coding (ISO/IEC 14496-10).f) For lydsekvenser aksepteres følgende formater: 
-- MP3 (ISO/IEC 13818-3). 
-- PCM-basert Wave (ref. Multimedia Programming Interface and Data Specification 1.0 – IBM Corporation og Microsoft Corporation, 1991). 
-- FLAC, som spesifisert på xiph.org.g) For regneark aksepteres følgende formater: 
-- PDF/A – med de presiseringer som fremgår av § 5-18, andre ledd. 
-- XML, med de presiseringer som fremgår av § 5-19. 
-- For regneark i OOXML eller ODF format bør en PDF/A-versjon leveres som tillegg.h) For web-sider aksepteres følgende formater: 
-- WARC (ISO 28500). 
-- HTML (ISO/IEC 15445) basert på tegnsett som spesifisert i § 5-11. 
-- TIFF med de presiseringer som fremgår av § 5-18, første ledd. 
-- PDF/A med de presiseringer som fremgår av § 5-18, andre ledd.i) For presentasjoner aksepteres følgende formater: 
-- PDF/A – med de presiseringer som fremgår av § 5-18, andre ledd. 
-- XML, med de presiseringer som fremgår av § 5-19. 
-- For presentasjoner i OOXML eller ODF format bør en PDF/A-versjon leveres som tillegg.j) For objektbaserte informasjonsmodeller for byggverk (BIM) aksepteres følgende format: 
-- IFC – Industry Foundation Classes (ISO 16739). Ok:Mangler:Merknad:Pakking av data er tillatt etter følgende standard: 
-- TAR – som spesifisert under standarden IEEE 1003.1.Komprimering av data er tillatt etter følgende standard: 
-- ZIP – så lenge det er i henhold til ISO/IEC 21320-1.For andre typer formater må det gjøres særskilt avtale med Depot.
-
-Depot kommentarer:
-(tekst)
-§ 5-18. Spesifiserte krav til arkivdokumenter i TIFF-format eller PDF/A-format
-Struktur krav:
-(1) TIFFOk:Mangler:Merknad:a) TIFF-dokumenter kan være «single page» eller «multiple page». Ved «single page» må hver side av dokumentet være lagret som en egen fil under en felles katalog.b) TIFF-dokumenter med egendefinerte innholdselementer («private tags») aksepteres ikke.c) Tapsfri komprimering iht. CCITT/TSS gruppe 4, LZW eller PackBit skal brukes for dokumenter i svart/hvitt, og LZW eller PackBit for dokumenter med farger/gråtoner.d) Tapsfri Deflate/LZ76-komprimering generelt og tapsbringende komprimering med JPEG (ISO 10918-1:1994) godtas i TIFF-dokumenter med fotografier eller kart dersom det anvendes følgende endrede komprimeringsverdier som ble fastsatt i TIFF TechNote2 (1995): 
-- ved Deflate-komprimering skal komprimeringsverdi 8 brukes i stedet for den opprinnelige komprimeringsverdien 32946 (80b2 HEX) i TIFF versjon 6 (1992), 
-- ved JPEG-komprimering (ISO 10918-1:1994) skal komprimeringsverdi 7 brukes i stedet for den opprinnelige komprimeringsverdien 6 i TIFF versjon 6 (1992).e) Presisering i forhold til georeferering/stedfesting av TIFF (i form av såkalt GeoTIFF eller annet) aksepteres dersom det er kompatibelt med TIFF versjon 6.
-(2) PDF/A;Ok:Mangler:Merknad:a) Følgende varianter aksepteres: 
-- PDF/A-1 (ISO 19005-1), versjon 1a, 1b eller 1u 
-- PDF/A-2 (ISO 19005-2), versjon 2a, 2b eller 2ub) I spesielle tilfeller kan følgende godtas etter søknad: 
-- PDF/A-3 (ISO 19005-3), versjon 3a, 3b eller 3u.Depot kommentarer:
-(tekst)
-§ 5-19. Spesifiserte krav til arkivdokumenter i XML-format
-Struktur krav:
-Ok:Mangler:Merknad:(1) Tegnsett i XML-dokumenter skal være UTF-8 eller ISO 8859-1/8859-4.(2) Når XML-dokumenter har DTD (Document Type Definition), alternativt XML Schema, og malfiler, for eksempel for stiloppsett, skal disse ligge ved som egne filer. Tilhørende XML Schema skal også ligge ved i de tilfeller XML-dokumenter bygger på fastsatte standarder som ISO/IEC 26300:2006 – Open Document Format (ODF), Microsofts og Ecmas Office Open XML-standard – OOXML (ECMA-376 ISO/IEC 29500).(3) DTD-er, XML Schemas og malfiler som deles av flere dokumenter, kan lagres én gang på overordnet nivå i en hierarkisk filstruktur på vedkommende lagringsenhet, forutsatt at det brukes relative filreferanser. Alle øvrige filer eller objekter som det enkelte XML-dokument refererer til, skal være samlet i en underkatalog, jf. § 5-31 nr. 1 bokstav b. XML filer skal ikke inneholde binære objekter.Andre og tredje ledd gjelder ikke for arkivuttrekk i XML-format, jf. § 5-13.
-
-Depot kommentarer:
-(tekst)
-§ 5-20 Overgangsregler for andre dokumentformater
-Struktur krav:
-Ok:Mangler:Merknad:Formatene TIFF/IT (ISO 12639), SGML og HTML kan ikke brukes ved arkivering etter 1. januar 2008. Arkivdokumenter som er arkivert i disse formatene før 1. januar 2008, aksepteres likevel ved senere deponering og avlevering.Formatet Adobe PDF kan ikke brukes ved arkivering etter 1. januar 2009. Arkivdokumenter som er arkivert i Adobe PDF før 1. januar 2009, aksepteres likevel ved senere deponering og avleveringAlle PDF som er produsert frem til 1. januar 2009 skal så langt som mulig ha fonter innbygd.Arkivdokumentene omtalt i første til tredje ledd skal ikke ha innbygde filer som lyd og video eller funksjoner for fileksekvering. Java Script skal ikke være benyttet, heller ikke Adobe PDF-funksjonen for innbygd skjemahåndtering. Arkivdokumenter med innbygde PDF skjemadata må lagres i TIFF, og eventuelt deretter konverteres til PDF på ny.Depot kommentarer:
-(tekst)
-
-
-
-Del V. Krav til arkivuttrekk fra Noark-systemer og andre journal- og arkivsystemer
-
-§ 5-21 Fellesbestemmelser om arkivuttrekk fra Noark-systemer
-Krav:
-Arkivuttrekk fra Noark-systemer skal deponeres hos Depot. Tilknyttede arkivdokumenter kan bare medfølge Noark-systemer som er godkjent av Riksarkivaren for elektronisk arkivering.1
-Ok:Mangler:Merknad:Fra Noark-systemer skal journalopplysningene eksporteres som arkivuttrekk fra hele arkivperioder, jf. reglene for periodisering i Noark-standardene. Arkivuttrekket skal omfatte alle mapper/saker som ble avsluttet i perioden med samtlige registreringer/journalposter og eventuelle elektroniske arkivdokumenter som er tilknyttet registreringene/journalpostene.Sammen med arkivuttrekket skal det elektronisk følge rapporter som angitt i den aktuelle versjonen av Noark-standarden. Alle rapporter skal være i godkjent arkivformat.Dersom virksomhetsspesifikk informasjon inngår i arkivuttrekket, skal dette kun gjøres etter avtale med Depot.For arkivuttrekk etter Noark-3 (1994) og Koark (1995) gjelder i tillegg følgende: Arkivuttrekk med alle avsluttede saker fra en journalperiode skal fremstilles etter spesifikasjonene i Noark-3 (Riksarkivaren, 1994), kap. 15.5.1, alternativ 1. Journalsystemets arkivnøkkel skal likevel vedlegges, og lagringsmediet skal følge kravene i § 5-29. Arkivnøkkeltabellen skal ha navnet ARKIV.DAT, og tas ut med arkivkode på fast 16 posisjoner og gruppetekst (kodeteksten) på fast 255 posisjoner. Det skal ikke brukes postskille.For arkivuttrekk etter Noark-4 (2002) gjelder i tillegg følgende: Arkivuttrekket og eventuelle tilknyttede arkivdokumenter skal omfatte en eller flere avsluttede hele arkivdeler. Det skal produseres i det avleveringsformat som er spesifisert i Noark versjon 4.1 (Riksarkivaren, 2002).For arkivuttrekk etter Noark 5 (2010–2016) gjelder i tillegg følgende: Arkivuttrekk etter Noark 5, versjon 1.0 er ikke tillatt.Depot kommentarer:
-(tekst) 
-§ 5-22 Dokumentasjonskrav til uttrekk fra Noark-systemer
-Krav:
-Arkivuttrekk fra Noark-systemer er unntatt fra kravene i § 5-24 om en medfølgende struktur- og innholdsbeskrivelse og kravene i § 5-27 om dokumentasjon av det opprinnelige systemet.
-Ok:Mangler:Merknad:Med Noark-uttrekk skal det bare følge dokumentasjon om arkivskaperen som fastsatt i § 5-27 nr. 1 c), og dokumentasjon om selve deponeringen som fastsatt i § 5-28.For arkivuttrekk basert på Noark 5 skal det likevel inngå en overordnet struktur- og innholdsbeskrivelse beskrevet i Noark 5-standarden som filen arkivuttrekk.xml. Denne filen skal hete addml.xml.Depot kommentarer:
-(tekst)
-§ 5-23 Uttrekk fra journal- og arkivsystemer som ikke følger Noark
-Krav:
-Journal- og arkivsystemer som ikke er godkjent som Noark-systemer, men som likevel skal ivareta journalføringsplikten, skal produsere arkivuttrekk som i størst mulig grad følger spesifikasjonene i gjeldende Noark-standard.
-Ok:Mangler:Merknad:Arkivuttrekk som avviker fra Noark-standarden, skal dokumenteres med en fullstendig struktur- og innholdsbeskrivelse slik det fremgår av kravene i § 5-24,og med opplysninger om det opprinnelige systemet og bruken av dette slik det fremgår av kravene i § 5-26 og § 5-27, med mindre Riksarkivaren har fastsatt noe annet for det enkelte system.Depot kommentarer:
-(tekst)
-
-Del VI. Krav til teknisk dokumentasjon
-§ 5-24 Teknisk dokumentasjon av arkivuttrekk
-Teknisk krav:
-For alle arkivuttrekk skal det medfølge en fullstendig struktur- og innholdsbeskrivelse i elektronisk form. Beskrivelsen skal omfatte tabellene og feltene i uttrekket som innleveres og ikke tabellstrukturen i databasen som uttrekket er eksportert fra. Følgende krav stilles til denne dokumentasjonen:
-Ok:Mangler:Merknad:a)  Hver enkelt fil og posttype skal spesifiseres. Det skal gis en kort beskrivelse av innholdet. Relasjoner mellom filer skal angis og primærnøkler, fremmednøkler og kardinalitet skal defineres.b)  Feltnavn i samtlige filer og posttyper skal beskrives. Feltenes datatype skal oppgis. Ved bruk av fast format, jf. § 5-12, oppgis hvert felts startposisjon og lengde. En utfyllende forklaring av feltinnhold skal gis i de tilfeller dette ikke fremgår av feltnavnet.c)  Fullstendige kodeforklaringer skal gis for felt med kodede verdier. Dersom systemet lagrer kodene i egne filer, skal filer for disse inngå i arkivversjonen.Struktur- og innholdsbeskrivelsen skal følge de formatkrav m.m. som fremgår av § 5-19.Struktur- og innholdsbeskrivelse kreves ikke for arkivuttrekk fra Noark-3- og Noark 4-systemer.
-Depot kommentarer:
-(tekst)
-§ 5-25 Formatkrav m.m. til den tekniske dokumentasjonen
-Teknisk krav:
-Ok:Mangler:Merknad:Struktur- og innholdsbeskrivelsen som skal følge med arkivuttrekk, skal være i ren tekst i godkjent tegnsett, jf. § 5-11. Beskrivelsen skal benytte XML-syntaks.Når XML benyttes i beskrivelsen av arkivuttrekk med tekstfiler i fast eller tegnseparert format, jf. § 5-12 bokstav a og b, skal beskrivelsen følge reglene i Riksarkivarens beskrivelsesstandard ADDML (Archival Data Description Markup Language).For arkivuttrekk med tekstfiler i XML-format, jf. § 5-12 bokstav c, skal tilhørende XML Schema følge med. Dette XML Schema skal igjen innordnes i en overordnet struktur- og innholdsbeskrivelse som følger ADDML.Dokumentasjonsfilene skal være organisert og navngitt slik det fremgår av § 5-31.Depot kommentarer:
-(tekst)
-§ 5-26 Dokumentasjon av systemet som arkivuttrekket er eksportert fra
-Krav:
-Ok:Mangler:Merknad:Det skal gis en oversikt over det opprinnelige systemets overordnede struktur, herunder relasjoner mellom tabeller og primær- og sekundærnøkler i de enkelte tabellene i systemets database. Denne oversikten kan ha form av et ER-diagram. Riksarkivaren kan kreve at utvalgte skjermbilder og utskrifter fra systemet blir dokumentert.For å beskrive søk, datakombinasjoner og uttrekksmetoder som ble anvendt i det opprinnelige systemet, kan Riksarkivaren kreve at et antall SQL-spørringer fra systemet skal følge med som dokumentasjon. SQL-spørringer skal følge standarden SQL-92 (ISO/IEC 9075:1992) eller SQL-99 (ISO/IEC 9075:1999), og være tilpasset tabelluttrekket. SQL-setningene skal inngå i struktur- og innholdsbeskrivelsen dersom denne er utformet i XML, jf. § 5-25 nr. 1.For arkivuttrekk som følger en Noark-standard kreves det ikke dokumentasjon av det opprinnelige systemet, jf. § 5-24.
-
-Depot kommentarer:
-(tekst)
-
-
-
-Del VII. Krav til administrativ dokumentasjon
-§ 5-27 Opplysninger om opprinnelig systems funksjon og brukssammenheng
-Krav:
-Følgende opplysninger skal gis om bruken av systemet som har produsert arkivuttrekket:Ok:Mangler:Merknad:a)  systemets formål og administrative brukssammenhengb)  systemets hovedfunksjonerc)  navn på arkivskaperen, eventuelt på de organer som har hatt roller som arkivskaper ved å oppdatere systemet. Når et system har hatt flere arkivskaperer, skal også de ulike rolletypene til hver enkelt arkivskaper beskrivesd)  systemets inn- og utdata, herunder datautveksling med andre systemere)  eventuell hjemmel i lov eller forskrift for å opprette systemetf)  håndbok som beskriver bruken av systemet, skal følge som vedlegg når den finnes.Dokumentasjonen skal være i elektronisk form, i ett av formatene som er fastsatt i § 5-17. Filnavn og filplassering på lagringsmediet skal følge bestemmelsene i § 5-31.Uttrekk fra Noark-systemer krever bare opplysningene etter første ledd bokstav c, jf. § 5-22.
-
-Depot kommentarer:
-(tekst)
-§ 5-28 Opplysninger om arkivuttrekket
-Krav:
-Følgende opplysninger om arkivuttrekket skal ligge ved arkivmaterialet:Ok:Mangler:Merknad:a) navn på organet som er ansvarlig for arkivuttrekketb) navn og eventuelt versjonsnummer på systemet som arkivuttrekket kommer frac) tidsrommet som arkivuttrekket omfatterd) navn på arkivskaper. Dersom arkivuttrekket omfatter flere arkivskaperer, skal start- og sluttdato oppgis for hver arkivskaper. Dersom uttrekket kommer fra et Noark-system som har vært delt av flere organer, skal det beskrives hvordan hver arkivskaper identifiserese) antall poster i datauttrekkets viktigste tabeller og annen tallfesting av omfangf) antall lagringsenheter som medfølgerg) navn på den ansvarlige for avleveringen eller deponeringen hos det avleverende eller deponerende organet,h) navn på eier. Dersom arkivuttrekket har flere eiere, skal alle eiere oppgisDersom deler av materialet er gradert, konsesjonsbelagt, underlagt taushetsplikt eller av andre grunner unntatt fra offentlighet, skal det informeres særskilt om dette.Likeledes skal åndsverksrettigheter og andre begrensinger i bruk angis.Ovennevnte opplysninger skal oppgis enten i den vedlagte struktur- og innholdsbeskrivelsen eller i overføringsfilen.
-Depot kommentarer:
-(tekst)
-
-Del VIII. Krav til lagringsmedium og filorganisering
-
-§ 5-29 Krav til lagringsmedium med tilhørende filsystem
-Krav:
-På alle lagringsmedier skal det benyttes et godkjent filsystem som bevarer arkivversjonens opprinnelige filnavn. Med mindre andre typer medier er avtalt med Depot, skal følgende lagringsmedier og filsystemer nyttes:Ok:Mangler:Merknad:a) CD-R, med filsystem ISO 9660:1988, Level 1 eller Microsoft Joliet. Maksimal kapasitet skal være 700 MB. Utnyttelse av mulig ekstra lagringskapasitet på mediet («overburn») tillates ikke. CD-R-plater skal ikke pålimes etikett, men merkes med CD-penn. Hver plate skal oppbevares i lukket plastkassett som skal ha pålimt, merket etikett.b) DVD-R eller DVD+R, med filsystem UDF – Universal Disk Format, versjon 1.02 eller senere. Data skal bare være lagret i ett lag på én side. Versjonsnummer av UDF skal oppgis. Kravene til merking og oppbevaring er som for CD-R-plater, jf. bokstav a.c) Harddisk med USB-tilkobling. Filsystemet skal være FAT32, NTFS eller UDF, versjon 1.02 eller senere. Versjonsnummer skal oppgis når UDF brukes.d) Minnepinne med USB-tilkobling. Filsystemet skal være FAT32 eller NTFS.En arkivversjon kan maksimum være på 1TB. Avvik fra dette kravet må være avtalt medOverføring av en arkivversjon over linje til Depot kan kun gjøres etter avtale med Depot.
-
-Depot kommentarer:
-(tekst)
-
-§ 5-30 Filorganisering og navngiving generelt
-Krav:
-Ok:Mangler:Merknad:Dersom en arkivversjon består av mer enn én lagringsenhet, skal det opprettes en rotkatalog med et entydig navn på hver enhet, f.eks. ARKIV1, ARKIV2 osv.Dersom en datafil har en referanse til en annen datafil, skal den være navngitt og plassert i en katalogstruktur på en slik måte at de relative referansene blir bevart. Bestemmelsene i § 5-31 første ledd bokstav b–c og § 5-32 bokstav b kan fravikes etter avtale med Depot, dersom dette er nødvendig for å bevare de relative referansene til elektroniske dokumenter.Depot kommentarer:
-(tekst)
-§ 5-31 Organisering av datafiler i avleverings- eller deponeringspakke
-Krav:
-(1) Filene som utgjør arkivuttrekket, skal være organisert på følgende måte:Ok:Mangler:Merknad:a) Arkivuttrekk skal ligge på første nivå under rotkatalogen på vedkommende lagringsenhet. Filnavn skal være entydige, og ha filendelsen DAT når formatet er fast eller tegnseparert, og XML når formatet er XML. Det skal brukes et lagringsmedium hvor filer ikke må deles.b) For arkivdokumenter skal det opprettes en katalog med navnet DOKUMENT på første nivå under rotkatalogen på vedkommende lagringsenhet. Dokumentfilene skal samles på andre nivå under rotkatalogen og eventuelt struktureres i underkataloger. Dersom et enkelt arkivdokument består av flere filer, skal disse samles i én katalog med et entydig navn. Filformat for arkivdokumenter angis ved filendelse, f.eks. XML, PDF eller TIF.c) Elektroniske utskrifter fra datasystemet skal lagres under en katalog med navnet RAPPORT på første nivå under rotkatalogen på vedkommende lagringsenhet. Rapportfilene skal samles på andre nivå under rotkatalogen.(2) Avleverings- eller deponeringspakken skal inneholde følgende tre kataloger: 
-a) administrative_metadata 
-b) descriptive_metadata 
-c) content(3) På avleverings- eller deponeringspakkens rotnivå skal det ligge en fil som følger dias-mets.xsd. Denne filen skal inneholde en oversikt over alle filer i avleverings- eller deponeringspakken med filenes sjekksummer, m.m.(4) Under administrative_metadata skal det ligge en fil som følger dias-premis.xsd. Denne filen skal inneholde en oversikt over alle graderinger, unntatt offentlighet og andre restriksjoner i materialet, samt viktige hendelser som har skjedd med materialet.(5) Under administrative_metadata bør det også ligge en kopi av struktur- og innholdsbeskrivelsen(6) Selve arkivversjonen som nevnt ovenfor skal legges under katalogen content.(7) Deretter skal hele avleverings- eller deponeringspakken pakkes som en enkelt TAR-fil. TAR-filen skal navngis som <UUID>.tar.(8) Deretter skal det lages en overføringsfil med samme navn som TAR-filen og som følger info.xsd. Denne filen skal inneholde opplysninger om avleveringen eller deponeringen som fastsatt i § 5-28. Dessuten skal den også inneholde sjekksum for TAR-filen.(9) Alle sjekksummer skal være i henhold til SHA-256.(10) Overføringsfilen skal overføres for seg via e-post til Depot.Depot kommentarer:
-(tekst)
-§ 5-32 Organisering av medfølgende dokumentasjonsfiler
-Teknisk krav:
-Følgende filer med dokumentasjon skal plasseres på første nivå under rotkatalogen på første lagringsenhet:Ok:Mangler:Merknad:a) Struktur- og innholdsbeskrivelsen som følger datauttrekket, jf. § 5-24. Når beskrivelsen bygger på ADDML, skal filen ha navnet addml.xml. Dette gjelder også for struktur- og innholdsbeskrivelsen for Noark-5 som i standarden er navngitt arkivuttrekk.xml. Dessuten skal filen addml.dtd eller addml.xsd finnes i samme katalog. Når arkivuttrekket omfatter filer i XML-format, jf. § 5-25 tredje ledd, skal medfølgende XML Schema ha filendelsen xsd.b) System- og bruksdokumentasjon, jf. § 5-27 og § 5-28. Det skal opprettes en katalog med navnet SYSDOK på første nivå under rotkatalogen i arkivversjonen, og filene med dokumentasjon skal ligge på andre nivå under rotkatalogen.Depot kommentarer:
-(tekst)
-
-Gjennomgang av innleveringen mot annet regelverk
-Dokumentasjonskrav
-Krav:
-Det må finnes dokumentasjon om/på:Ok:Mangler:Merknad:Hvordan er arkivversjonen er blitt fremstilt. Hvordan er informasjonsinnholdet er blitt integritetssikret ift. vedkommende produksjonssystem Hvordan det er kontrollert at antallet poster og eventuelle dokumentet i arkivversjon er identisk med det tilsvarende originale antallet i produksjonssystemet Attest av en ansvarlig for avhender at innleveringspakkens informasjonsinnhold og medfølgende dokumentasjon er gyldig og korrekt Opplysninger om antallet poster og eventuelt antallet dokumenter i vedkommende produksjonssystemSjekksum(mer) generert ved den automatiserte produksjon av innleveringspakkens datauttrekkDepot kommentarer:
-(tekst)
-Metadata og xml
-Krav:
-Ok:Mangler:Merknad:Info.txt skal være erstattet av info.xml«Info om innlevering» skal være utfylt og mottattDersom innleveringspakkens arkivversjon omfatter XML-filer, skal det være dokumentert at disse er blitt validert mot tilhørende XML Schema eller DTDDepot kommentarer:
-(tekst)
-SIP iht. til avtale
-Krav:
-Ok:Mangler:Merknad:SIP har avtalt pakkestrukturDepot kommentarer:
-(tekst)
-Innlevering oppfyller krav gitt i standarden, som Noark x.x
-Krav:
-Hver versjon av Koark/Noark har krav til struktur og innhold 
-Ok:Mangler:Merknad:Depot kommentarer:
-(tekst)
-§xx 
-Krav:
-Ok:Mangler:Merknad:Depot kommentarer:
-(tekst)
-Test av innlevering 
-(Tekst som beskriver hvordan innlevering er videre testet, med negative funn/ funn som er verdt å kommentere f.eks. i forhold til ulike testverktøy)
-Oppsummering og godkjenning
-(tekst) 
-(lag eventuelt kortversjon til pkt. 1)
-1Arkivverket kan avvise innleveringer med dokumenter på system som ikke er fullelektronisk. Dette bør ikke KAI automatisk gjøre. Dette må være noe som den enkelte KAI selv bestemmer i samråd med sine eiere/medlemmer.
----------------
-
-------------------------------------------------------------
-
-
-
----------------
-
-------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-Sjekkliste for godkjenning av innlevert elektronisk arkiv – v2.1.1 - IKAMR	1
-
-
-
-
-
