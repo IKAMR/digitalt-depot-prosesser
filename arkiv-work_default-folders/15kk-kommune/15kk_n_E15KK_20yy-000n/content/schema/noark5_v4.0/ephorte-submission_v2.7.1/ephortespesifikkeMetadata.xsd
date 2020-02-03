@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0" xmlns="http://www.1.no/2019-nov-01" targetNamespace="http://www.1.no/2019-nov-01">
+  <xs:element name="ephortespesifikkeMetadata" type="ephortespesifikkeMetadata" />
+  <xs:complexType name="ephortespesifikkeMetadata">
+    <xs:sequence>
+      <xs:element name="tilleggsfeltMetadata" type="tilleggsfeltMetadata" minOccurs="0" maxOccurs="1" nillable="true" />
+      <!--andre spesifikke metadata-->
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tilleggsfeltMetadata">
+    <xs:sequence>
+      <xs:element name="tilleggsfeltDiscriminator" type="tilleggsfeltDiscriminator" minOccurs="0" maxOccurs="1" nillable="true" />
+      <xs:element name="tilleggsfelt" type="tilleggsfelt" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tilleggsfeltDiscriminator">
+    <xs:sequence>
+      <xs:element name="kode" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true" />
+      <xs:element name="beskrivelse" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tilleggsfelt">
+    <xs:sequence>
+      <xs:element name="feltnavn" type="xs:string" minOccurs="0" maxOccurs="1" nillable="false" />
+      <xs:element name="feltbeskrivelse" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true" />
+      <xs:element name="feltverdi" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

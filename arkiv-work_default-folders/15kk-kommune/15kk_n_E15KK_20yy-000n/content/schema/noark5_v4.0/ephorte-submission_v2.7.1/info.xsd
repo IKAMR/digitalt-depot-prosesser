@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="www.arkivverket.no/standarder/info" xmlns="www.arkivverket.no/standarder/info">
+    <xs:element name="info">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="arkivskaperInfo">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="avleverendeMyndighet">
+                                <xs:complexType>
+                                    <xs:attribute name="navn"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="kontaktperson" type="kontaktPerson" minOccurs="0"> </xs:element>
+                            <xs:element minOccurs="1" name="arkivskaper" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:attribute name="navn"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="uttrekk">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="uttrekksdato" type="xs:date"/>
+                            <xs:element name="uttrekksmetode">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="metode" type="metode"/>
+                                        <xs:element minOccurs="0" name="kommentar" type="kommentar"
+                                        />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="produsentInfo">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="produsent" minOccurs="1">
+                                            <xs:complexType>
+                                                <xs:attribute name="navn"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="kontaktperson" type="kontaktPerson"
+                                            minOccurs="0"> </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="system">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="systemNavn" type="xs:string"/>
+                            <xs:element minOccurs="0" name="versjon" type="xs:string"/>
+                        </xs:sequence>
+                        <xs:attribute name="systemType" type="systemtype"/>
+                        <xs:attribute name="versjon">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="sjekksummer">
+                    <xs:complexType>
+                        <xs:sequence maxOccurs="unbounded">
+                            <xs:element name="filnavn" type="xs:string"/>
+                            <xs:element name="sjekksum" type="xs:string"/>
+                            <xs:element name="algoritme" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="integritetsInfo">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element fixed="" minOccurs="0" name="kommentar" type="kommentar"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" name="kryptering">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="nokkel" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="kommentar" type="kommentar"/>
+            </xs:sequence>
+            <xs:attribute name="pakkeID"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="metode">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="periodisering"/>
+            <xs:enumeration value="akkumulerende"/>
+            <xs:enumeration value="komplett"/>
+            <xs:enumeration value="annet"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="systemtype">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Noark 3"/>
+            <xs:enumeration value="Noark 4"/>
+            <xs:enumeration value="Noark 5"/>
+            <xs:enumeration value="Fagsystem"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="skille">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Mykt"/>
+            <xs:enumeration value="Skarpt"/>
+            <xs:enumeration value="Varierende"/>
+            <xs:enumeration value="Ukjent"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="kontaktPerson">
+        <xs:sequence>
+            <xs:element name="telefon" type="xs:string" minOccurs="0"/>
+            <xs:element name="ePost" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="navn"/>
+    </xs:complexType>
+    <xs:simpleType name="kommentar">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+</xs:schema>

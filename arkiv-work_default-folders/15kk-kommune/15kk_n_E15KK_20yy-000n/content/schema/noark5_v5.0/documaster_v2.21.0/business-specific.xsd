@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dm="http://documaster.com/schema/noark5/business-specific"
+	targetNamespace="http://documaster.com/schema/noark5/business-specific" elementFormDefault="qualified"
+	attributeFormDefault="unqualified" version="1.0">
+
+	<xs:element name="custom" type="dm:custom"/>
+
+	<xs:complexType name="custom">
+		<xs:sequence>
+			<xs:element name="group" type="dm:group" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="group">
+		<xs:choice minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="string" type="dm:string"/>
+			<xs:element name="double" type="dm:double"/>
+			<xs:element name="long" type="dm:long"/>
+			<xs:element name="int" type="dm:int"/>
+			<xs:element name="date" type="dm:date"/>
+			<xs:element name="timestamp" type="dm:timestamp"/>
+		</xs:choice>
+		<xs:attribute name="name" type="dm:nonEmptyString" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="string">
+		<xs:simpleContent>
+			<xs:extension base="dm:nonEmptyString">
+				<xs:attribute name="name" type="dm:nonEmptyString" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="double">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="name" type="dm:nonEmptyString" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="long">
+		<xs:simpleContent>
+			<xs:extension base="xs:long">
+				<xs:attribute name="name" type="dm:nonEmptyString" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="int">
+		<xs:simpleContent>
+			<xs:extension base="xs:integer">
+				<xs:attribute name="name" type="dm:nonEmptyString" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="date">
+		<xs:simpleContent>
+			<xs:extension base="xs:date">
+				<xs:attribute name="name" type="dm:nonEmptyString" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="timestamp">
+		<xs:simpleContent>
+			<xs:extension base="xs:dateTime">
+				<xs:attribute name="name" type="dm:nonEmptyString" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name="nonEmptyString">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>
