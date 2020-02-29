@@ -1,0 +1,3 @@
+SHA256 hash of ba5b6729-c129-4772-ad09-4ab2fd556794.zip:
+26e855f1273a8c489e773309417f2599c6a0636d095254923079f9b6ae800e3c
+CertUtil: -hashfile command completed successfully.

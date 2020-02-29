@@ -4,11 +4,11 @@ IKAMR prosesser og rutiner i digitalt depot basert på KDRS overliggene prosjekt
 ## Prosesser og Rutiner i digitalt depot
 
 IKAMR har implementert prosesser og rutiner basert på KDRS-prosjektet som basis:
-http://www.kdrs.no/prosjekt/ProsessDigitaltDepot.htm
+http://prosess.kdrs.no
 
 ## IKAMR
 
-http://www.ikamr.no|
+http://www.ikamr.no
 
 Interkommunalt Arkiv for Møre og Romsdal (IKAMR) er eit eige selskap (IKS) som vart starta i april 2000. IKA Møre og Romsdal er eigd av fylkeskommunen og alle kommunane i heile fylket, frå Volda i sør til Smøla i nord. Vi har hovudkontor med 12 tilsette i Ålesund. IKA Møre og Romsdal arbeider med problemstillingar knytta til kommuane si dokumenthandtering. I tillegg har vi ei digitaliseringsteneste; Sedak, og ei fotoarkivteneste; Fylkesfotoarkivet. Kulturnett Møre og Romsdal er også ein del av IKA Møre og Romsdal. Dei tre siste er tenester som fylkeskommunen har lagt til oss.
 
