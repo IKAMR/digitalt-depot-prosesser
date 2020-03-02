@@ -1,0 +1,68 @@
+# 15KK_nnn_E-15KK-2020-000n_depot-log.txt
+
+# Innhold: Logg av IKAMR depotoperasjoner med KDRS og IKAMR prosesser og rutiner
+Navn; depot-log
+Versjon; 1.2
+Dato; 2020-02-01
+
+# Header
+Arkivbeskrivelse; 15KK_nnn <system> (yyyy-yyyy)
+Arkivskaper; 15KK <navn> kommune
+Dato innlevering; yyyy-mm-dd
+
+Depot navn; Interkommunalt Arkiv for Møre og Romsdal IKS
+Depot kortnavn; IKAMR
+
+Arkivar 1 navn; Torbjørn Aasen
+Arkivar 1 kortnavn; taa
+
+Arkivar 2 navn; Tore Fadnes
+Arkivar 2 kortnavn; tfa
+
+# Del I: Forberedelse deponering
+A1; ; Forberedelse deponering;
+A1-1; 2020-mm-ddThh:nn ; Kartlegging av system; Godkjent; IKAMR yy/xxx-zz Informasjon om SIP innleveringspakke
+A1-2; ; Bevaringsplanleging/vurdering; ;
+A1-3; ; Avtale innlevering; ;
+A1-4; ; Samle opplysninger; ;
+A1-5; ; Uttrekk ; ;
+A1-6; ; Oppretting SIP; ;
+A1-7; ; Innlevering SIP; ;
+
+# Del II: Mottak, karantene og kvittering
+A2; 2018-mm-ddThh:nn; Mottakskontroll; Godkjent;
+A2-1; 2018-mm-ddThh:nn; Håndtering av avtale; Godkjent; IKAMR YY/zzz-zz 15KK_n <system> (fra år-til år)
+A2-2; 2018-mm-ddThh:nn; Oppretting av depot-logg; Godkjent; E-15KK-2018-000n
+A2-3; 2018-mm-ddThh:nn; Mottak; Godkjent; <uuid>.zip
+A2-3.1.a; 2018-mm-ddThh:nn; Mottak SIP; Godkjent; SHA-256 sjekk av kryptert pakket zip-fil
+A2-3.1.b; 2018-mm-ddThh:nn; Utpakking SIP (zip); Godkjent; 
+A2-3.1.c; 2018-mm-ddThh:nn; Karantene SIP; Godkjent; Lagt i Karantene
+A2-3.2; 2018-mm-ddThh:nn; Mottak; Godkjent; info.xml  mottatt IKAMR YY/xxx-zz
+A2-4; 2018-mm-ddThh:nn; Registrering; Godkjent; IKAMR YY/xxx-zz E-15KK-2018-000n; Informasjon om innlevering.docx
+A2-5; 2018-mm-ddThh:nn; Utsending av kvittering; Godkjent; Mottatt SIP innleveringspakke
+
+# Del III: Antivirus- og integritets-kontroll
+A2-6; 2018-mm-ddThh:nn; Viruskontroll; Godkjent; ESET scan med skjermdump 15kk_n_ESET_yyyy-mm-dd.txt
+A2-7; 2018-mm-ddThh:nn; Innholdskontroll; Godkjent; SIP.tar, info.xml, sysdoc, report
+A2-8; 2018-mm-ddThh:nn; Integritetssikring; Godkjent; SIP.tar sjekksum validerer mot info.xml, lagret i <uuid>.tar.sha256.txt
+
+# Del IV: Innsjekking arbeidsområde
+A3; 2018-mm-ddThh:nn; Innsjekking depot; Godkjent;
+A3-1; 2018-mm-ddThh:nn; Data innhenting; Godkjent; Hentet SIP.tar, info.xml, sysdoc, report
+A3-2; 2018-mm-ddThh:nn; Integritetssikring; Utgår; Pakker ut fra samme medie
+A3-3; 2018-mm-ddThh:nn; Utpakking av SIP fra tar-format; Godkjent; \arkiv-work\15KK\15kk_n_E-15KK-20yy-000n\content\sip\
+A3-4; 2018-mm-ddThh:nn; Validering av xml mot DIAS skjemaer; ;
+
+# Del V: Test og validering
+A4; 2018-mm-ddThh:nn; Testing; ;
+A4-1; ; Oppretting av test-logg; ;
+A4-2; ; Teknisk konsistens, korrekt og komplett; ;
+A4-3; ; Struktur og formatkrav; ;
+A4-4; ; Teknisk- og bevarings-metadata; ;
+A4-5; ; Sjekksummer i enkeltfiler
+
+# Del VI: Opprette AIP
+A5; 2018-mm-ddThh:nn; Oppretting AIP; ;
+
+# Del VII: Lagre AIP
+A6; 2018-mm-ddThh:nn; Lagre AIP; ;

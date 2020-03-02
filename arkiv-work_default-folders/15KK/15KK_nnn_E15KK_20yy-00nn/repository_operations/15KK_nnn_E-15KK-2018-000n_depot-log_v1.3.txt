@@ -1,0 +1,76 @@
+# 15KK_nnn_depot-log.txt
+
+# Innhold: Logg av IKAMR depotoperasjoner med KDRS og IKAMR prosesser og rutiner
+Navn; depot-log
+Versjon; 1.2
+Dato; 2020-02-01
+
+# Header
+Arkivbeskrivelse; 15KK_nnn <system> (yyyy-yyyy)
+Arkivskaper; 15KK <navn> kommune
+Dato innlevering; yyyy-mm-dd
+Innleveringsnr.: E-15KK-YYYY-nnnn
+
+Depot; Interkommunalt Arkiv for Møre og Romsdal IKS
+Depot kortnavn; IKAMR
+
+Produsent; <organisasjon produsent: Arkivskaper/Region IT/Leverandør/Depot>
+
+Arkivar 1 navn; Torbjørn Aasen
+Arkivar 1 kortnavn; taa
+
+Arkivar 2 navn; Tore Fadnes
+Arkivar 2 kortnavn; tfa
+
+# INFO: Formattering logglinje
+# INFO: Seksjon; Datotid; Navn; Resultat; Beskrivelse
+# INFO: A1-1; 2020-02-03T13:15; Kartlegging av system; Godkjent; IKAMR 20/635-1 Informasjon om SIP
+# INFO: Resultat verdier = Godkjent | Avvist | Venter
+
+# Del I: Forberedelse deponering
+A1; ; Forberedelse deponering; ; 
+A1-1; ; Kartlegging av system; ; Arkivskaper, Produsent og Depot
+A1-2; ; Bevaringsplanleging/vurdering; ; Arkivskaper, Produsent og Depot
+A1-3; ; Avtale innlevering; ; IKAMR YY/xxx-zz Avtale deponering digitalt arkivmateriale
+A1-4; ; Samle opplysninger; ; Arkivskaper/Produsent/ <system> Informasjon om innlevering
+A1-5; ; Uttrekk ; ; Produsent
+A1-6; ; Oppretting SIP; ; Produsent
+A1-7; ; Innlevering SIP; ; Produset KDRS Filesender/lagt ut Orkidenet/lagt ut Acos/Documaster osv.
+
+# Del II: Mottak, karantene og kvittering
+A2; ; Mottakskontroll; ; 
+A2-1; ; Håndtering av avtale; ; IKAMR YY/zzz-zz 15KK_n <system> (fra år-til år)
+A2-2; ; Oppretting av depot-logg; ; E-15KK-2018-000n
+A2-3; ; Mottak; ; <uuid>.zip n.n GB/MB
+A2-3.1.a; ; Mottak SIP; ; SHA-256 sjekk av kryptert pakket zip-fil
+A2-3.1.b; ; Utpakking SIP (zip); ; 
+A2-3.1.c; ; Karantene SIP; ; Lagt i Karantene
+A2-3.2; ; Mottak; ; info.xml  mottatt IKAMR YY/xxx-zz
+A2-4; ; Registrering; ; IKAMR YY/xxx-zz E-15KK-2018-000n; Informasjon om innlevering.docx
+A2-5; ; Utsending av kvittering; ; Mottatt SIP innleveringspakke
+
+# Del III: Antivirus- og integritets-kontroll
+A2-6; ; Viruskontroll; ; ESET scan med skjermdump 15kk_n_ESET_yyyy-mm-dd.txt
+A2-7; ; Innholdskontroll; ; SIP.tar, info.xml, sysdoc, report
+A2-8; ; Integritetssikring; ; SIP.tar sjekksum validerer mot info.xml, lagret i <uuid>.tar.sha256.txt
+
+# Del IV: Innsjekking arbeidsområde
+A3; ; Innsjekking depot; ; 
+A3-1; ; Data innhenting; ; Hentet SIP.tar, info.xml, sysdoc, report
+A3-2; ; Integritetssikring; Utgår; Pakker ut fra samme medie
+A3-3; ; Utpakking av SIP fra tar-format; ; \arkiv-work\15KK\15kk_n_E-15KK-20yy-000n\content\sip\
+A3-4; ; Validering av xml mot DIAS skjemaer; ; 
+
+# Del V: Test og validering
+A4; ; Testing; ; 
+A4-1; ; Oppretting av test-logg; ;
+A4-2; ; Teknisk konsistens, korrekt og komplett; ;
+A4-3; ; Struktur og formatkrav; ;
+A4-4; ; Teknisk- og bevarings-metadata; ;
+A4-5; ; Sjekksummer i enkeltfiler; ; 
+
+# Del VI: Opprette AIP
+A5; ; Oppretting AIP; ; 
+
+# Del VII: Lagre AIP
+A6; ; Lagre AIP; ; 
