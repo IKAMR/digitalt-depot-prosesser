@@ -2,8 +2,9 @@
 
 # Innhold: Logg av IKAMR depotoperasjoner med KDRS og IKAMR prosesser og rutiner
 Navn; depot-log
-Versjon; 1.2
-Dato; 2020-02-01
+Depot: IKAMR
+Versjon; 1.3
+Dato; 2020-03-02
 
 # Header
 Arkivbeskrivelse; 15KK_nnn <system> (yyyy-yyyy)
@@ -31,11 +32,11 @@ Arkivar 2 kortnavn; tfa
 A1; ; Forberedelse deponering; ; 
 A1-1; ; Kartlegging av system; ; Arkivskaper, Produsent og Depot
 A1-2; ; Bevaringsplanleging/vurdering; ; Arkivskaper, Produsent og Depot
-A1-3; ; Avtale innlevering; ; IKAMR YY/xxx-zz Avtale deponering digitalt arkivmateriale
+A1-3; ; Avtale innlevering; ; IKAMR YY/xxx-zz Bekreftelse avtale deponering digitalt arkivmateriale
 A1-4; ; Samle opplysninger; ; Arkivskaper/Produsent/ <system> Informasjon om innlevering
-A1-5; ; Uttrekk ; ; Produsent
+A1-5; ; Uttrekk; ; Produsent
 A1-6; ; Oppretting SIP; ; Produsent
-A1-7; ; Innlevering SIP; ; Produset KDRS Filesender/lagt ut Orkidenet/lagt ut Acos/Documaster osv.
+A1-7; ; Innlevering SIP; ; Produsent KDRS Filesender/lagt ut Orkidenet/lagt ut Acos/Documaster osv.
 
 # Del II: Mottak, karantene og kvittering
 A2; ; Mottakskontroll; ; 
@@ -46,7 +47,7 @@ A2-3.1.a; ; Mottak SIP; ; SHA-256 sjekk av kryptert pakket zip-fil
 A2-3.1.b; ; Utpakking SIP (zip); ; 
 A2-3.1.c; ; Karantene SIP; ; Lagt i Karantene
 A2-3.2; ; Mottak; ; info.xml  mottatt IKAMR YY/xxx-zz
-A2-4; ; Registrering; ; IKAMR YY/xxx-zz E-15KK-2018-000n; Informasjon om innlevering.docx
+A2-4; ; Registrering; ; IKAMR YY/xxx-zz E-15KK-2018-000n; Informasjon om innlevering
 A2-5; ; Utsending av kvittering; ; Mottatt SIP innleveringspakke
 
 # Del III: Antivirus- og integritets-kontroll
