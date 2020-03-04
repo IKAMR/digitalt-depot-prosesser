@@ -1,0 +1,29 @@
+IKAMR-0z_tilleggstekster.txt
+
+Interkommunalt arkiv for Møre og Romsdal IKS (IKAMR) mottok innmelding av digitalt arkivuttrekk den dd.yy.2020:
+
+15KK_nnn <system> (fra-til) <navn> kommune
+
+Vedlagt følger:
+1.	 Avtale om deponering av digitalt arkivmateriale
+•	Avklaringer rundt ansvarsforholdet. 
+•	Ber om skriftlig bekreftelse på at denne avtalen er lest og forstått.
+
+2.	Informasjon om innlevering.
+•	Skjema i MS Word med beskrivelse av systemet fylles ut av arkivleder og IT-avdeling. 
+•	Ber om at arkivleder/ansvarlig for arkivet bekrefter at materialets proveniens, samt informasjonsinnhold og medfølgende dokumentasjon er gyldig og korrekt.
+•	Ber om at arkivleder/ansvarlig for arkivet bekrefter at de er inneforstått med at systemet/materialet ikke kan slettes før godkjenning er mottatt fra depot IKAMR.
+
+IKAMR v/IT-rådgiver presiserer:
+a.	Valg av uttrekksformat og metodikk skal kvalitetsikres i samråd med IKAMR depot.
+b.	Som supplement til Noark-uttrekk, kan IKAMR depot kreve innlevert original databaase  (SIARD-uttrekk eller annen databasedump av original produksjonsdatabase)
+c.	Detaljer om uttrekk av systemet avtales med elarkivar IKAMR.
+d.	IKAMR deler spesifikasjon og veiledning med uttrekksprodusent og innsender.
+e.	Kvalitetsikring metadata gjøres av IKAMR, arkivleder og IT-avdeling før pakking Arkade 5.
+f.	Uttrekk pakkes med siste tilgjengelige versjon av Arkade 5 som en Innleveringspakke SIP.
+g.	Pakket uttrekk krypteres og leveres via sikret metode etter avtale med IKAMR.
+h.	Passord kryptering leveres elarkivar IKAMR via annen kanal (SMS) etter innlevert uttrekk.
+i.	Info.xml sendes i epost til IKAMR depot med kopi til arkivleder for saksbehandling.
+
+Ta kontakt hvis noe er uklart.
+

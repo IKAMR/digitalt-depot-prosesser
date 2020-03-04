@@ -17,3 +17,20 @@ Interkommunalt Arkiv for Møre og Romsdal (IKAMR) er eit eige selskap (IKS) som 
 http://www.kdrs.no
 
 Kommunearkivinstitusjonenes Digitale RessursSenter SA (KDRS) er eid av medlemmene som er kommunearkivinstitusjoner fra hele landet. KDRS skal tilby tjenester og kompetanse til sine medlemmer og aktivt bidra til å utvikle og effektivisere langtidslagring av digitale arkiv innenfor kommunal og fylkeskommunal sektor. KDRS ble stiftet i mai 2010 og har hovedsete i Trondheim. Vi har 13 medlemmer og dekker totalt 63% av landets kommuner og fylkeskommuner.
+
+## Folder structure
+
+### depot
+Depot logs, tests, validation, checklists, procedures, production line
+
+### prosess
+Formal dialog and documentation of the preservation process
+
+### uttrekk
+Extraction instructions, user manuals and guidance
+
+### arkiv-karantene
+Folders at reception, decryption and quarantine
+
+### arkiv-work_default-folders
+Transfer to working area, logging, testing, validation, migrations, creation of final Archival Package (AIP)
