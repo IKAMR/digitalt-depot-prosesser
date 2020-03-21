@@ -1,7 +1,0 @@
-SHA256 hash of <uuid>.tar:
-<uuid>
-CertUtil: -hashfile command completed successfully.
-
-Kontroll: Godkjent
-<uuid>
-<uuid>
