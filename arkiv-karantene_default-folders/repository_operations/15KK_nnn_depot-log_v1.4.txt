@@ -4,7 +4,7 @@
 Navn; depot-log
 Depot: IKAMR
 Versjon; 1.4
-Dato; 2020-03-21
+Dato; 2020-03-22
 
 # Header
 Arkivbeskrivelse; 15KK_nnn <system> (yyyy-yyyy)
@@ -37,13 +37,13 @@ A1-1; ; Kartlegging av system; ; Arkivskaper, Produsent og Depot
 A1-2; ; Bevaringsplanlegging/vurdering; ; Arkivskaper, Produsent og Depot
 A1-3; ; Avtale innlevering; ; IKAMR YY/xxx-n Bekreftelse avtale
 A1-4; ; Samle opplysninger; ; Arkivskaper/Produsent/ <system> Informasjon om innlevering
-A1-5; ; Uttrekk; ; Produsent v/Person Navn som Noark 5-uttrekk/SIARD-uttrekk migrert fra Noark 4/Fagsystem
+A1-5; ; Uttrekk; ; Produsent som Noark 5 v3.1/4.0/5.0-uttrekk/SIARD-uttrekk migrert fra Noark 4/Fagsystem
 A1-6; ; Oppretting SIP; ; Produsent i Arkade 5 v1.5.1.0
-A1-7; ; Innlevering SIP; ; Produsent KDRS Filesender/Nedlastet fra Produsent til karantene IKAMR-Kn
+A1-7; ; Innlevering SIP; ; Produsent KDRS Filesender/Nedlastet fra Produsent til karantene IKAMR-Knn
 
 # Del II: Mottak, karantene og kvittering
 A2; ; Mottakskontroll; ; 
-A2-1; ; Håndtering av avtale; ; IKAMR YY/zzz-zz 15KK_n <system> (fra år-til år)
+A2-1; ; Håndtering av avtale; ; IKAMR YY/zzz-n Avtale deponering
 A2-2; ; Oppretting av depot-logg; ; 15KK_nnn_depot-log.txt
 A2-3; ; Mottak; ; Innleveringspakke SIP og info.xml metadata
 A2-3.1; ; Mottak Innleveringspakke SIP; ;
