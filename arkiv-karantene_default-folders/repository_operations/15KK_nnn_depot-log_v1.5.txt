@@ -3,8 +3,8 @@
 # Innhold: Logg av IKAMR depotoperasjoner med KDRS og IKAMR prosesser og rutiner
 Navn; depot-log
 Depot: IKAMR
-Versjon; 1.4
-Dato; 2020-03-22
+Versjon; 1.5
+Dato; 2020-03-23
 
 # Header
 Arkivbeskrivelse; 15KK_nnn <system> (yyyy-yyyy)
@@ -38,8 +38,8 @@ A1-2; ; Bevaringsplanlegging/vurdering; ; Arkivskaper, Produsent og Depot
 A1-3; ; Avtale innlevering; ; IKAMR YY/xxx-n Bekreftelse avtale
 A1-4; ; Samle opplysninger; ; Arkivskaper/Produsent/ <system> Informasjon om innlevering
 A1-5; ; Uttrekk; ; Produsent som Noark 5 v3.1/4.0/5.0-uttrekk/SIARD-uttrekk migrert fra Noark 4/Fagsystem
-A1-6; ; Oppretting SIP; ; Produsent i Arkade 5 v1.5.1.0
-A1-7; ; Innlevering SIP; ; Produsent KDRS Filesender/Nedlastet fra Produsent til karantene IKAMR-Knn
+A1-6; ; Oppretting av Innleveringspakke SIP; ; Produsent i Arkade 5 v1.5.1.0
+A1-7; ; Innlevering av SIP; ; Produsent KDRS Filesender/Nedlastet fra Produsent til karantene IKAMR-Knn
 
 # Del II: Mottak, karantene og kvittering
 A2; ; Mottakskontroll; ; 
@@ -47,27 +47,27 @@ A2-1; ; Håndtering av avtale; ; IKAMR YY/zzz-n Avtale deponering
 A2-2; ; Oppretting av depot-logg; ; 15KK_nnn_depot-log.txt
 A2-3; ; Mottak; ; Innleveringspakke SIP og info.xml metadata
 A2-3.1; ; Mottak Innleveringspakke SIP; ;
-A2-3.1.a; ; Mappestruktur SIP; ; Standard mappestruktur (med depot logg)
+A2-3.1.a; ; Opprette mappestruktur på karantenemedie; ; Standard mappestruktur (med depot logg)
 
-A2-3.1.b; ; Mottak SIP; ; Lastet ned abcdef.zip på n.n GB fra Produsent
-A2-3.1.c; ; Utpakking SIP (zip kryptert); ; Pakket ut <uuid>.tar på n.n GB
+A2-3.1.b; ; Mottak Innleveringspakke SIP; ; Lastet ned abcdef.zip på n.n GB fra Produsent
+A2-3.1.c; ; Utpakking Innleveringspakke SIP (zip kryptert); ; Pakket ut <uuid>.tar på n.n GB
 
-A2-3.1.b; ; Mottak SIP; ; Lastet ned <uuid>.tar på n.n GB fra Produsent
-A2-3.1.c; ; Utpakking SIP (zip kryptert); Utgår; Mottatt DIAS SIP tar-fil
+A2-3.1.b; ; Mottak Innleveringspakke SIP; ; Lastet ned <uuid>.tar på n.n GB fra Produsent
+A2-3.1.c; ; Utpakking Innleveringspakke SIP (zip kryptert); Utgår; Mottatt DIAS SIP tar-fil
 
-A2-3.1.d; ; Karantene SIP; ; Til karantene IKAMR-Knn som YYYY-MM-DD_15KK_nnn_E-15KK-YYYY-nnnn
-A2-3.2; ; Mottak info.xml; ; info.xml mottatt IKAMR YY/xxx-n fra Arkivskaper/Produsent (arkivleder mangler kopi)
-A2-4; ; Registrering; ; Informasjon om innlevering ikke mottatt fra Arkivskaper!
+A2-3.1.d; ; Karantene Innleveringspakke SIP; ; Til karantene IKAMR-Knn som YYYY-MM-DD_15KK_nnn_E-15KK-YYYY-nnnn
+A2-3.2; ; Mottak info.xml (DIAS metadata); ; info.xml mottatt IKAMR YY/xxx-n fra Arkivskaper/Produsent (arkivleder mangler kopi)
+A2-4; ; Registrering (Informasjon om innleveringen); ; Ikke mottatt fra Arkivskaper!
 A2-5; ; Utsending av kvittering; ; Kvittering Innleveringspakke SIP
 
-# Del III: Antivirus- og integritets-kontroll
+# Del III: Virus- og integritets-kontroll
 A2-6; ; Viruskontroll; ; ESET scan med skjermdump 15KK_nnn_ESET_yyyy-mm-dd.png
-A2-7; ; Innholdskontroll; ; SIP.tar, info.xml, sysdoc, report, ev. flere mapper og filer
-A2-8; ; Integritetssikring; ; SIP.tar sjekksum validerer mot info.xml, lagret i <SIP uuid>.tar.sha256.txt
+A2-7; ; Innholdskontroll; ; <SIP uuid>.tar, info.xml, SIARD-uttrekk | Noark 5-uttrekk, dokumenter, sysdoc, report, ev. flere mapper og filer
+A2-8; ; Integritetssikring; ; <SIP uuid>.tar sjekksum validerer mot info.xml, lagret i <SIP uuid>.tar.sha256.txt
 
 # Del IV: Innsjekking arbeidsområde
 A3; ; Innsjekking depot; ; 
-A3-1; ; Data innhenting; ; Hentet SIP.tar, info.xml, sysdoc, report
+A3-1; ; Data innhenting; ; Hentet <SIP uuid>.tar, info.xml, sysdoc, report
 A3-2; ; Integritetssikring; Utgår; Pakker ut fra samme medie
 A3-3; ; Utpakking av SIP fra tar-format; ; \arkiv-work\15KK\15kk_n_E-15KK-20yy-000n\content\sip\
 A3-4; ; Validering av xml mot DIAS skjemaer; ; 
@@ -77,11 +77,11 @@ A4; ; Testing; ;
 A4-1; ; Oppretting av test-logg; ;
 A4-2; ; Teknisk konsistens, korrekt og komplett; ;
 A4-3; ; Struktur og formatkrav; ;
-A4-4; ; Teknisk- og bevarings-metadata; ;
+A4-4; ; Tekniske- og bevarings-metadata; ;
 A4-5; ; Sjekksummer i enkeltfiler; ; 
 
-# Del VI: Opprette AIP
-A5; ; Oppretting AIP; ; 
+# Del VI: Oppretting av Arkivpakke AIP
+A5; ; Oppretting av AIP; ; Arkivpakke AIP
 
-# Del VII: Lagre AIP
-A6; ; Lagre AIP; ; 
+# Del VII: Lagring av Arkivpakke AIP
+A6; ; Lagring av AIP; ; Arkivpakke AIP

@@ -3,5 +3,5 @@ SHA256 hash of <uuid>.tar:
 CertUtil: -hashfile command completed successfully.
 
 Kontroll: Godkjent
-<uuid>	info.xml
-<uuid>	Kontroll
+<hash>	Fra CertUtil .bat fil
+<hash>	Fra info.xml
