@@ -50,10 +50,10 @@ A2-3; ; Mottak; ; Innleveringspakke SIP og info.xml metadata
 A2-3.1; ; Mottak Innleveringspakke SIP; ;
 A2-3.1.a; ; Opprette mappestruktur på karantenemedie; ; Standard mappestruktur (med depot logg)
 
-A2-3.1.b; ; Mottak Innleveringspakke SIP; ; Lastet ned abcdef.zip på n.n GB fra Produsent
-A2-3.1.c; ; Utpakking Innleveringspakke SIP (zip kryptert); ; Pakket ut <uuid>.tar på n.n GB
+A2-3.1.b; ; Mottak Innleveringspakke SIP; ; Lastet ned <SIP uuid>.zip på n.n GB fra Produsent
+A2-3.1.c; ; Utpakking Innleveringspakke SIP (zip kryptert); ; Pakket ut <SIP uuid>.tar på n.n GB
 
-A2-3.1.b; ; Mottak Innleveringspakke SIP; ; Lastet ned <uuid>.tar på n.n GB fra Produsent
+A2-3.1.b; ; Mottak Innleveringspakke SIP; ; Lastet ned <SIP uuid>.tar på n.n GB fra Produsent
 A2-3.1.c; ; Utpakking Innleveringspakke SIP (zip kryptert); Utgår; Mottatt DIAS SIP tar-fil
 
 A2-3.1.d; ; Karantene Innleveringspakke SIP; ; Til karantene IKAMR-Knn som YYYY-MM-DD_15KK_nnn_E-15KK-YYYY-nnnn
