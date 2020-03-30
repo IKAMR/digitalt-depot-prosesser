@@ -9,7 +9,7 @@ Dato; 2020-03-30
 # Header
 Arkivbeskrivelse; 15KK_nnn <system> (yyyy-yyyy)
 Arkivskaper; 15KK <navn> kommune
-Sak; IKAMR YY/nnn-n
+Sak; IKAMR YY/nnn
 
 Dato innlevering; yyyy-mm-dd
 Innleveringsnr.: E-15KK-YYYY-nnnn
