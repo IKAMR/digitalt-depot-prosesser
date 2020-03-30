@@ -3,12 +3,13 @@
 # Innhold: Logg av IKAMR depotoperasjoner med KDRS og IKAMR prosesser og rutiner
 Navn; depot-log
 Depot: IKAMR
-Versjon; 1.6
-Dato; 2020-03-26
+Versjon; 1.7
+Dato; 2020-03-30
 
 # Header
 Arkivbeskrivelse; 15KK_nnn <system> (yyyy-yyyy)
 Arkivskaper; 15KK <navn> kommune
+Sak; IKAMR YY/nnn-n
 
 Dato innlevering; yyyy-mm-dd
 Innleveringsnr.: E-15KK-YYYY-nnnn
@@ -35,7 +36,7 @@ Arkivar 2 kortnavn; tfa
 A1; ; Forberedelse deponering; ; 
 A1-1; ; Kartlegging av system; ; Arkivskaper, Produsent og Depot
 A1-2; ; Bevaringsplanlegging/vurdering; ; Arkivskaper, Produsent og Depot
-A1-3; ; Avtale innlevering; ; IKAMR YY/xxx-n Bekreftelse avtale
+A1-3; ; Avtale innlevering; ; IKAMR JPn Bekreftelse avtale
 A1-4; ; Samle opplysninger; ; Arkivskaper/Produsent/ <system> Informasjon om innlevering
 A1-5; ; Uttrekk; ; Produsent som Noark 5 v3.1/4.0/5.0-uttrekk/SIARD-uttrekk migrert fra Noark 4/Fagsystem
 A1-6; ; Oppretting av Innleveringspakke SIP; ; Produsent i Arkade 5 v1.5.1.0
@@ -43,7 +44,7 @@ A1-7; ; Innlevering av SIP; ; Produsent KDRS Filesender/Nedlastet fra Produsent 
 
 # Del II: Mottak, karantene og kvittering
 A2; ; Mottakskontroll; ; 
-A2-1; ; Håndtering av avtale; ; IKAMR YY/zzz-n Avtale deponering
+A2-1; ; Håndtering av avtale; ; IKAMR JPn Avtale deponering
 A2-2; ; Oppretting av depot-logg; ; 15KK_nnn_depot-log.txt
 A2-3; ; Mottak; ; Innleveringspakke SIP og info.xml metadata
 A2-3.1; ; Mottak Innleveringspakke SIP; ;
@@ -56,12 +57,12 @@ A2-3.1.b; ; Mottak Innleveringspakke SIP; ; Lastet ned <uuid>.tar på n.n GB fra
 A2-3.1.c; ; Utpakking Innleveringspakke SIP (zip kryptert); Utgår; Mottatt DIAS SIP tar-fil
 
 A2-3.1.d; ; Karantene Innleveringspakke SIP; ; Til karantene IKAMR-Knn som YYYY-MM-DD_15KK_nnn_E-15KK-YYYY-nnnn
-A2-3.2; ; Mottak info.xml (DIAS metadata); ; info.xml mottatt IKAMR YY/xxx-n fra Arkivskaper/Produsent (arkivleder mangler kopi)
+A2-3.2; ; Mottak info.xml (DIAS metadata); ; info.xml mottatt IKAMR JPn fra Arkivskaper/Produsent (arkivleder mangler kopi)
 A2-4; ; Registrering (Informasjon om innleveringen); ; Ikke mottatt fra Arkivskaper!
 A2-5; ; Utsending av kvittering; ; Kvittering Innleveringspakke SIP
 
 # Del III: Virus- og integritets-kontroll
-A2-6; ; Viruskontroll; ; ESET scan med skjermdump 15KK_nnn_ESET_yyyy-mm-dd.png
+A2-6; ; Viruskontroll; ; ESET scan med skjermdump
 A2-7; ; Innholdskontroll; ; <SIP uuid>.tar, info.xml, SIARD-uttrekk | Noark 5-uttrekk, dokumenter, sysdoc, report, ev. flere mapper og filer
 A2-8; ; Integritetssikring; ; <SIP uuid>.tar sjekksum validerer mot info.xml, lagret i <SIP uuid>.tar.sha256.txt
 
@@ -97,4 +98,4 @@ A5-3; ; Oppretting av Arkivpakke AIP; ;
 # Del VII: Lagring av Arkivpakke AIP
 A6; ; Lagre ing av AIP; ; Arkivpakke AIP
 A6-1; ; Lagring i Depot / DSM; ; Bevart i depotforvaltningssystem
-A6-2; ; Tilbakemelding og opprydding; Godkjent | Avvist; Sendt tilbakemelding IKAMR YY/xxx-n
+A6-2; ; Tilbakemelding og opprydding; Godkjent | Avvist; Sendt tilbakemelding IKAMR JPn
