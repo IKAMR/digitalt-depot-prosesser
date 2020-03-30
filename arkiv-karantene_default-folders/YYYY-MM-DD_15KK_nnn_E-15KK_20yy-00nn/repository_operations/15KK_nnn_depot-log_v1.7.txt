@@ -74,7 +74,6 @@ A3-1.2; ; content fra karantenemedie; ; Kopiert
 A3-1.3; ; repository_operations fra karantenemedie; ; Kopiert
 A3-1.4; ; content elementer fra andre områder; ; 
 A3-1.5; ; repository_operations elementer fra andre områder; ; 
-
 A3-2; ; Integritetssikring; Utgår; Pakker ut fra samme medie
 A3-3; ; Utpakking av SIP fra tar-format; ; \arkiv-work\15KK\15kk_nnn_E-15KK-20yy-00nn\content\sip\
 A3-4; ; Validering av xml mot DIAS skjemaer; ; 
