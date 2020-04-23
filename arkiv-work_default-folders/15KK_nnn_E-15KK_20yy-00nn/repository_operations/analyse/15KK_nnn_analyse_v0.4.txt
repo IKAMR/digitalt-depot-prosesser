@@ -1,9 +1,9 @@
-15KK_nnn_innholdsanalyse.txt
+15KK_nnn_noark5_analyse.txt
 
 # Innhold: Logg av IKAMR depotoperasjoner med KDRS og IKAMR prosesser og rutiner
 Navn; Innholdsanalyse
-Versjon; 0.2
-Dato; 2020-02-01
+Versjon; 0.4_utkast
+Dato; 2020-04-16
 
 # Header
 Arkivbeskrivelse; 15KK_nnn <system> (YYYY-YYYY)
