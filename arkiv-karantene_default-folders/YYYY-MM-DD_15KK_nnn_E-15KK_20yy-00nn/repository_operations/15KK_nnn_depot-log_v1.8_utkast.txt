@@ -38,8 +38,8 @@ A1-1; ; Kartlegging av system; ; Arkivskaper, Produsent og Depot
 A1-2; ; Bevaringsplanlegging/vurdering; ; Arkivskaper, Produsent og Depot
 A1-3; ; Avtale innlevering; ; IKAMR JPn Bekreftelse avtale
 A1-4; ; Samle opplysninger; ; Arkivskaper/Produsent/ <system> Informasjon om innlevering
-A1-5; ; Uttrekk; ; Produsent som Noark 5 v3.1/4.0/5.0-uttrekk/SIARD-uttrekk migrert fra Noark 4/Fagsystem
-A1-6; ; Oppretting av Innleveringspakke SIP; ; Produsent i Arkade 5 v1.5.1.0
+A1-5; ; Uttrekk; ; Produsert som Noark 5 v3.1/4.0/5.0-uttrekk/SIARD-uttrekk migrert fra Noark 4/Fagsystem
+A1-6; ; Oppretting av Innleveringspakke SIP; ; Produsent i Arkade 5 v1.6.1.0
 A1-7; ; Innlevering av SIP; ; Produsent KDRS Filesender/Nedlastet fra Produsent til karantene IKAMR-Knn
 
 # Del II: Mottak, karantene og kvittering
