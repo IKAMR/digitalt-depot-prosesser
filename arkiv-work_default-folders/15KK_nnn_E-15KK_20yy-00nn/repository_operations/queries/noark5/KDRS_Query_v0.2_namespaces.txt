@@ -1,0 +1,4 @@
+KDRS_Query_v0.2_namespaces.txt
+
+nsmgr.AddNamespace("a", "http://www.arkivverket.no/standarder/noark5/arkivstruktur");
+nsmgr.AddNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
