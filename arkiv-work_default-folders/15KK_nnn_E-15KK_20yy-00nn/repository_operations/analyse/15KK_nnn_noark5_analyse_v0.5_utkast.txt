@@ -1,0 +1,792 @@
+15KK_nnn_noark5_analyse.txt
+
+# Innhold: Logg av IKAMR depotoperasjoner med KDRS og IKAMR prosesser og rutiner
+Navn; Depot Noark 5 analyse
+Versjon; 0.5_utkast
+Dato; 2020-05-04
+
+# Header
+Arkivbeskrivelse; 15KK_nnn <system> (yyyy-yyyy)
+Arkivskaper; 15KK <navn> kommune
+Dato innlevering; yyyy-mm-dd
+Type uttrekk: Noark 5 v5.0 | v4.0 | v3.1
+
+Depot navn; Interkommunalt Arkiv for Møre og Romsdal IKS
+Depot kortnavn; IKAMR
+
+Arkivar 1 navn; Torbjørn Aasen
+Arkivar 1 kortnavn; taa
+
+Arkivar 2 navn; Tore Fadnes
+Arkivar 2 kortnavn; tfa
+
+============================================================
+Innholdsfortegnelse
+Deler i []-klammer er ikke dokumentert i dette dokumentet pr. dato)
+
+[ Del 1: Innledende kopiering oppsett ]
+[ Del 2: Arkade 5 test ]
+[ Del 3: KDRS Query (inkl. sjekksum kontroll arkivuttrekk.xml) ]
+[ Del 4: XML Diff Directories (oXygen XML Editor eller annet verktøy) ]
+Del 5: XQuery/XPath (oXgen XML Editor, BaseX eller annet verktøy)
+[ Del 6: Documaster Noark Extractor Validator ]
+[ Del 7: Filanalyse (Droid, Siegfried eller annet verktøy) ]
+[ Del 8: Filvaldiator 1 PDF/A (veraPDF) ]
+[ Del 9: Filvalidator 2 PDF/A; TIFF, JPEG med flere (KOST-Val) ]
+
+============================================================
+Oversikt tester
+
+arkivstruktur.xml
+5.a.1-1: Antall registreringer | Xpath 2.0 {med i KDRS Query}:
+5.a.1-2: Antall registreringer pr. år | Xpath 2.0:
+5.a.1-3: Antall registreringer type 'journalpost' | Xpath 2.0 {med i KDRS Query}:
+5.a.1-4: Antall registreringer pr. år type 'journalpost', kategorisert pr. år | Xpath 2.0:
+5.a.2-1: Antall avskrivninger | Xpath 2.0 {med i KDRS Query}:
+
+============================================================
+[ # Del 1: Innledende kopiering oppsett ]
+
+============================================================
+[ # Del 2: Noark 5 Validator 1 (Arkade 5) ]
+
+============================================================
+[ # Del 3: KDRS Xquery ]
+
+============================================================
+[ # Del 4: XML Diff Directories (oXygen XML Editor eller annet verktøy) ]
+
+============================================================
+# Del 5: XML XQuery/Xpath (oXygen XML Edtor, BaseX eller annet verktøy)
+
+Dokumenter avvik i analyse arbeidsdokument iht. maltekster der for de kjente problemområder
+
+Utgangspunkt
+	- Katalog: ..\repository_operations\analyse\..
+	- Standardspørringer <TAA legg inn link>
+
+============================================================
+5.a: arkivstruktur.xml
+
+------------------------------------------------------------
+5.a.0 arkivstruktur.xml arkivdeler info
+
+------------------------------------------------------------
+5.a.0-1: Arkivdeler info | Xpath 2.0 {med i KDRS Query}:
+(Fra Noark 5 testrapport)
+
+concat("Arkivstrukturen inneholder", count(//arkivdel), " arkivdel(er):"),
+//arkivdel/concat(tittel/text(), " (", systemID/text(), ")")
+
+Resultat: <liste>
+
+------------------------------------------------------------
+5.a.0-2: Arkivdeler info | Xpath 2.0 {med i KDRS Query}:
+(IKAMR utvidelse av Query)
+
+concat( "Arkivstrukturen inneholder", count(//arkivdel), " arkivdel(er):"),
+//arkivdel/concat(tittel/text(), ", ID: ", systemID/text(), 
+", Start: ", arkivperiodeStartDato/text(), ", Slutt: ", arkivperiodeSluttDato/text() )
+
+Resultat: <liste>
+
+------------------------------------------------------------
+Notat godkjenning 5.a.0-1 til 0-2: GODKJENT | GODKJENT MED MERKNAD | AVVIST
+       Arkivdeler i utrekk period yyyy-yyyy ser fornuftig ut | har store mangler | mangler helt
+
+------------------------------------------------------------
+5.a.1 arkivstruktur.xml registreringer
+
+------------------------------------------------------------
+5.a.1-1: Antall registreringer | Xpath 2.0 {med i KDRS Query}:
+
+count(//registrering)
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.a.1-2: Antall registreringer pr. år | Xpath 2.0:
+
+for $v in distinct-values(//registrering/opprettetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//registrering/opprettetDato/substring-before(., "-"), $v))))
+
+Resultat:
+<liste med antall sortert stigende pr. år, med sum alle og snitt periode
+ (snitt periode er enten uttrekkes fra-til år og/eller årene med et minimum av poster)
+
+Sum alle:	nnnnn,     Sum yyyy-yyyy:     nnnn
+Snitt alle:	nnnn,	     Snitt yyyy-yyyy:   nnnn
+
+yyyy	n
+yyyy	n>
+
+(Resultat: eksempel som erstattes med kjøring resultat
+ Bruker Excel regneark "N5-kategori-teller-sortert.xlsx" for sortering m.m.
+
+Sum hele:	31165,     Sum 2008-2011:	31107
+Snitt hele:	3463,      Snitt 2008-2011:	7460
+			
+2006	4		
+2007	50		
+2008	8264		
+2009	7911		
+2011	6205		
+2010	8727		
+2013	1		
+2012	2		
+2015	1		)
+
+------------------------------------------------------------
+5.a.1-3: Antall registreringer type 'journalpost' | Xpath 2.0 {med i KDRS Query}:
+
+count(//registrering[@xsi:type='journalpost'])
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.a.1-4: Antall registreringer pr. år type 'journalpost', kategorisert pr. år | Xpath 2.0:
+
+for $v in distinct-values(//registrering[@xsi:type='journalpost']/opprettetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//registrering/opprettetDato/substring-before(., "-"), $v))))
+
+Resultat:
+<liste med antall sortert stigende pr. år, med sum alle og snitt periode
+ (snitt periode er enten uttrekkes fra-til år og/eller årene med et minimum av poster)>
+
+------------------------------------------------------------
+Notat godkjenning 5.a.1-1 til 1-4: GODKJENT | GODKJENT MED MERKNAD | AVVIST
+       Alle registreringer er av type 'journalpost'
+       Snitt og antall registreringer i perioden yyyy-yyyy ser fornuftig ut | har store mangler | mangler helt
+
+------------------------------------------------------------
+5.a.2: arkivstruktur.xml avskrivninger
+
+------------------------------------------------------------
+5.a.2-1: Antall avskrivninger | Xpath 2.0 {med i KDRS Query}:
+
+count(//avskrivning)
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.a.2-2: Antall avskrivninger pr. år | Xpath 2.0 {med i KDRS Query}:
+
+for $v in distinct-values(//registrering/opprettetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//registrering/opprettetDato/substring-before(., "-"), $v))))
+
+Resultat:
+<liste med antall sortert stigende pr. år, med sum alle og snitt periode
+ (snitt periode er enten uttrekkes fra-til år og/eller årene med et minimum av poster)>
+
+------------------------------------------------------------
+5.a.2-3: Antall avskrevetAv pr. kategori | Xpath 2.0:
+
+for $v in distinct-values(//avskrevetAv)
+return
+(concat($v,": ", count(index-of(//avskrevetAv, $v))))
+
+Resultat:
+<liste med antall kategorisert på type>
+
+------------------------------------------------------------
+5.a.2-4: Antall avskrivninger pr. avskrivningsmaate | Xpath 2.0:
+
+for $v in distinct-values(//avskrivningsmaate)
+return
+(concat($v,": ", count(index-of(//avskrivningsmaate, $v))))
+
+Resultat: <! slett alt som ikke benyttes under på dette punktet
+                               Bruk Excel regneark kladdfane for avskrivningsmaate med egendefinert sortering  !>
+
+Gyldige verdier:        n
+Besvart med brev        n
+Besvart med e-post      n
+Besvart på telefon      n
+Tatt til etterretning   n
+Tatt til orientering    n
+Besvart med notat       n
+Saken ble avsluttet     n
+
+Ugyldige verdier:       n
+NULL                    n
+Abcdefghijklmnopqrst    n
+
+------------------------------------------------------------
+Notat godkjenning 5.a.2-1 til 2-4: GODKJENT | GODKJENT MED MERKNAD | AVVIST
+       n ugyldige verdier med totalt m oppføringer kontrolleres med CUSTOM metadatakatalog.xsd
+       Validering mot custom skjema: Retter | Retter ikke avvik over i avskrivningsmaate | Ikke behov for custom skjema pga. intet avvik
+       (Documaster Noark Extractor Validator)
+
+------------------------------------------------------------
+
+Arkivverket Noark 5 v3.1 metadatakatalog.xsd <<< Krav: 5 faste verdier godtas
+  <xs:simpleType name="avskrivningsmaate">
+    <xs:annotation>
+      <xs:documentation>M619</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Besvart med brev"/>
+      <xs:enumeration value="Besvart med e-post"/>
+      <xs:enumeration value="Besvart på telefon"/>
+      <xs:enumeration value="Tatt til etterretning"/>
+      <xs:enumeration value="Tatt til orientering"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+Schema Mod-1 Noark 5 v3.1 metadatakatalog.xsd <<< Eksempel der 2 verdier fra arkivstruktur.xml må legges til
+  <xs:simpleType name="avskrivningsmaate">
+    <xs:annotation>
+      <xs:documentation>M619</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Besvart med brev"/>
+      <xs:enumeration value="Besvart med e-post"/>
+      <xs:enumeration value="Besvart på telefon"/>
+      <xs:enumeration value="Tatt til etterretning"/>
+      <xs:enumeration value="Tatt til orientering"/>
+	  <!-- IKAMR depot: mod 1 -->
+      <xs:enumeration value="NULL"/>
+      <xs:enumeration value="Midlertidig svar sendt"/>
+      <xs:enumeration value="Saken er avsluttet"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+Arkivverket Noark 5 v4.0 metadatakatalog.xsd <<< Krav: 7 faste verdier godtas
+  <xs:simpleType name="avskrivningsmaate">
+    <xs:annotation>
+      <xs:documentation>M619</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Besvart med brev"/>
+      <xs:enumeration value="Besvart med e-post"/>
+      <xs:enumeration value="Besvart på telefon"/>
+      <xs:enumeration value="Tatt til etterretning"/>
+      <xs:enumeration value="Tatt til orientering"/>
+      <xs:enumeration value="Besvart med notat"/>
+      <xs:enumeration value="Saken ble avsluttet"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+Schema Mod-1 Noark 5 v4.0 metadatakatalog.xsd <<< Eksempel der 2 verdier fra arkivstruktur.xml må legges til
+  <xs:simpleType name="avskrivningsmaate">
+    <xs:annotation>
+      <xs:documentation>M619</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Besvart med brev"/>
+      <xs:enumeration value="Besvart med e-post"/>
+      <xs:enumeration value="Besvart på telefon"/>
+      <xs:enumeration value="Tatt til etterretning"/>
+      <xs:enumeration value="Tatt til orientering"/>
+      <xs:enumeration value="Besvart med notat"/>
+      <xs:enumeration value="Saken ble avsluttet"/>
+      <!-- IKAMR depot: mod 1 -->
+      <xs:enumeration value="NULL"/>
+      <xs:enumeration value="Midlertidig svar sendt"/>
+      <xs:enumeration value="Saken er avsluttet"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+Arkivverket Noark 5 v5.0 metadatakatalog.xsd	<<< Krav: Tekststreng med lengde >= 1, dvs. ikke behov for CUSTOM skjema
+  <xs:simpleType name="avskrivningsmaate">
+    <xs:annotation>
+      <xs:documentation>M619</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+------------------------------------------------------------
+Notat godkjenning 5.a.2-1 til 2-4: GODKJENT | GODKJENT MED MERKNAD | AVVIST
+       Validering mot custom skjema: Retter | Retter ikke avvik over i avskrivningsmaate
+       (Documaster Noark Extractor Validator)
+
+------------------------------------------------------------
+Eksempel fra arkivstruktur.xml
+
+### START EKSEMPEL ###
+<?xml version="1.0" encoding="utf-8"?>
+<arkiv xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.arkivverket.no/standarder/noark5/arkivstruktur">
+  <systemID>arkiv:KRIARK</systemID>
+  <tittel>Arkiv for Kristiansund kommune</tittel>
+  <opprettetDato>0001-01-01T00:00:00</opprettetDato>
+  <opprettetAv>NULL</opprettetAv>
+  <avsluttetDato>0001-01-01T00:00:00</avsluttetDato>
+  <avsluttetAv>NULL</avsluttetAv>
+  <arkivskaper>
+    <arkivskaperID>1</arkivskaperID>
+    <arkivskaperNavn>Kristiansund kommune</arkivskaperNavn>
+    <beskrivelse>Avlevering for ephorte5</beskrivelse>
+  </arkivskaper>
+  <arkivdel>
+    <systemID>arkivdel:SAK1</systemID>
+    <tittel>Saksarkiv</tittel>
+    <arkivdelstatus>Avsluttet periode</arkivdelstatus>
+    <dokumentmedium>Elektronisk arkiv</dokumentmedium>
+    <opprettetDato>0001-01-01T00:00:00</opprettetDato>
+    <opprettetAv>NULL</opprettetAv>
+    <avsluttetDato>2016-02-22T08:51:01.03</avsluttetDato>
+    <avsluttetAv>Per Person</avsluttetAv>
+    <arkivperiodeStartDato>2008-01-01</arkivperiodeStartDato>
+    <arkivperiodeSluttDato>2012-01-02</arkivperiodeSluttDato>
+    <referanseArvtaker>arkivdel:SAK2</referanseArvtaker>
+    <klassifikasjonssystem>
+      <systemID>arkivdel:SAK1:klassifikasjonssystem:EMNE</systemID>
+      <klassifikasjonstype>EH</klassifikasjonstype>
+      <tittel>K-Kode (emne)</tittel>
+      <opprettetDato>0001-01-01T00:00:00</opprettetDato>
+      <opprettetAv>NULL</opprettetAv>
+      <klasse>
+        <systemID>arkivdel:SAK1:klassifikasjonssystem:EMNE:klasse:0</systemID>
+        <klasseID>0</klasseID>
+        <tittel>Organisasjon og administrasjon</tittel>
+        <opprettetDato>0001-01-01T00:00:00</opprettetDato>
+        <opprettetAv>NULL</opprettetAv>
+        <klasse>
+          <systemID>arkivdel:SAK1:klassifikasjonssystem:EMNE:klasse:00</systemID>
+          <klasseID>00</klasseID>
+          <tittel>Organisasjon og administrasjon - Felles</tittel>
+          <opprettetDato>2003-01-11T00:00:00</opprettetDato>
+          <opprettetAv>NULL</opprettetAv>
+          <klasse>
+            <systemID>arkivdel:SAK1:klassifikasjonssystem:EMNE:klasse:000</systemID>
+            <klasseID>000</klasseID>
+            <tittel>Organisasjon og administrasjon - Felles - Felles</tittel>
+            <opprettetDato>2003-01-11T00:00:00</opprettetDato>
+            <opprettetAv>NULL</opprettetAv>
+            …
+          <klasse>
+            <systemID>arkivdel:SAK1:klassifikasjonssystem:EMNE:klasse:233</systemID>
+            <klasseID>233</klasseID>
+            <tittel>Refusjon, tilskudd - &lt;i&gt;inn&lt;/i&gt;</tittel>
+            <opprettetDato>2003-01-11T00:00:00</opprettetDato>
+            <opprettetAv>NULL</opprettetAv>
+            <mappe xsi:type="saksmappe">
+              <systemID>mappe:2620</systemID>
+              <mappeID>2008/144</mappeID>
+              <tittel>Kulturskolen: Gaver og tilskudd</tittel>
+              <offentligTittel>Kulturskolen: Gaver og tilskudd</offentligTittel>
+              <dokumentmedium>Elektronisk arkiv</dokumentmedium>
+              <opprettetDato>2008-01-07T00:00:00</opprettetDato>
+              <opprettetAv>NULL</opprettetAv>
+              <avsluttetDato>2013-07-04T15:26:15</avsluttetDato>
+              <avsluttetAv>Gro Anita Holberg</avsluttetAv>
+              <referanseArkivdel>arkivdel:SAK1</referanseArkivdel>
+
+
+
+              <registrering xsi:type="journalpost">
+                <systemID>registrering:26706</systemID>
+                <opprettetDato>2008-12-01T00:00:00</opprettetDato>
+                <opprettetAv>NULL</opprettetAv>
+                <arkivertDato>0001-01-01T00:00:00</arkivertDato>
+                <arkivertAv>NULL</arkivertAv>
+                <dokumentbeskrivelse>
+                  <systemID>dokumentbeskrivelse:34957:doklink:26706:rnr:1</systemID>
+                  <dokumenttype>Noarkdokument</dokumenttype>
+                  <dokumentstatus>Dokumentet er ferdigstilt</dokumentstatus>
+                  <tittel>NO-11-53-2007-R5 - Sluttrapport</tittel>
+                  <forfatter>Karin L. Torske</forfatter>
+                  <opprettetDato>2008-12-01T00:00:00</opprettetDato>
+                  <opprettetAv>NULL</opprettetAv>
+                  <dokumentmedium>Elektronisk arkiv</dokumentmedium>
+                  <tilknyttetRegistreringSom>Hoveddokument</tilknyttetRegistreringSom>
+                  <dokumentnummer>1</dokumentnummer>
+                  <tilknyttetDato>2008-12-01T12:36:00</tilknyttetDato>
+                  <tilknyttetAv>Karin L. Torske</tilknyttetAv>
+                  <dokumentobjekt>
+                    <versjonsnummer>1</versjonsnummer>
+                    <variantformat>Produksjonsformat</variantformat>
+                    <format>PDF</format>
+                    <formatDetaljer>Portable document format</formatDetaljer>
+                    <opprettetDato>2008-12-01T00:00:00</opprettetDato>
+                    <opprettetAv>273</opprettetAv>
+                    <referanseDokumentfil>dokumenter\2008\12\01\26928.PDF</referanseDokumentfil>
+                    <sjekksum>A47D9AFC6DC32ACCBA4F7BF246EAE5528CF99102CDDF1A596A3C544267371449</sjekksum>
+                    <sjekksumAlgoritme>SHA-256</sjekksumAlgoritme>
+                    <filstoerrelse>36904</filstoerrelse>
+                  </dokumentobjekt>
+                </dokumentbeskrivelse>
+                <registreringsID>2008/18844-4</registreringsID>
+                <tittel>NO-11-53-2007-R5 - Sluttrapport</tittel>
+                <offentligTittel>NO-11-53-2007-R5 - Sluttrapport</offentligTittel>
+                <forfatter>Karin L. Torske</forfatter>
+                <dokumentmedium>Elektronisk arkiv</dokumentmedium>
+                <journalpostnummer>4</journalpostnummer>
+                <journalposttype>Inngående dokument</journalposttype>
+                <journalstatus>Journalført</journalstatus>
+                <journaldato>2008-12-01</journaldato>
+                <dokumentetsDato>2008-11-18</dokumentetsDato>
+                <korrespondansepart>
+                  <korrespondanseparttype>Mottaker</korrespondanseparttype>
+                  <korrespondansepartNavn>Kristiansund kommune</korrespondansepartNavn>
+                  <epostadresse>karin.torske@kristiansund.kommune.no</epostadresse>
+                </korrespondansepart>
+                <korrespondansepart>
+                  <korrespondanseparttype>Avsender</korrespondanseparttype>
+                  <korrespondansepartNavn>Barne-, ungdoms- og familiedirektoratet</korrespondansepartNavn>
+                  <postadresse>Postboks 8113 Dep</postadresse>
+                  <postnummer>0032</postnummer>
+                  <poststed>OSLO</poststed>
+                </korrespondansepart>
+                <avskrivning>
+                  <avskrivningsdato>2008-12-15</avskrivningsdato>
+                  <avskrevetAv>Per Person</avskrevetAv>
+                  <avskrivningsmaate>Tatt til etterretning</avskrivningsmaate>
+                </avskrivning>
+              </registrering>
+
+              <registrering xsi:type="journalpost">
+                <systemID>registrering:45395</systemID>
+                <opprettetDato>2009-10-21T00:00:00</opprettetDato>
+                <opprettetAv>NULL</opprettetAv>
+                <arkivertDato>0001-01-01T00:00:00</arkivertDato>
+                <arkivertAv>NULL</arkivertAv>
+                <dokumentbeskrivelse>
+                  <systemID>dokumentbeskrivelse:60650:doklink:45395:rnr:1</systemID>
+                  <dokumenttype>Noarkdokument</dokumenttype>
+                  <dokumentstatus>Dokumentet er ferdigstilt</dokumentstatus>
+                  <tittel>Søknad om legatmidler - Storlegat 1.</tittel>
+                  <forfatter>Karin L. Torske</forfatter>
+                  <opprettetDato>2009-10-21T00:00:00</opprettetDato>
+                  <opprettetAv>NULL</opprettetAv>
+                  <dokumentmedium>Elektronisk arkiv</dokumentmedium>
+                  <tilknyttetRegistreringSom>Hoveddokument</tilknyttetRegistreringSom>
+                  <dokumentnummer>1</dokumentnummer>
+                  <tilknyttetDato>2009-10-21T09:40:00</tilknyttetDato>
+                  <tilknyttetAv>Karin L. Torske</tilknyttetAv>
+                  <dokumentobjekt>
+                    <versjonsnummer>1</versjonsnummer>
+                    <variantformat>Arkivformat</variantformat>
+                    <format>pdf</format>
+                    <formatDetaljer>Portable document format</formatDetaljer>
+                    <opprettetDato>2009-10-21T00:00:00</opprettetDato>
+                    <opprettetAv>-99998</opprettetAv>
+                    <referanseDokumentfil>dokumenter\2009\10\21\52781.pdf</referanseDokumentfil>
+                    <sjekksum>73A854E389102F2E03396E06198DD154BAD29DF60F29723EC93846D9FE62268E</sjekksum>
+                    <sjekksumAlgoritme>SHA-256</sjekksumAlgoritme>
+                    <filstoerrelse>96993</filstoerrelse>
+                  </dokumentobjekt>
+                </dokumentbeskrivelse>
+                <registreringsID>2009/17292-5</registreringsID>
+                <tittel>Søknad om legatmidler - Storlegat 1.</tittel>
+                <offentligTittel>Søknad om legatmidler - Storlegat 1.</offentligTittel>
+                <forfatter>Karin L. Torske</forfatter>
+                <dokumentmedium>Elektronisk arkiv</dokumentmedium>
+                <merknad>
+                  <merknadstekst>Behandles i styremøte i Storlegat I - svar sendes via egne vedtak til søker.</merknadstekst>
+                  <merknadstype>Saksbehandlingsmerknad</merknadstype>
+                  <merknadsdato>2010-05-03T00:00:00</merknadsdato>
+                  <merknadRegistrertAv>Claus F. Morch</merknadRegistrertAv>
+                </merknad>
+                <journalpostnummer>5</journalpostnummer>
+                <journalposttype>Organinternt dokument for oppfølging</journalposttype>
+                <journalstatus>Journalført</journalstatus>
+                <journaldato>2009-10-21</journaldato>
+                <dokumentetsDato>2009-10-21</dokumentetsDato>
+                <korrespondansepart>
+                  <korrespondanseparttype>Avsender</korrespondanseparttype>
+                  <korrespondansepartNavn>Karin L. Torske</korrespondansepartNavn>
+                  <epostadresse>karin.torske@kristiansund.kommune.no</epostadresse>
+                </korrespondansepart>
+                <korrespondansepart>
+                  <korrespondanseparttype>Mottaker</korrespondanseparttype>
+                  <korrespondansepartNavn>Arve Moen</korrespondansepartNavn>
+                </korrespondansepart>
+              </registrering>
+              <saksdato>2008-01-07</saksdato>
+              <administrativEnhet>Kulturskolen</administrativEnhet>
+              <saksansvarlig>Karin L. Torske</saksansvarlig>
+              <journalenhet>Journal Kristiansund kommune</journalenhet>
+              <saksstatus>Avsluttet</saksstatus>
+            </mappe>
+            …
+          </klasse>
+          …
+    </klassifikasjonssystem>
+  </arkivdel>
+</arkiv>
+### SLUTT EKSEMPEL ###
+
+
+============================================================
+5.b: endringslogg.xml
+
+------------------------------------------------------------
+5.b.1 endringslogg.xml endringer
+
+------------------------------------------------------------
+5.b.1-1: Antall endringer | Xpath 2.0 {med i KDRS Query}:
+
+count(//endring)
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.b.1-2: Antall referanseMetadata pr. kategori | Xpath 2.0:
+
+for $v in distinct-values(//referanseMetadata)
+return
+(concat($v,": ", count(index-of(//referanseMetadata, $v))))
+
+Resultat:
+<liste med antall kategorisert på type>
+
+------------------------------------------------------------
+5.b.1-3: Antall endretAv pr. kategori | Xpath 2.0:
+
+for $v in distinct-values(//endretAv)
+return
+(concat($v,": ", count(index-of(//endretAv, $v))))
+
+Resultat:
+<liste med antall kategorisert på type>
+
+------------------------------------------------------------
+5.b.1-4: Antall endringer pr. år | Xpath 2.0:
+
+for $v in distinct-values(//endring/endretDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//endring/endretDato/substring-before(., "-"), $v))))
+
+Resultat:
+<liste med antall sortert stigende pr. år, med sum alle og snitt periode
+ (snitt periode er enten uttrekkes fra-til år og/eller årene med et minimum av poster)
+
+------------------------------------------------------------
+Notat godkjenning 5.b.1-1 til 1-4: GODKJENT | GODKJENT MED MERKNAD | AVVIST
+       Snitt og antall endringer i perioden yyyy-yyyy ser fornuftig ut | har store mangler | mangler helt
+
+------------------------------------------------------------
+Eksempel fra endringslogg.xml
+
+### START EKSEMPEL ###
+<?xml version="1.0" encoding="utf-8"?>
+<endringslogg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.arkivverket.no/standarder/noark5/endringslogg">
+  <endring>
+    <referanseArkivenhet>mappe:10043</referanseArkivenhet>
+    <referanseMetadata>SA_STATUS_SS</referanseMetadata>
+    <endretDato>2014-07-11T10:32:16.16</endretDato>
+    <endretAv>Per Person</endretAv>
+    <tidligereVerdi>F</tidligereVerdi>
+    <nyVerdi>A</nyVerdi>
+  </endring>
+…
+</endringslogg>
+### SLUTT EKSEMPEL ###
+
+============================================================
+5.c: loependeJournal.xml
+
+------------------------------------------------------------
+5.c.1 loependeJournal.xml journalregistreringer
+
+------------------------------------------------------------
+5.c.1-1: Antall journalregistreringer | Xpath 2.0 {med i KDRS Query}:
+
+count(//journalregistrering)
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.c.1-2: Antall journalposter | Xpath 2.0 {med i KDRS Query}:
+
+count(//journalpost)
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.c.1-3: Antall korrespondanseparttype pr. kategori | Xpath 2.0:
+
+for $v in distinct-values(//korrespondanseparttype)
+return
+(concat($v,": ", count(index-of(//korrespondanseparttype, $v))))
+
+Resultat:
+<liste med antall kategorisert på type>
+
+------------------------------------------------------------
+5.c.1-4: Antall journalregistreringer journaldato pr. år | Xpath 2.0:
+
+for $v in distinct-values(//journalregistrering/journalpost/journaldato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//journalregistrering/journalpost/journaldato/substring-before(., "-"), $v))))
+
+Resultat:
+<liste med antall sortert stigende pr. år, med sum alle og snitt periode
+ (snitt periode er enten uttrekkes fra-til år og/eller årene med et minimum av poster)
+
+Sum alle:	nnnnn,     Sum yyyy-yyyy:     nnnn
+Snitt alle:	nnnn,	     Snitt yyyy-yyyy:   nnnn
+
+yyyy	n
+yyyy	n>
+
+------------------------------------------------------------
+Notat godkjenning 5.c.1-1 til 1-4: GODKJENT | GODKJENT MED MERKNAD | AVVIST
+       Snitt og antall registreringer i perioden yyyy-yyyy ser fornuftig ut | har store mangler | mangler helt
+
+------------------------------------------------------------
+Eksempel fra loependeJournal.xml
+
+### START EKSEMPEL ###
+<?xml version="1.0" encoding="utf-8"?>
+<loependeJournal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.arkivverket.no/standarder/noark5/loependeJournal">
+  <journalhode>
+    <journalStartDato>2008-01-02</journalStartDato>
+    <journalSluttDato>2012-01-02</journalSluttDato>
+    <antallJournalposter>90424</antallJournalposter>
+    <arkivskaper>
+      <arkivskaperID>1</arkivskaperID>
+      <arkivskaperNavn>Kristiansund kommune</arkivskaperNavn>
+      <beskrivelse>Avlevering for ephorte5</beskrivelse>
+    </arkivskaper>
+  </journalhode>
+  <journalregistrering>
+    <klasse>
+      <klasseID>233</klasseID>
+      <tittel>EMNE:233</tittel>
+    </klasse>
+    <saksmappe>
+      <saksaar>2008</saksaar>
+      <sakssekvensnummer>144</sakssekvensnummer>
+      <tittel>Kulturskolen: Gaver og tilskudd</tittel>
+      <offentligTittel>Kulturskolen: Gaver og tilskudd</offentligTittel>
+    </saksmappe>
+    <journalpost>
+      <systemID>registrering:7729</systemID>
+      <journalaar>2008</journalaar>
+      <journalsekvensnummer>127</journalsekvensnummer>
+      <journalpostnummer>1</journalpostnummer>
+      <tittel>Svar på søknad om gavemidler fra Sparebanken Møre</tittel>
+      <offentligTittel>Svar på søknad om gavemidler fra Sparebanken Møre</offentligTittel>
+      <journaldato>2008-01-07</journaldato>
+      <dokumentetsDato>2007-12-31</dokumentetsDato>
+      <korrespondansepart>
+        <korrespondanseparttype>Mottaker</korrespondanseparttype>
+        <korrespondansepartNavn>Kristiansund kommune</korrespondansepartNavn>
+      </korrespondansepart>
+      <korrespondansepart>
+        <korrespondanseparttype>Avsender</korrespondanseparttype>
+        <korrespondansepartNavn>Sparebanken Møre v/ Per Person</korrespondansepartNavn>
+      </korrespondansepart>
+    </journalpost>
+  </journalregistrering>
+…
+</loependeJournal>
+### SLUTT EKSEMPEL ###
+
+============================================================
+5.d: offentligJournal.xml
+
+------------------------------------------------------------
+5.d.1 offentligJournal.xml journalregistreringer
+
+------------------------------------------------------------
+5.d.1-1: Antall journalregistreringer | Xpath 2.0 {med i KDRS Query}:
+
+count(//journalregistrering)
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.d.1-2: Antall journalposter | Xpath 2.0 {med i KDRS Query}:
+
+count(//journalpost)
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.d.1-3: Antall korrespondanseparttype pr. kategori | Xpath 2.0:
+
+for $v in distinct-values(//korrespondanseparttype)
+return
+(concat($v,": ", count(index-of(//korrespondanseparttype, $v))))
+
+Resultat:
+<liste med antall kategorisert på type>
+
+------------------------------------------------------------
+5.d.1-4: Antall journalregistreringer journaldato pr. år | Xpath 2.0:
+
+for $v in distinct-values(//journalregistrering/journalpost/journaldato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//journalregistrering/journalpost/journaldato/substring-before(., "-"), $v))))
+
+Resultat:
+<liste med antall sortert stigende pr. år, med sum alle og snitt periode
+ (snitt periode er enten uttrekkes fra-til år og/eller årene med et minimum av poster)
+
+Sum alle:	nnnnn,     Sum yyyy-yyyy:     nnnn
+Snitt alle:	nnnn,	     Snitt yyyy-yyyy:   nnnn
+
+yyyy	n
+yyyy	n>
+
+------------------------------------------------------------
+Notat godkjenning 5.d.1-1 til 1-4: GODKJENT | GODKJENT MED MERKNAD | AVVIST
+       Snitt og antall registreringer i perioden yyyy-yyyy ser fornuftig ut | har store mangler | mangler helt
+
+------------------------------------------------------------
+Eksempel fra offentligJournal.xml
+
+### START EKSEMPEL ###
+<?xml version="1.0" encoding="utf-8"?>
+<offentligJournal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.arkivverket.no/standarder/noark5/offentligJournal">
+  <journalhode>
+    <journalStartDato>2008-01-02</journalStartDato>
+    <journalSluttDato>2012-01-02</journalSluttDato>
+    <antallJournalposter>90424</antallJournalposter>
+    <arkivskaper>
+      <arkivskaperID>1</arkivskaperID>
+      <arkivskaperNavn>Kristiansund kommune</arkivskaperNavn>
+      <beskrivelse>Avlevering for ephorte5</beskrivelse>
+    </arkivskaper>
+  </journalhode>
+  <journalregistrering>
+    <klasse>
+      <klasseID>233</klasseID>
+      <tittel>EMNE:233</tittel>
+    </klasse>
+    <saksmappe>
+      <saksaar>2008</saksaar>
+      <sakssekvensnummer>144</sakssekvensnummer>
+      <offentligTittel>Kulturskolen: Gaver og tilskudd</offentligTittel>
+    </saksmappe>
+    <journalpost>
+      <systemID>registrering:7729</systemID>
+      <journalaar>2008</journalaar>
+      <journalsekvensnummer>127</journalsekvensnummer>
+      <journalpostnummer>1</journalpostnummer>
+      <offentligTittel>Svar på søknad om gavemidler fra Sparebanken Møre</offentligTittel>
+      <journaldato>2008-01-07</journaldato>
+      <dokumentetsDato>2007-12-31</dokumentetsDato>
+      <korrespondansepart>
+        <korrespondanseparttype>Mottaker</korrespondanseparttype>
+        <korrespondansepartNavn>Kristiansund kommune</korrespondansepartNavn>
+      </korrespondansepart>
+      <korrespondansepart>
+        <korrespondanseparttype>Avsender</korrespondanseparttype>
+        <korrespondansepartNavn>Sparebanken Møre v/ Per Person</korrespondansepartNavn>
+      </korrespondansepart>
+    </journalpost>
+  </journalregistrering>
+…
+</offentligJournal>
+### SLUTT EKSEMPEL ###
+
+============================================================
+[ # Del 6: Documaster Noark Extractor Validator ]
+
+============================================================
+[ # Del 7: Filanalyse (Droidm Siegfried eller annet verktøy) ]
+
+============================================================
+[ # Del 8: Filvalidator 1 PDF/A (veraPDF) ]
+
+============================================================
+[ # Del 9: Filvalidator 2 PDF/A, TIFF, JPEG med flere (KOST-Val) ]
