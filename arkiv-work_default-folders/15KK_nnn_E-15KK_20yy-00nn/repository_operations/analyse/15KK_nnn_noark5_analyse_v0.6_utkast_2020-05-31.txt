@@ -1,0 +1,1599 @@
+15KK_nnn_noark5_analyse.txt
+
+# Innhold: Logg av IKAMR depotoperasjoner med KDRS og IKAMR prosesser og rutiner
+Navn; Depot Noark 5 analyse
+Versjon; 0.6_utkast
+Dato; 2020-05-31
+
+# Header
+Arkivbeskrivelse; 15KK_nnn <system> (yyyy-yyyy)
+Arkivskaper; 15KK <navn> kommune
+Dato innlevering; yyyy-mm-dd
+Type uttrekk: Noark 5 v5.0 | v4.0 | v3.1
+
+Depot navn; Interkommunalt Arkiv for Møre og Romsdal IKS
+Depot kortnavn; IKAMR
+
+Arkivar 1 navn; Torbjørn Aasen
+Arkivar 1 kortnavn; taa
+
+Arkivar 2 navn; Tore Fadnes
+Arkivar 2 kortnavn; tfa
+
+============================================================
+Innholdsfortegnelse
+Deler i []-klammer er ikke dokumentert i dette dokumentet pr. dato)
+
+[ Del 1: Innledende kopiering oppsett ]
+[ Del 2: Arkade 5 test ]
+[ Del 3: KDRS Query (inkl. sjekksum kontroll arkivuttrekk.xml) ]
+[ Del 4: XML Diff Directories (oXygen XML Editor eller annet verktøy) ]
+Del 5: XQuery/XPath (oXgen XML Editor, BaseX eller annet verktøy)
+[ Del 6: Documaster Noark Extractor Validator ]
+[ Del 7: Filanalyse (Droid, Siegfried eller annet verktøy) ]
+[ Del 8: Filvaldiator 1 PDF/A (veraPDF) ]
+[ Del 9: Filvalidator 2 PDF/A; TIFF, JPEG med flere (KOST-Val) ]
+
+============================================================
+Oversikt tester
+
+arkivstruktur.xml
+5.a.1-1: Antall registreringer | Xpath 2.0 {med i KDRS Query}:
+5.a.1-2: Antall registreringer pr. år | Xpath 2.0:
+5.a.1-3: Antall registreringer type 'journalpost' | Xpath 2.0 {med i KDRS Query}:
+5.a.1-4: Antall registreringer pr. år type 'journalpost', kategorisert pr. år | Xpath 2.0:
+5.a.2-1: Antall avskrivninger | Xpath 2.0 {med i KDRS Query}:
+
+============================================================
+[ # Del 1: Innledende kopiering oppsett ]
+
+============================================================
+[ # Del 2: Noark 5 Validator 1 (Arkade 5) ]
+
+============================================================
+[ # Del 3: KDRS Xquery ]
+
+============================================================
+[ # Del 4: XML Diff Directories (oXygen XML Editor eller annet verktøy) ]
+
+============================================================
+# Del 5: XML XQuery/Xpath (oXygen XML Edtor, BaseX eller annet verktøy)
+
+Dokumenter avvik i analyse arbeidsdokument iht. maltekster der for de kjente problemområder
+
+Utgangspunkt
+	- Katalog: ..\repository_operations\analyse\..
+	- Standardspørringer <TAA legg inn link>
+
+============================================================
+5.a: arkivstruktur.xml
+
+------------------------------------------------------------
+5.a.1 arkivstruktur.xml arkiv, arkivskaper, arkiveler
+
+------------------------------------------------------------
+5.a.1-1: Arkiv info | Xpath 2.0 {Arkiv count med i KDRS Query}:
+	- Hvis antall arkiv > 1, så må alle statiske spørringer under korrigeres
+	- Med status menes typisk: /arkiv/arkivdel… som da blir /arkiv/arkiv/arkivdel osv.
+	- Rotelementet i arkivstrukture.xml er alltid toppnivå /arkiv alene
+	- systemID (1)
+	- tittel (1)
+	- beskrivelse (0-1)
+	- arkivstatus (0-1)
+	- dokumentmedium (0-1)
+	- opprettetDato (1)
+	- opprettetAv (1)
+	- avsluttetDato (1)
+	- avsluttetAv (1)
+
+concat( "Arkivstrukturen inneholder ", count(//arkiv), " arkiv:"),
+//arkiv/concat(tittel/text(), ", ID: ", systemID/text(), 
+", Start: ", opprettetDato/text(), ", Slutt: ", opprettetDato/text(), 
+", Opprettet av: ", opprettetAv/text(), ", Avsluttet av: ", avsluttetAv/text() )
+
+Resultat: <liste over antall arkiv og rotnivå arkiv egenskaper>
+
+------------------------------------------------------------
+5.a.1-2: Arkivskaper info | Xpath 2.0
+	- arkivskaperID (1)
+	- arkivskaperNavn (1)
+	- Beskrivelse (0-1)
+
+concat( "Arkivstrukturen inneholder ", count(//arkivskaper), " arkivskaper(e):"),
+//arkivskaper/concat(arkivskaperNavn/text(), ", ID: ", arkivskaperID/text(), 
+", Beskrivelse: ", beskrivelse/text() )
+
+for $v in //arkivskaper
+return
+(concat("Arkivskaper ID: ", $v/arkivskaperID, ": ", $v/arkivskaperNavn, " | ", $v/beskrivelse))
+
+Resultat: 
+
+------------------------------------------------------------
+5.a.1-3: Arkivdeler info | Xpath 2.0 {Arkivdel count, tittel og arkivdelstatus med i KDRS Query}:
+	- systemID (1)
+	- tittel (1)
+	- beskrivelse (0-1)
+	- arkivdelstatus (1)
+	- dokumentmedium (0-1)
+	- opprettetDato (1)
+	- opprettetAv (1)
+	- avsluttetDato (1)
+	- avsluttetAv (1)
+	- arkivperiodeStartDato (0-1)
+	- arkivperiodeSluttDato (0-1)
+	- referanseForloeper (0-1)
+	- referanseAvtaker (0-1)
+
+(IKAMR utvidelse av Query)
+
+concat( "Arkivstrukturen inneholder ", count(//arkivdel), " arkivdel(er):"), 
+//arkivdel/concat(tittel/text(), ", ID: ", systemID/text(), 
+", StartPer: ", arkivperiodeStartDato/text(), ", SluttPer: ", arkivperiodeSluttDato/text(), 
+", Opprettet: ", opprettetDato/text(), ", Avsluttet: ", avsluttetDato/text()
+, ", Dokumentmedium: ", dokumentmedium/text() )
+
+eller (uten opprettetDato og avsluttetDato)
+
+concat( "Arkivstrukturen inneholder ", count(//arkivdel), " arkivdel(er):"), 
+//arkivdel/concat(tittel/text(), ", ID: ", systemID/text(), 
+", Start: ", arkivperiodeStartDato/text(), ", Slutt: ", arkivperiodeSluttDato/text(), ", Dokumentmedium: ", dokumentmedium/text() )
+
+eller (uten dokumentmedium)
+
+concat( "Arkivstrukturen inneholder ", count(//arkivdel), " arkivdel(er):"),
+//arkivdel/concat(tittel/text(), ", ID: ", systemID/text(), 
+", Start: ", arkivperiodeStartDato/text(), ", Slutt: ", arkivperiodeSluttDato/text() )
+
+eller (Fra Noark 5 testrapport)
+
+concat("Arkivstrukturen inneholder ", count(//arkivdel), " arkivdel(er):"),
+//arkivdel/concat(tittel/text(), " (", systemID/text(), ")")
+
+Resultat: <liste arkivdeler egenskaper>
+
+------------------------------------------------------------
+Notat godkjenning 5.a.1-1 til 1-3: GODKJENT | GODKJENT MED MERKNAD | AVVIST
+       Arkiv, arkivskaper, arkivdeler i utrekk periode yyyy-yyyy ser fornuftig ut | har store mangler | mangler helt
+
+------------------------------------------------------------
+5.a.1-4: Arkivdeler info, del 2 | Xpath 2.0
+	- IKKE FERDIG: finn ut av syntaks for å vise antall klasser, mapper og registreringer pr. arkivdel
+
+for $arkivdel in //arkivdel
+return 
+concat($arkivdel/systemID, ", ", $arkivdel/tittel, " (", 
+count($arkivdel/descendant::klasse), " klasser, ", 
+count($arkivdel/descendant::mappe), " mapper, ", 
+count($arkivdel/descendant::registrering), " registreringer)")
+
+
+concat("Arkivstrukturen inneholder ", count(//arkivdel), " arkivdel(er): ",
+//arkivdel/concat(tittel/text(), " (", systemID/text(), ")", 
+"Klasser: ", count(//arkivdel/descendant::klasse), 
+"Mapper: ", count(//arkivdel/descendant::mappe), 
+"Registreringer: ", count(//arkivdel/descendant::registrering)))
+
+
+
+------------------------------------------------------------
+5.a.2 arkivstruktur.xml registreringer
+
+------------------------------------------------------------
+5.a.2-1: Antall registreringer | Xpath 2.0 {med i KDRS Query}:
+
+count(//registrering)
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.a.2-2: Antall registreringer pr. år | Xpath 2.0:
+
+for $v in distinct-values(//registrering/opprettetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//registrering/opprettetDato/substring-before(., "-"), $v))))
+
+Resultat:
+<liste med antall sortert stigende pr. år, med sum alle og snitt periode
+ (snitt periode er enten uttrekkes fra-til år og/eller årene med et minimum av poster)
+
+Sum alle:	nnnnn,     Sum yyyy-yyyy:     nnnn
+Snitt alle:	nnnn,	     Snitt yyyy-yyyy:   nnnn
+
+yyyy	n
+yyyy	n>
+
+(Resultat: eksempel som erstattes med kjøring resultat
+ Bruker Excel regneark "N5-kategori-teller-sortert.xlsx" for sortering m.m.
+
+Sum hele:	31165,     Sum 2008-2011:	31107
+Snitt hele:	3463,      Snitt 2008-2011:	7460
+			
+2006	4		
+2007	50		
+2008	8264		
+2009	7911		
+2011	6205		
+2010	8727		
+2013	1		
+2012	2		
+2015	1		)
+
+------------------------------------------------------------
+5.a.2-3: Antall registreringer type 'journalpost' | Xpath 2.0 {med i KDRS Query}:
+
+count(//registrering[@xsi:type='journalpost'])
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.a.2-4: Antall registreringer pr. år type 'journalpost', kategorisert pr. år | Xpath 2.0:
+
+for $v in distinct-values(//registrering[@xsi:type='journalpost']/opprettetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//registrering/opprettetDato/substring-before(., "-"), $v))))
+
+Resultat:
+<liste med antall sortert stigende pr. år, med sum alle og snitt periode
+ (snitt periode er enten uttrekkes fra-til år og/eller årene med et minimum av poster)>
+
+------------------------------------------------------------
+Notat godkjenning 5.a.2-1 til 2-4: GODKJENT | GODKJENT MED MERKNAD | AVVIST
+       Alle registreringer er av type 'journalpost'
+       Snitt og antall registreringer i perioden yyyy-yyyy ser fornuftig ut | har store mangler | mangler helt
+
+------------------------------------------------------------
+5.a.3 arkivstruktur.xml klasser
+
+------------------------------------------------------------
+5.a.3-1: Klassifikasjonssystemer | Xpath 2.0:
+
+concat("Klassifikasjonssystemer", "&#10;---&#10;",
+"systemID (1): ", //klassifikasjonssystem/systemID, "&#10;",
+"klassifikasjonstype (0-1): ", //klassifikasjonssystem/klassifikasjonstype, "&#10;",
+"tittel (1): ", //klassifikasjonssystem/tittel, "&#10;",
+"beskrivelse (0-1): ", //klassifikasjonssystem/beskrivelse, "&#10;",
+"opprettetDato (1): ", //klassifikasjonssystem/opprettetDato, "&#10;",
+"opprettetAv (1): ", //klassifikasjonssystem/opprettetAv, "&#10;",
+"avsluttetDato (0-1): ", //klassifikasjonssystem/avsluttetDato, "&#10;",
+"avsluttetAv (0-1): ", //klassifikasjonssystem/avsluttetAv, "&#10;---&#10;")
+
+Resultat: 
+Klassifikasjonssystemer
+---
+systemID (1): <f. eks.: arkivdel:SAK3:klassifikasjonssystem:EMNE>
+klassifikasjonstype (0-1): <f. eks. (men helst mer tekstlig: EH>
+tittel (1): <f. eks.: K-Kode fagklasse/fellesklasse bokmål>
+beskrivelse (0-1): 
+opprettetDato (1): <Ofte dummy dateTid, f. eks.: 0001-01-01T00:00:00>
+opprettetAv (1): <Ofte dummy eller systembruker, f. eks.: NULL>
+avsluttetDato (0-1): 
+avsluttetAv (0-1): 
+---
+
+------------------------------------------------------------
+5.a.3-2: Antall klasser | Xpath 2.0 {med i KDRS Query}:
+	- Ta med kun til og med første nivå med 0 klasser
+	- Hvis 4 klasse-nivåer, ta med et 5. nivå for å sjekke = 0
+
+concat("Klasser ", count(//klassifikasjonssystem/descendant::klasse), "&#10;", 
+"Klasser nivå 1: ", count(//klassifikasjonssystem/descendant::klasse) - count(//klassifikasjonssystem/descendant::klasse/klasse), "&#10;", 
+"Klasser nivå 2: ", count(//klassifikasjonssystem/descendant::klasse/klasse) - count(//klassifikasjonssystem/descendant::klasse/klasse/klasse), "&#10;", 
+"Klasser nivå 3: ", count(//klassifikasjonssystem/descendant::klasse/klasse/klasse) - 
+count(//klassifikasjonssystem/descendant::klasse/klasse/klasse/klasse), "&#10;", 
+"Klasser nivå 4: ", count(//klassifikasjonssystem/descendant::klasse/klasse/klasse/klasse))
+
+Resultat: 
+Klasser a
+Klasser nivå 1: n
+Klasser nivå 2: n
+Klasser nivå 3: n
+Klasser nivå 4: 0
+
+------------------------------------------------------------
+5.a.3-3: Klasse opprettetDato pr. år | Xpath 2.0
+	- Ikke ta med pr. år hvis "Klasse opprettetDato" under er kort
+
+for $v in distinct-values(//klasse/opprettetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//klasse/opprettetDato/substring-before(., "-"), $v))))
+
+
+Resultat: <liste år: antall>
+
+------------------------------------------------------------
+5.a.3-4: Klasse opprettetDato | Xpath 2.0
+	- Ikke ta med hvis lang liste, da tar vi med "Klasse opprettetDato pr. år" over
+
+for $v in distinct-values(//klasse/opprettetDato)
+return
+(concat($v,": ", count(index-of(//klasse/opprettetDato, $v))))
+
+Resultat: <liste datoTid: antall>
+
+------------------------------------------------------------
+5.a.3-5: Klasse opprettetAv | Xpath 2.0
+
+for $v in distinct-values(//klasse/opprettetAv)
+return
+(concat($v,": ", count(index-of(//klasse/opprettetAv, $v))))
+
+Resultat: <liste person: antall> 
+
+------------------------------------------------------------
+5.a.3-6: Klasse avsluttetDato pr. år | Xpath 2.0
+	- Ikke ta med pr. år hvis "Klasse avsluttetDato" under er kort
+
+for $v in distinct-values(//klasse/avsluttetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//klasse/avsluttetDato/substring-before(., "-"), $v))))
+
+
+Resultat: <liste år: antall>
+
+------------------------------------------------------------
+5.a.3-7: Klasse avsluttetDato | Xpath 2.0
+	- Ikke ta med hvis lang liste, da tar vi med "Klasse avsluttetDato pr. år" over
+
+for $v in distinct-values(//klasse/avsluttetDato)
+return
+(concat($v,": ", count(index-of(//klasse/avsluttetDato, $v))))
+
+Resultat: <liste datoTid: antall>
+
+------------------------------------------------------------
+5.a.3-8: Klasse avsluttetAv | Xpath 2.0
+
+for $v in distinct-values(//klasse/avsluttetAv)
+return
+(concat($v,": ", count(index-of(//klasse/avsluttetAv, $v))))
+
+Resultat: <liste person: antall> 
+
+------------------------------------------------------------
+5.a.4 arkivstruktur.xml mapper
+
+------------------------------------------------------------
+5.a.4-1: Antall mapper | Xpath 2.0
+	- Ta med kun til og med første nivå med 0 mapper
+	- Hvis 4 mappe-nivåer, ta med et 5. nivå for å sjekke = 0
+
+concat("Mapper ", count(//arkivdel/descendant::mappe), "&#10;",
+"Mapper nivå 1: ", count(//arkivdel/descendant::mappe) - count(//arkivdel/descendant::mappe/mappe), "&#10;",
+"Mapper nivå 2: ", count(//arkivdel/descendant::mappe/mappe) - count(//arkivdel/descendant::mappe/mappe/mappe), "&#10;",
+"Mapper nivå 3: ", count(//arkivdel/descendant::mappe/mappe/mappe) - 
+count(//arkivdel/descendant::mappe/mappe/mappe/mappe), "&#10;",
+"Mapper nivå 4: ", count(//arkivdel/descendant::mappe/mappe/mappe/mappe))
+
+Resultat: 
+Mapper n
+Mapper nivå 1: n
+Mapper nivå 2: n
+Mapper nivå 3: n
+Mapper nivå 4: 0
+
+------------------------------------------------------------
+5.a.4-2: Mappe typer | Xpath 2.0
+
+for $v in distinct-values(//mappe/@xsi:type)
+return
+(concat($v,": ", count(index-of(//mappe/@xsi:type, $v))))
+
+Resultat: <liste mappetype: antall>
+
+------------------------------------------------------------
+5.a.4-2: Mappe dokumentmedium (0-1) | Xpath 2.0
+
+for $v in distinct-values(//mappe/dokumentmedium)
+return
+(concat($v,": ", count(index-of(//mappe/dokumentmedium, $v))))
+
+Resultat:
+Fysisk arkiv:					n
+Elektronisk arkiv:				n
+Blandet fysisk og elektronisk arkiv:	n
+
+------------------------------------------------------------
+5.a.4-3: Mappe avsluttetDato pr. år (1) | Xpath 2.0
+
+# avsluttetDato
+for $v in distinct-values(//mappe/avsluttetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//mappe/avsluttetDato/substring-before(., "-"), $v))))
+
+Resultat:
+Sum hele:	174
+Snitt hele:	35
+	
+2012	2
+2015	75
+2017	7
+2018	5
+2020	85
+
+# avsluttetAv
+for $v in distinct-values(//mappe/avsluttetAv)
+return
+(concat($v,": ", count(index-of(//mappe/avsluttetAv, $v))))
+
+Resultat:
+Sum hele:	174
+	
+default	85
+Eli Karin Hagset	77
+Martha Beinset	7
+Ruth Nanna Kvernmo Obaidli	5
+
+# opprettetDato
+for $v in distinct-values(//mappe/opprettetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//mappe/opprettetDato/substring-before(., "-"), $v))))
+
+Resultat:
+Sum hele:	174
+Snitt hele:	15
+	
+2008	22
+2009	20
+2010	23
+2011	11
+2012	4
+2013	2
+2014	2
+2015	10
+2016	26
+2017	23
+2018	22
+2019	9
+
+# opprettetAv
+for $v in distinct-values(//mappe/opprettetAv)
+return
+(concat($v,": ", count(index-of(//mappe/opprettetAv, $v))))
+
+Resultat:
+Sum hele:	174
+	
+Eli Karin Hagset	15
+Hilmar Windstad		5
+Magne Orten			83
+Martha Beinset		4
+Systemansvarlig		67
+
+-----
+# referanseArkivdel
+for $v in distinct-values(//mappe/referanseArkivdel)
+return
+(concat($v,": ", count(index-of(//mappe/referanseArkivdel, $v))))
+
+Resultat: Intet treff
+
+# mappe skjerming
+
+count(//mappe/skjerming)	Resultat: 1
+count(//mappe/skjerming/tilgangsrestriksjon)	Resultat: 1
+count(//mappe/skjerming/skjermingshjemmel)		Resultat: 1
+count(//mappe/skjerming/skjermingMetadata)		Resultat: 1
+count(//mappe/skjerming/skjermingDokument)		Resultat: 0
+count(//mappe/skjerming/skjermingsvarighet)		Resultat: 0
+
+for $v in distinct-values(//mappe/skjerming/tilgangsrestriksjon)
+return
+(concat($v,": ", count(index-of(//mappe/skjerming/tilgangsrestriksjon, $v))))
+
+Resultat: 
+Offl.l § 6 nr 2a	1
+
+for $v in distinct-values(//mappe/skjerming/skjermingshjemmel)
+return
+(concat($v,": ", count(index-of(//mappe/skjerming/skjermingshjemmel, $v))))
+
+Resultat:
+Offl.l § 6 nr 2a	1
+
+for $v in distinct-values(//mappe/skjerming/skjermingMetadata)
+return
+(concat($v,": ", count(index-of(//mappe/skjerming/skjermingMetadata, $v))))
+
+Resultat:
+tittel beskrivelse		1
+
+for $v in distinct-values(//mappe/skjerming/skjermingDokument)
+return
+(concat($v,": ", count(index-of(//mappe/skjerming/skjermingDokument, $v))))
+
+Resultat: Intet treff
+
+for $v in distinct-values(//mappe/skjerming/skjermingsvarighet)
+return
+(concat($v,": ", count(index-of(//mappe/skjerming/skjermingsvarighet, $v))))
+
+Resultat: Intet treff
+
+-----
+Registrering
+
+# Registrering tellere
+count(//registrering)	Resultat: 621
+count(/arkiv/arkivdel/klassifikasjonssystem/klasse/mappe/registrering)	Resultat: 5
+count(/arkiv/arkivdel/klassifikasjonssystem/klasse/klasse/mappe/registrering)	Resultat: 0
+count(/arkiv/arkivdel/klassifikasjonssystem/klasse/klasse/klasse/mappe/registrering)	Resultat: 616
+
+# Registrering type
+for $v in distinct-values(//registrering/@xsi:type)
+return
+(concat($v,": ", count(index-of(//registrering/@xsi:type, $v))))
+
+Resultat:
+journalpost		621
+
+# opprettetDato
+for $v in distinct-values(//registrering/opprettetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//registrering/opprettetDato/substring-before(., "-"), $v))))
+
+Resultat:
+Sum hele:	621
+Snitt hele:	52
+	
+2008	47
+2009	108
+2010	73
+2011	42
+2012	52
+2013	33
+2014	42
+2015	38
+2016	75
+2017	53
+2018	45
+2019	13
+
+# opprettetAv
+for $v in distinct-values(//registrering/opprettetAv)
+return
+(concat($v,": ", count(index-of(//registrering/opprettetAv, $v))))
+
+Resultat:
+ERROR: 603 ulike "opprettetAv", her er en tittel kommet inn
+
+Eksempler:
+AKTUARERKLÆRING 2008		1
+AVSETNINGER TIL DEKNING AV NYTT DØDELIGHETSGRUNNLAG - FORHOLDET TIL FLYTTEREGLENE		1
+AVSLAG PÅ FORESPØRSEL OM ENDRING AV VEDTEKTER FOR MOLDE KOMMUNALE PENSJONSKASSE		1
+AVTALE MELLOM MOLDE KOMMUNALE PENSJONSKASSE OG KLP FORSIKRINGSSERVICE AS - HONORAR FOR 2009		1
+Administrasjon pensjonskassen - Arbeidsavtale for daglig leder Magne Orten		1
+
+# arkivertDato
+for $v in distinct-values(//registrering/arkivertDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//registrering/arkivertDato/substring-before(., "-"), $v))))
+
+Resultat:
+2020	621
+
+# arkivertAv
+for $v in distinct-values(//registrering/arkivertAv)
+return
+(concat($v,": ", count(index-of(//registrering/arkivertAv, $v))))
+
+Resultat:
+default		621
+
+# registrering skjerming
+
+count(//registrering/skjerming)		Resultat: 52
+count(//registrering/skjerming/tilgangsrestriksjon)	Resultat: 52
+count(//registrering/skjerming/skjermingshjemmel)	Resultat: 52
+count(//registrering/skjerming/skjermingMetadata)	Resultat: 52
+count(//registrering/skjerming/skjermingDokument)	Resultat: 0
+count(//registrering/skjerming/skjermingsvarighet)	Resultat: 0
+
+-----
+for $v in distinct-values(//registrering/skjerming/tilgangsrestriksjon)
+return
+(concat($v,": ", count(index-of(//registrering/skjerming/tilgangsrestriksjon, $v))))
+
+Resultat:
+Sum hele:	26
+	
+Offl.l § 4									1
+Offl.l § 5.2 ledd b							1
+Offl.l § 5									14
+Offl.l § 5a, jfr § 13 nr 2					2
+Offl.l § 6 nr 1								1
+Offl.l § 6 nr 2a							2
+Offl.l § 6 nr 4								1
+Offl.l § 6									4
+Ofl. § 5a, fvl. § 13 1. ledd				6
+off.l. § 13 1. ledd, jf. fvl § 13 nr 1		2
+off.l. § 13 1. ledd, jf. fvl § 13 nr 2		18
+
+-----
+for $v in distinct-values(//registrering/skjerming/skjermingshjemmel)
+return
+(concat($v,": ", count(index-of(//registrering/skjerming/skjermingshjemmel, $v))))
+
+Resultat:
+Sum hele:	26
+	
+Offl.l § 4									1
+Offl.l § 5.2 ledd b							1
+Offl.l § 5									14
+Offl.l § 5a, jfr § 13 nr 2					2
+Offl.l § 6 nr 1								1
+Offl.l § 6 nr 2a							2
+Offl.l § 6 nr 4								1
+Offl.l § 6									4
+Ofl. § 5a, fvl. § 13 1. ledd				6
+off.l. § 13 1. ledd, jf. fvl § 13 nr 1		2
+off.l. § 13 1. ledd, jf. fvl § 13 nr 2		18
+
+-----
+for $v in distinct-values(//registrering/skjerming/skjermingMetadata)
+return
+(concat($v,": ", count(index-of(//registrering/skjerming/skjermingMetadata, $v))))
+
+tittel beskrivelse forfatter	52
+
+-----
+for $v in distinct-values(//registrering/skjerming/skjermingDokument)
+return
+(concat($v,": ", count(index-of(//registrering/skjerming/skjermingDokument, $v))))
+
+Resultat: 
+Resultat: Intet treff
+
+-----
+for $v in distinct-values(//registrering/skjerming/skjermingsvarighet)
+return
+(concat($v,": ", count(index-of(//registrering/skjerming/skjermingsvarighet, $v))))
+
+Resultat: Intet treff
+
+-----
+Dokumentbeskrivelse
+
+# Dokumentbeskrivelse tellere
+count(//dokumentbeskrivelse)	Resultat: 838
+count(/arkiv/arkivdel/klassifikasjonssystem/klasse/klasse/klasse/mappe/registrering/dokumentbeskrivelse)	Resultat: 833
+count(/arkiv/arkivdel/klassifikasjonssystem/klasse/klasse/klasse/mappe/registrering/dokumentbeskrivelse/dokumenttype)	Resultat: 833
+count(/arkiv/arkivdel/klassifikasjonssystem/klasse/klasse/klasse/mappe/registrering/dokumentbeskrivelse/dokumentstatus)	Resultat: 833
+count(/arkiv/arkivdel/klassifikasjonssystem/klasse/klasse/klasse/mappe/registrering/dokumentbeskrivelse/forfatter)	Resultat: 0
+
+# dokumenttype
+for $v in distinct-values(//dokumentbeskrivelse/dokumenttype)
+return
+(concat($v,": ", count(index-of(//dokumentbeskrivelse/dokumenttype, $v))))
+
+Resultat:
+Sum hele:	838
+	
+Brev	17
+Elektronisk post	1
+Melding	3
+Noarkdokument	814
+Notat	3
+
+# dokumentstatus
+for $v in distinct-values(//dokumentbeskrivelse/dokumentstatus)
+return
+(concat($v,": ", count(index-of(//dokumentbeskrivelse/dokumentstatus, $v))))
+
+Resultat: 
+Dokumentet er ferdigstilt	838
+
+# forfatter
+for $v in distinct-values(//dokumentbeskrivelse/forfatter)
+return
+(concat($v,": ", count(index-of(//dokumentbeskrivelse/forfatter, $v))))
+
+Resultat:
+Resultat: Intet treff
+
+# opprettetDato
+for $v in distinct-values(//dokumentbeskrivelse/opprettetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//dokumentbeskrivelse/opprettetDato/substring-before(., "-"), $v))))
+
+Resultat:
+Sum hele:	838
+Snitt hele:	70
+	
+2008	57
+2009	167
+2010	104
+2011	64
+2012	71
+2013	53
+2014	65
+2015	54
+2016	91
+2017	54
+2018	48
+2019	10
+
+# opprettetAv
+for $v in distinct-values(//dokumentbeskrivelse/opprettetAv)
+return
+(concat($v,": ", count(index-of(//dokumentbeskrivelse/opprettetAv, $v))))
+
+Resultat:
+Systemansvarlig		838
+
+# dokumentmedium
+for $v in distinct-values(//dokumentbeskrivelse/dokumentmedium)
+return
+(concat($v,": ", count(index-of(//dokumentbeskrivelse/dokumentmedium, $v))))
+
+Resultat:
+Elektronisk arkiv		838
+
+# tilknyttetDato
+for $v in distinct-values(//dokumentbeskrivelse/tilknyttetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//dokumentbeskrivelse/tilknyttetDato/substring-before(., "-"), $v))))
+
+Resultat:
+Sum hele:	838
+Snitt hele:	70
+	
+2008	57
+2009	167
+2010	104
+2011	64
+2012	71
+2013	53
+2014	65
+2015	54
+2016	91
+2017	54
+2018	48
+2019	10
+
+# tilknyttetAv
+for $v in distinct-values(//dokumentbeskrivelse/tilknyttetAv)
+return
+(concat($v,": ", count(index-of(//dokumentbeskrivelse/tilknyttetAv, $v))))
+
+Resultat:
+Systemansvarlig		838
+
+# dokumentbeskrivelse skjerming
+
+count(//dokumentbeskrivelse/skjerming)		Resultat: 57
+count(//dokumentbeskrivelse/skjerming/tilgangsrestriksjon)	Resultat: 57
+count(//dokumentbeskrivelse/skjerming/skjermingshjemmel)	Resultat: 57
+count(//dokumentbeskrivelse/skjerming/skjermingMetadata)	Resultat: 57
+count(//dokumentbeskrivelse/skjerming/skjermingDokument)	Resultat: 57
+count(//dokumentbeskrivelse/skjerming/skjermingsvarighet)	Resultat: 0
+
+-----
+for $v in distinct-values(//dokumentbeskrivelse/skjerming/tilgangsrestriksjon)
+return
+(concat($v,": ", count(index-of(//dokumentbeskrivelse/skjerming/tilgangsrestriksjon, $v))))
+
+Resultat:
+Sum hele:	30
+	
+Offl.l § 4	1
+Offl.l § 5.2 ledd b	1
+Offl.l § 5	16
+Offl.l § 5a, jfr § 13 nr 2	4
+Offl.l § 6 nr 1	1
+Offl.l § 6 nr 2a	2
+Offl.l § 6 nr 4	1
+Offl.l § 6	4
+Ofl. § 5a, fvl. § 13 1. ledd	7
+off.l. § 13 1. ledd, jf. fvl § 13 nr 1	2
+off.l. § 13 1. ledd, jf. fvl § 13 nr 2	18
+
+-----
+for $v in distinct-values(//dokumentbeskrivelse/skjerming/skjermingshjemmel)
+return
+(concat($v,": ", count(index-of(//dokumentbeskrivelse/skjerming/skjermingshjemmel, $v))))
+
+Resultat:
+Sum hele:	30
+	
+Offl.l § 4	1
+Offl.l § 5.2 ledd b	1
+Offl.l § 5	16
+Offl.l § 5a, jfr § 13 nr 2	4
+Offl.l § 6 nr 1	1
+Offl.l § 6 nr 2a	2
+Offl.l § 6 nr 4	1
+Offl.l § 6	4
+Ofl. § 5a, fvl. § 13 1. ledd	7
+off.l. § 13 1. ledd, jf. fvl § 13 nr 1	2
+off.l. § 13 1. ledd, jf. fvl § 13 nr 2	18
+
+-----
+for $v in distinct-values(//dokumentbeskrivelse/skjerming/skjermingMetadata)
+return
+(concat($v,": ", count(index-of(//dokumentbeskrivelse/skjerming/skjermingMetadata, $v))))
+
+Resultat:
+tittel beskrivelse		57
+
+-----
+for $v in distinct-values(//dokumentbeskrivelse/skjerming/skjermingDokument)
+return
+(concat($v,": ", count(index-of(//dokumentbeskrivelse/skjerming/skjermingDokument, $v))))
+
+Resultat:
+Skjerming av hele dokumentet		57
+
+-----
+for $v in distinct-values(//dokumentbeskrivelse/skjerming/skjermingsvarighet)
+return
+(concat($v,": ", count(index-of(//dokumentbeskrivelse/skjerming/skjermingsvarighet, $v))))
+
+Resultat: Intet treff
+
+-----
+Dokumentobjekt
+
+# Dokumentobjekt tellere
+count(//dokumentobjekt)		Resultat: 1842
+count(/arkiv/arkivdel/klassifikasjonssystem/klasse/klasse/klasse/mappe/registrering/dokumentbeskrivelse/dokumentobjekt)		Resultat: 1833
+count(/arkiv/arkivdel/klassifikasjonssystem/klasse/klasse/klasse/mappe/registrering/dokumentbeskrivelse/dokumentobjekt/referanseDokumentfil)		Resultat: 1833
+count(/arkiv/arkivdel/klassifikasjonssystem/klasse/klasse/klasse/mappe/registrering/dokumentbeskrivelse/dokumentobjekt/sjekksum)		Resultat: 1833
+count(/arkiv/arkivdel/klassifikasjonssystem/klasse/klasse/klasse/mappe/registrering/dokumentbeskrivelse/dokumentobjekt/filstoerrelse)		Resultat: 1833
+count(/arkiv/arkivdel/klassifikasjonssystem/klasse/klasse/klasse/mappe/registrering/dokumentbeskrivelse/dokumentobjekt/konvertering)	Resultat: 0
+
+# versjonsnummer
+for $v in distinct-values(//dokumentobjekt/versjonsnummer)
+return
+(concat($v,": ", count(index-of(//dokumentobjekt/versjonsnummer, $v))))
+
+Resultat:
+Sum hele:	1842
+	
+1	838
+2	654
+3	263
+4	87
+
+# variantformat
+for $v in distinct-values(//dokumentobjekt/variantformat)
+return
+(concat($v,": ", count(index-of(//dokumentobjekt/variantformat, $v))))
+
+Resultat:
+Sum hele:	1842
+	
+Produksjonsformat	1027
+Arkivformat	815
+
+# format
+for $v in distinct-values(//dokumentobjekt/format)
+return
+(concat($v,": ", count(index-of(//dokumentobjekt/format, $v))))
+
+Resultat:
+doc: 172
+docx: 38
+htm: 20
+html: 13
+msg: 2
+pdf: 1561
+pptx: 3
+rtf: 1
+tif: 2
+txt: 26
+xls: 2
+xlsx: 2
+
+# formatDetaljer
+for $v in distinct-values(//dokumentobjekt/formatDetaljer)
+return
+(concat($v,": ", count(index-of(//dokumentobjekt/formatDetaljer, $v))))
+
+Resultat: Intet treff
+
+# opprettetDato
+for $v in distinct-values(//dokumentobjekt/opprettetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//dokumentobjekt/opprettetDato/substring-before(., "-"), $v))))
+
+Resultat:
+Sum hele:	1842
+Snitt hele:	154
+	
+2008	114
+2009	278
+2010	147
+2011	135
+2012	97
+2013	224
+2014	139
+2015	124
+2016	196
+2017	195
+2018	173
+2019	20
+
+# opprettetAv
+for $v in distinct-values(//dokumentobjekt/opprettetAv)
+return
+(concat($v,": ", count(index-of(//dokumentobjekt/opprettetAv, $v))))
+
+Resultat:
+Sum hele:	1842
+	
+Eli Karin Hagset	636
+Hilmar Windstad	15
+Magne Orten	576
+Martha Beinset	34
+Ruth Nanna Kvernmo Obaidli	4
+Systemansvarlig	577
+
+# sjekksumAlgoritme
+for $v in distinct-values(//dokumentobjekt/sjekksumAlgoritme)
+return
+(concat($v,": ", count(index-of(//dokumentobjekt/sjekksumAlgoritme, $v))))
+
+Resultat:
+SHA-256		1842
+
+# konvertertDato
+for $v in distinct-values(//dokumentobjekt/konvertering/konvertertDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//dokumentobjekt/konvertering/konvertertDato/substring-before(., "-"), $v))))
+
+Resultat: Intet treff
+
+# konvertertAv
+for $v in distinct-values(//dokumentobjekt/konvertering/konvertertAv)
+return
+(concat($v,": ", count(index-of(//dokumentobjekt/konvertering/konvertertAv, $v))))
+
+Resultat: Intet treff
+
+# konvertertFraFormat
+for $v in distinct-values(//dokumentobjekt/konvertering/konvertertFraFormat)
+return
+(concat($v,": ", count(index-of(//dokumentobjekt/konvertering/konvertertFraFormat, $v))))
+
+Resultat: Intet treff
+
+# konvertertTilFormat
+for $v in distinct-values(//dokumentobjekt/konvertering/konvertertTilFormat)
+return
+(concat($v,": ", count(index-of(//dokumentobjekt/konvertering/konvertertTilFormat, $v))))
+
+Resultat: Intet treff
+
+
+
+------------------------------------------------------------
+5.a.2: arkivstruktur.xml avskrivninger
+
+------------------------------------------------------------
+5.a.2-1: Antall avskrivninger | Xpath 2.0 {med i KDRS Query}:
+
+count(//avskrivning)
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.a.2-2: Antall avskrivninger pr. år | Xpath 2.0 {med i KDRS Query}:
+
+for $v in distinct-values(//registrering/opprettetDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//registrering/opprettetDato/substring-before(., "-"), $v))))
+
+Resultat:
+<liste med antall sortert stigende pr. år, med sum alle og snitt periode
+ (snitt periode er enten uttrekkes fra-til år og/eller årene med et minimum av poster)>
+
+------------------------------------------------------------
+5.a.2-3: Antall avskrevetAv pr. kategori | Xpath 2.0:
+
+for $v in distinct-values(//avskrevetAv)
+return
+(concat($v,": ", count(index-of(//avskrevetAv, $v))))
+
+Resultat:
+<liste med antall kategorisert på type>
+
+------------------------------------------------------------
+5.a.2-4: Antall avskrivninger pr. avskrivningsmaate | Xpath 2.0:
+
+for $v in distinct-values(//avskrivningsmaate)
+return
+(concat($v,": ", count(index-of(//avskrivningsmaate, $v))))
+
+Resultat: <! slett alt som ikke benyttes under på dette punktet
+                               Bruk Excel regneark kladdfane for avskrivningsmaate med egendefinert sortering  !>
+
+Gyldige verdier:        n
+Besvart med brev        n
+Besvart med e-post      n
+Besvart på telefon      n
+Tatt til etterretning   n
+Tatt til orientering    n
+Besvart med notat       n
+Saken ble avsluttet     n
+
+Ugyldige verdier:       n
+NULL                    n
+Abcdefghijklmnopqrst    n
+
+------------------------------------------------------------
+Notat godkjenning 5.a.2-1 til 2-4: GODKJENT | GODKJENT MED MERKNAD | AVVIST
+       n ugyldige verdier med totalt m oppføringer kontrolleres med CUSTOM metadatakatalog.xsd
+       Validering mot custom skjema: Retter | Retter ikke avvik over i avskrivningsmaate | Ikke behov for custom skjema pga. intet avvik
+       (Documaster Noark Extractor Validator)
+
+------------------------------------------------------------
+
+Arkivverket Noark 5 v3.1 metadatakatalog.xsd <<< Krav: 5 faste verdier godtas
+  <xs:simpleType name="avskrivningsmaate">
+    <xs:annotation>
+      <xs:documentation>M619</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Besvart med brev"/>
+      <xs:enumeration value="Besvart med e-post"/>
+      <xs:enumeration value="Besvart på telefon"/>
+      <xs:enumeration value="Tatt til etterretning"/>
+      <xs:enumeration value="Tatt til orientering"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+Schema Mod-1 Noark 5 v3.1 metadatakatalog.xsd <<< Eksempel der 2 verdier fra arkivstruktur.xml må legges til
+  <xs:simpleType name="avskrivningsmaate">
+    <xs:annotation>
+      <xs:documentation>M619</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Besvart med brev"/>
+      <xs:enumeration value="Besvart med e-post"/>
+      <xs:enumeration value="Besvart på telefon"/>
+      <xs:enumeration value="Tatt til etterretning"/>
+      <xs:enumeration value="Tatt til orientering"/>
+	  <!-- IKAMR depot: mod 1 -->
+      <xs:enumeration value="NULL"/>
+      <xs:enumeration value="Midlertidig svar sendt"/>
+      <xs:enumeration value="Saken er avsluttet"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+Arkivverket Noark 5 v4.0 metadatakatalog.xsd <<< Krav: 7 faste verdier godtas
+  <xs:simpleType name="avskrivningsmaate">
+    <xs:annotation>
+      <xs:documentation>M619</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Besvart med brev"/>
+      <xs:enumeration value="Besvart med e-post"/>
+      <xs:enumeration value="Besvart på telefon"/>
+      <xs:enumeration value="Tatt til etterretning"/>
+      <xs:enumeration value="Tatt til orientering"/>
+      <xs:enumeration value="Besvart med notat"/>
+      <xs:enumeration value="Saken ble avsluttet"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+Schema Mod-1 Noark 5 v4.0 metadatakatalog.xsd <<< Eksempel der 2 verdier fra arkivstruktur.xml må legges til
+  <xs:simpleType name="avskrivningsmaate">
+    <xs:annotation>
+      <xs:documentation>M619</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Besvart med brev"/>
+      <xs:enumeration value="Besvart med e-post"/>
+      <xs:enumeration value="Besvart på telefon"/>
+      <xs:enumeration value="Tatt til etterretning"/>
+      <xs:enumeration value="Tatt til orientering"/>
+      <xs:enumeration value="Besvart med notat"/>
+      <xs:enumeration value="Saken ble avsluttet"/>
+      <!-- IKAMR depot: mod 1 -->
+      <xs:enumeration value="NULL"/>
+      <xs:enumeration value="Midlertidig svar sendt"/>
+      <xs:enumeration value="Saken er avsluttet"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+Arkivverket Noark 5 v5.0 metadatakatalog.xsd	<<< Krav: Tekststreng med lengde >= 1, dvs. ikke behov for CUSTOM skjema
+  <xs:simpleType name="avskrivningsmaate">
+    <xs:annotation>
+      <xs:documentation>M619</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+------------------------------------------------------------
+Notat godkjenning 5.a.2-1 til 2-4: GODKJENT | GODKJENT MED MERKNAD | AVVIST
+       Validering mot custom skjema: Retter | Retter ikke avvik over i avskrivningsmaate
+       (Documaster Noark Extractor Validator)
+
+------------------------------------------------------------
+Eksempel fra arkivstruktur.xml
+
+### START EKSEMPEL ###
+<?xml version="1.0" encoding="utf-8"?>
+<arkiv xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.arkivverket.no/standarder/noark5/arkivstruktur">
+  <systemID>arkiv:KRIARK</systemID>
+  <tittel>Arkiv for Kristiansund kommune</tittel>
+  <opprettetDato>0001-01-01T00:00:00</opprettetDato>
+  <opprettetAv>NULL</opprettetAv>
+  <avsluttetDato>0001-01-01T00:00:00</avsluttetDato>
+  <avsluttetAv>NULL</avsluttetAv>
+  <arkivskaper>
+    <arkivskaperID>1</arkivskaperID>
+    <arkivskaperNavn>Kristiansund kommune</arkivskaperNavn>
+    <beskrivelse>Avlevering for ephorte5</beskrivelse>
+  </arkivskaper>
+  <arkivdel>
+    <systemID>arkivdel:SAK1</systemID>
+    <tittel>Saksarkiv</tittel>
+    <arkivdelstatus>Avsluttet periode</arkivdelstatus>
+    <dokumentmedium>Elektronisk arkiv</dokumentmedium>
+    <opprettetDato>0001-01-01T00:00:00</opprettetDato>
+    <opprettetAv>NULL</opprettetAv>
+    <avsluttetDato>2016-02-22T08:51:01.03</avsluttetDato>
+    <avsluttetAv>Per Person</avsluttetAv>
+    <arkivperiodeStartDato>2008-01-01</arkivperiodeStartDato>
+    <arkivperiodeSluttDato>2012-01-02</arkivperiodeSluttDato>
+    <referanseArvtaker>arkivdel:SAK2</referanseArvtaker>
+    <klassifikasjonssystem>
+      <systemID>arkivdel:SAK1:klassifikasjonssystem:EMNE</systemID>
+      <klassifikasjonstype>EH</klassifikasjonstype>
+      <tittel>K-Kode (emne)</tittel>
+      <opprettetDato>0001-01-01T00:00:00</opprettetDato>
+      <opprettetAv>NULL</opprettetAv>
+      <klasse>
+        <systemID>arkivdel:SAK1:klassifikasjonssystem:EMNE:klasse:0</systemID>
+        <klasseID>0</klasseID>
+        <tittel>Organisasjon og administrasjon</tittel>
+        <opprettetDato>0001-01-01T00:00:00</opprettetDato>
+        <opprettetAv>NULL</opprettetAv>
+        <klasse>
+          <systemID>arkivdel:SAK1:klassifikasjonssystem:EMNE:klasse:00</systemID>
+          <klasseID>00</klasseID>
+          <tittel>Organisasjon og administrasjon - Felles</tittel>
+          <opprettetDato>2003-01-11T00:00:00</opprettetDato>
+          <opprettetAv>NULL</opprettetAv>
+          <klasse>
+            <systemID>arkivdel:SAK1:klassifikasjonssystem:EMNE:klasse:000</systemID>
+            <klasseID>000</klasseID>
+            <tittel>Organisasjon og administrasjon - Felles - Felles</tittel>
+            <opprettetDato>2003-01-11T00:00:00</opprettetDato>
+            <opprettetAv>NULL</opprettetAv>
+            …
+          <klasse>
+            <systemID>arkivdel:SAK1:klassifikasjonssystem:EMNE:klasse:233</systemID>
+            <klasseID>233</klasseID>
+            <tittel>Refusjon, tilskudd - &lt;i&gt;inn&lt;/i&gt;</tittel>
+            <opprettetDato>2003-01-11T00:00:00</opprettetDato>
+            <opprettetAv>NULL</opprettetAv>
+            <mappe xsi:type="saksmappe">
+              <systemID>mappe:2620</systemID>
+              <mappeID>2008/144</mappeID>
+              <tittel>Kulturskolen: Gaver og tilskudd</tittel>
+              <offentligTittel>Kulturskolen: Gaver og tilskudd</offentligTittel>
+              <dokumentmedium>Elektronisk arkiv</dokumentmedium>
+              <opprettetDato>2008-01-07T00:00:00</opprettetDato>
+              <opprettetAv>NULL</opprettetAv>
+              <avsluttetDato>2013-07-04T15:26:15</avsluttetDato>
+              <avsluttetAv>Gro Anita Holberg</avsluttetAv>
+              <referanseArkivdel>arkivdel:SAK1</referanseArkivdel>
+
+
+
+              <registrering xsi:type="journalpost">
+                <systemID>registrering:26706</systemID>
+                <opprettetDato>2008-12-01T00:00:00</opprettetDato>
+                <opprettetAv>NULL</opprettetAv>
+                <arkivertDato>0001-01-01T00:00:00</arkivertDato>
+                <arkivertAv>NULL</arkivertAv>
+                <dokumentbeskrivelse>
+                  <systemID>dokumentbeskrivelse:34957:doklink:26706:rnr:1</systemID>
+                  <dokumenttype>Noarkdokument</dokumenttype>
+                  <dokumentstatus>Dokumentet er ferdigstilt</dokumentstatus>
+                  <tittel>NO-11-53-2007-R5 - Sluttrapport</tittel>
+                  <forfatter>Karin L. Torske</forfatter>
+                  <opprettetDato>2008-12-01T00:00:00</opprettetDato>
+                  <opprettetAv>NULL</opprettetAv>
+                  <dokumentmedium>Elektronisk arkiv</dokumentmedium>
+                  <tilknyttetRegistreringSom>Hoveddokument</tilknyttetRegistreringSom>
+                  <dokumentnummer>1</dokumentnummer>
+                  <tilknyttetDato>2008-12-01T12:36:00</tilknyttetDato>
+                  <tilknyttetAv>Karin L. Torske</tilknyttetAv>
+                  <dokumentobjekt>
+                    <versjonsnummer>1</versjonsnummer>
+                    <variantformat>Produksjonsformat</variantformat>
+                    <format>PDF</format>
+                    <formatDetaljer>Portable document format</formatDetaljer>
+                    <opprettetDato>2008-12-01T00:00:00</opprettetDato>
+                    <opprettetAv>273</opprettetAv>
+                    <referanseDokumentfil>dokumenter\2008\12\01\26928.PDF</referanseDokumentfil>
+                    <sjekksum>A47D9AFC6DC32ACCBA4F7BF246EAE5528CF99102CDDF1A596A3C544267371449</sjekksum>
+                    <sjekksumAlgoritme>SHA-256</sjekksumAlgoritme>
+                    <filstoerrelse>36904</filstoerrelse>
+                  </dokumentobjekt>
+                </dokumentbeskrivelse>
+                <registreringsID>2008/18844-4</registreringsID>
+                <tittel>NO-11-53-2007-R5 - Sluttrapport</tittel>
+                <offentligTittel>NO-11-53-2007-R5 - Sluttrapport</offentligTittel>
+                <forfatter>Karin L. Torske</forfatter>
+                <dokumentmedium>Elektronisk arkiv</dokumentmedium>
+                <journalpostnummer>4</journalpostnummer>
+                <journalposttype>Inngående dokument</journalposttype>
+                <journalstatus>Journalført</journalstatus>
+                <journaldato>2008-12-01</journaldato>
+                <dokumentetsDato>2008-11-18</dokumentetsDato>
+                <korrespondansepart>
+                  <korrespondanseparttype>Mottaker</korrespondanseparttype>
+                  <korrespondansepartNavn>Kristiansund kommune</korrespondansepartNavn>
+                  <epostadresse>karin.torske@kristiansund.kommune.no</epostadresse>
+                </korrespondansepart>
+                <korrespondansepart>
+                  <korrespondanseparttype>Avsender</korrespondanseparttype>
+                  <korrespondansepartNavn>Barne-, ungdoms- og familiedirektoratet</korrespondansepartNavn>
+                  <postadresse>Postboks 8113 Dep</postadresse>
+                  <postnummer>0032</postnummer>
+                  <poststed>OSLO</poststed>
+                </korrespondansepart>
+                <avskrivning>
+                  <avskrivningsdato>2008-12-15</avskrivningsdato>
+                  <avskrevetAv>Per Person</avskrevetAv>
+                  <avskrivningsmaate>Tatt til etterretning</avskrivningsmaate>
+                </avskrivning>
+              </registrering>
+
+              <registrering xsi:type="journalpost">
+                <systemID>registrering:45395</systemID>
+                <opprettetDato>2009-10-21T00:00:00</opprettetDato>
+                <opprettetAv>NULL</opprettetAv>
+                <arkivertDato>0001-01-01T00:00:00</arkivertDato>
+                <arkivertAv>NULL</arkivertAv>
+                <dokumentbeskrivelse>
+                  <systemID>dokumentbeskrivelse:60650:doklink:45395:rnr:1</systemID>
+                  <dokumenttype>Noarkdokument</dokumenttype>
+                  <dokumentstatus>Dokumentet er ferdigstilt</dokumentstatus>
+                  <tittel>Søknad om legatmidler - Storlegat 1.</tittel>
+                  <forfatter>Karin L. Torske</forfatter>
+                  <opprettetDato>2009-10-21T00:00:00</opprettetDato>
+                  <opprettetAv>NULL</opprettetAv>
+                  <dokumentmedium>Elektronisk arkiv</dokumentmedium>
+                  <tilknyttetRegistreringSom>Hoveddokument</tilknyttetRegistreringSom>
+                  <dokumentnummer>1</dokumentnummer>
+                  <tilknyttetDato>2009-10-21T09:40:00</tilknyttetDato>
+                  <tilknyttetAv>Karin L. Torske</tilknyttetAv>
+                  <dokumentobjekt>
+                    <versjonsnummer>1</versjonsnummer>
+                    <variantformat>Arkivformat</variantformat>
+                    <format>pdf</format>
+                    <formatDetaljer>Portable document format</formatDetaljer>
+                    <opprettetDato>2009-10-21T00:00:00</opprettetDato>
+                    <opprettetAv>-99998</opprettetAv>
+                    <referanseDokumentfil>dokumenter\2009\10\21\52781.pdf</referanseDokumentfil>
+                    <sjekksum>73A854E389102F2E03396E06198DD154BAD29DF60F29723EC93846D9FE62268E</sjekksum>
+                    <sjekksumAlgoritme>SHA-256</sjekksumAlgoritme>
+                    <filstoerrelse>96993</filstoerrelse>
+                  </dokumentobjekt>
+                </dokumentbeskrivelse>
+                <registreringsID>2009/17292-5</registreringsID>
+                <tittel>Søknad om legatmidler - Storlegat 1.</tittel>
+                <offentligTittel>Søknad om legatmidler - Storlegat 1.</offentligTittel>
+                <forfatter>Karin L. Torske</forfatter>
+                <dokumentmedium>Elektronisk arkiv</dokumentmedium>
+                <merknad>
+                  <merknadstekst>Behandles i styremøte i Storlegat I - svar sendes via egne vedtak til søker.</merknadstekst>
+                  <merknadstype>Saksbehandlingsmerknad</merknadstype>
+                  <merknadsdato>2010-05-03T00:00:00</merknadsdato>
+                  <merknadRegistrertAv>Claus F. Morch</merknadRegistrertAv>
+                </merknad>
+                <journalpostnummer>5</journalpostnummer>
+                <journalposttype>Organinternt dokument for oppfølging</journalposttype>
+                <journalstatus>Journalført</journalstatus>
+                <journaldato>2009-10-21</journaldato>
+                <dokumentetsDato>2009-10-21</dokumentetsDato>
+                <korrespondansepart>
+                  <korrespondanseparttype>Avsender</korrespondanseparttype>
+                  <korrespondansepartNavn>Karin L. Torske</korrespondansepartNavn>
+                  <epostadresse>karin.torske@kristiansund.kommune.no</epostadresse>
+                </korrespondansepart>
+                <korrespondansepart>
+                  <korrespondanseparttype>Mottaker</korrespondanseparttype>
+                  <korrespondansepartNavn>Arve Moen</korrespondansepartNavn>
+                </korrespondansepart>
+              </registrering>
+              <saksdato>2008-01-07</saksdato>
+              <administrativEnhet>Kulturskolen</administrativEnhet>
+              <saksansvarlig>Karin L. Torske</saksansvarlig>
+              <journalenhet>Journal Kristiansund kommune</journalenhet>
+              <saksstatus>Avsluttet</saksstatus>
+            </mappe>
+            …
+          </klasse>
+          …
+    </klassifikasjonssystem>
+  </arkivdel>
+</arkiv>
+### SLUTT EKSEMPEL ###
+
+
+============================================================
+5.b: endringslogg.xml
+
+------------------------------------------------------------
+5.b.1 endringslogg.xml endringer
+
+------------------------------------------------------------
+5.b.1-1: Antall endringer | Xpath 2.0 {med i KDRS Query}:
+
+count(//endring)
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.b.1-2: Antall referanseMetadata pr. kategori | Xpath 2.0:
+
+for $v in distinct-values(//referanseMetadata)
+return
+(concat($v,": ", count(index-of(//referanseMetadata, $v))))
+
+Resultat:
+<liste med antall kategorisert på type>
+
+------------------------------------------------------------
+5.b.1-3: Antall endretAv pr. kategori | Xpath 2.0:
+
+for $v in distinct-values(//endretAv)
+return
+(concat($v,": ", count(index-of(//endretAv, $v))))
+
+Resultat:
+<liste med antall kategorisert på type>
+
+------------------------------------------------------------
+5.b.1-4: Antall endringer pr. år | Xpath 2.0:
+
+for $v in distinct-values(//endring/endretDato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//endring/endretDato/substring-before(., "-"), $v))))
+
+Resultat:
+<liste med antall sortert stigende pr. år, med sum alle og snitt periode
+ (snitt periode er enten uttrekkes fra-til år og/eller årene med et minimum av poster)
+
+------------------------------------------------------------
+Notat godkjenning 5.b.1-1 til 1-4: GODKJENT | GODKJENT MED MERKNAD | AVVIST
+       Snitt og antall endringer i perioden yyyy-yyyy ser fornuftig ut | har store mangler | mangler helt
+
+------------------------------------------------------------
+Eksempel fra endringslogg.xml
+
+### START EKSEMPEL ###
+<?xml version="1.0" encoding="utf-8"?>
+<endringslogg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.arkivverket.no/standarder/noark5/endringslogg">
+  <endring>
+    <referanseArkivenhet>mappe:10043</referanseArkivenhet>
+    <referanseMetadata>SA_STATUS_SS</referanseMetadata>
+    <endretDato>2014-07-11T10:32:16.16</endretDato>
+    <endretAv>Per Person</endretAv>
+    <tidligereVerdi>F</tidligereVerdi>
+    <nyVerdi>A</nyVerdi>
+  </endring>
+…
+</endringslogg>
+### SLUTT EKSEMPEL ###
+
+============================================================
+5.c: loependeJournal.xml
+
+------------------------------------------------------------
+5.c.1 loependeJournal.xml journalregistreringer
+
+------------------------------------------------------------
+5.c.1-1: Antall journalregistreringer | Xpath 2.0 {med i KDRS Query}:
+
+count(//journalregistrering)
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.c.1-2: Antall journalposter | Xpath 2.0 {med i KDRS Query}:
+
+count(//journalpost)
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.c.1-3: Antall korrespondanseparttype pr. kategori | Xpath 2.0:
+
+for $v in distinct-values(//korrespondanseparttype)
+return
+(concat($v,": ", count(index-of(//korrespondanseparttype, $v))))
+
+Resultat:
+<liste med antall kategorisert på type>
+
+------------------------------------------------------------
+5.c.1-4: Antall journalregistreringer journaldato pr. år | Xpath 2.0:
+
+for $v in distinct-values(//journalregistrering/journalpost/journaldato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//journalregistrering/journalpost/journaldato/substring-before(., "-"), $v))))
+
+Resultat:
+<liste med antall sortert stigende pr. år, med sum alle og snitt periode
+ (snitt periode er enten uttrekkes fra-til år og/eller årene med et minimum av poster)
+
+Sum alle:	nnnnn,     Sum yyyy-yyyy:     nnnn
+Snitt alle:	nnnn,	     Snitt yyyy-yyyy:   nnnn
+
+yyyy	n
+yyyy	n>
+
+------------------------------------------------------------
+Notat godkjenning 5.c.1-1 til 1-4: GODKJENT | GODKJENT MED MERKNAD | AVVIST
+       Snitt og antall registreringer i perioden yyyy-yyyy ser fornuftig ut | har store mangler | mangler helt
+
+------------------------------------------------------------
+Eksempel fra loependeJournal.xml
+
+### START EKSEMPEL ###
+<?xml version="1.0" encoding="utf-8"?>
+<loependeJournal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.arkivverket.no/standarder/noark5/loependeJournal">
+  <journalhode>
+    <journalStartDato>2008-01-02</journalStartDato>
+    <journalSluttDato>2012-01-02</journalSluttDato>
+    <antallJournalposter>90424</antallJournalposter>
+    <arkivskaper>
+      <arkivskaperID>1</arkivskaperID>
+      <arkivskaperNavn>Kristiansund kommune</arkivskaperNavn>
+      <beskrivelse>Avlevering for ephorte5</beskrivelse>
+    </arkivskaper>
+  </journalhode>
+  <journalregistrering>
+    <klasse>
+      <klasseID>233</klasseID>
+      <tittel>EMNE:233</tittel>
+    </klasse>
+    <saksmappe>
+      <saksaar>2008</saksaar>
+      <sakssekvensnummer>144</sakssekvensnummer>
+      <tittel>Kulturskolen: Gaver og tilskudd</tittel>
+      <offentligTittel>Kulturskolen: Gaver og tilskudd</offentligTittel>
+    </saksmappe>
+    <journalpost>
+      <systemID>registrering:7729</systemID>
+      <journalaar>2008</journalaar>
+      <journalsekvensnummer>127</journalsekvensnummer>
+      <journalpostnummer>1</journalpostnummer>
+      <tittel>Svar på søknad om gavemidler fra Sparebanken Møre</tittel>
+      <offentligTittel>Svar på søknad om gavemidler fra Sparebanken Møre</offentligTittel>
+      <journaldato>2008-01-07</journaldato>
+      <dokumentetsDato>2007-12-31</dokumentetsDato>
+      <korrespondansepart>
+        <korrespondanseparttype>Mottaker</korrespondanseparttype>
+        <korrespondansepartNavn>Kristiansund kommune</korrespondansepartNavn>
+      </korrespondansepart>
+      <korrespondansepart>
+        <korrespondanseparttype>Avsender</korrespondanseparttype>
+        <korrespondansepartNavn>Sparebanken Møre v/ Per Person</korrespondansepartNavn>
+      </korrespondansepart>
+    </journalpost>
+  </journalregistrering>
+…
+</loependeJournal>
+### SLUTT EKSEMPEL ###
+
+============================================================
+5.d: offentligJournal.xml
+
+------------------------------------------------------------
+5.d.1 offentligJournal.xml journalregistreringer
+
+------------------------------------------------------------
+5.d.1-1: Antall journalregistreringer | Xpath 2.0 {med i KDRS Query}:
+
+count(//journalregistrering)
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.d.1-2: Antall journalposter | Xpath 2.0 {med i KDRS Query}:
+
+count(//journalpost)
+
+Resultat: <antall>
+
+------------------------------------------------------------
+5.d.1-3: Antall korrespondanseparttype pr. kategori | Xpath 2.0:
+
+for $v in distinct-values(//korrespondanseparttype)
+return
+(concat($v,": ", count(index-of(//korrespondanseparttype, $v))))
+
+Resultat:
+<liste med antall kategorisert på type>
+
+------------------------------------------------------------
+5.d.1-4: Antall journalregistreringer journaldato pr. år | Xpath 2.0:
+
+for $v in distinct-values(//journalregistrering/journalpost/journaldato/substring-before(., "-"))
+return
+(concat($v,": ", count(index-of(//journalregistrering/journalpost/journaldato/substring-before(., "-"), $v))))
+
+Resultat:
+<liste med antall sortert stigende pr. år, med sum alle og snitt periode
+ (snitt periode er enten uttrekkes fra-til år og/eller årene med et minimum av poster)
+
+Sum alle:	nnnnn,     Sum yyyy-yyyy:     nnnn
+Snitt alle:	nnnn,	     Snitt yyyy-yyyy:   nnnn
+
+yyyy	n
+yyyy	n>
+
+------------------------------------------------------------
+Notat godkjenning 5.d.1-1 til 1-4: GODKJENT | GODKJENT MED MERKNAD | AVVIST
+       Snitt og antall registreringer i perioden yyyy-yyyy ser fornuftig ut | har store mangler | mangler helt
+
+------------------------------------------------------------
+Eksempel fra offentligJournal.xml
+
+### START EKSEMPEL ###
+<?xml version="1.0" encoding="utf-8"?>
+<offentligJournal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.arkivverket.no/standarder/noark5/offentligJournal">
+  <journalhode>
+    <journalStartDato>2008-01-02</journalStartDato>
+    <journalSluttDato>2012-01-02</journalSluttDato>
+    <antallJournalposter>90424</antallJournalposter>
+    <arkivskaper>
+      <arkivskaperID>1</arkivskaperID>
+      <arkivskaperNavn>Kristiansund kommune</arkivskaperNavn>
+      <beskrivelse>Avlevering for ephorte5</beskrivelse>
+    </arkivskaper>
+  </journalhode>
+  <journalregistrering>
+    <klasse>
+      <klasseID>233</klasseID>
+      <tittel>EMNE:233</tittel>
+    </klasse>
+    <saksmappe>
+      <saksaar>2008</saksaar>
+      <sakssekvensnummer>144</sakssekvensnummer>
+      <offentligTittel>Kulturskolen: Gaver og tilskudd</offentligTittel>
+    </saksmappe>
+    <journalpost>
+      <systemID>registrering:7729</systemID>
+      <journalaar>2008</journalaar>
+      <journalsekvensnummer>127</journalsekvensnummer>
+      <journalpostnummer>1</journalpostnummer>
+      <offentligTittel>Svar på søknad om gavemidler fra Sparebanken Møre</offentligTittel>
+      <journaldato>2008-01-07</journaldato>
+      <dokumentetsDato>2007-12-31</dokumentetsDato>
+      <korrespondansepart>
+        <korrespondanseparttype>Mottaker</korrespondanseparttype>
+        <korrespondansepartNavn>Kristiansund kommune</korrespondansepartNavn>
+      </korrespondansepart>
+      <korrespondansepart>
+        <korrespondanseparttype>Avsender</korrespondanseparttype>
+        <korrespondansepartNavn>Sparebanken Møre v/ Per Person</korrespondansepartNavn>
+      </korrespondansepart>
+    </journalpost>
+  </journalregistrering>
+…
+</offentligJournal>
+### SLUTT EKSEMPEL ###
+
+============================================================
+[ # Del 6: Documaster Noark Extractor Validator ]
+
+============================================================
+[ # Del 7: Filanalyse (Droid, Siegfried eller annet verktøy) ]
+
+============================================================
+[ # Del 8: Filvalidator 1 PDF/A (veraPDF) ]
+
+============================================================
+[ # Del 9: Filvalidator 2 PDF/A, TIFF, JPEG med flere (KOST-Val) ]
