@@ -1,7 +1,13 @@
-SHA256 hash of <uuid>.tar:
-<uuid>
-CertUtil: -hashfile command completed successfully.
+SHA256 hash of <uuid>.tar
+<hash>
+CertUtil:  -hashfile command completed successfully
 
-Kontroll: Godkjent IKAMR-Knn YYYY-MM-DD hh:nn TAA
+A3-2   Integritetssikring
+Godkjent Arbeidsområde YYYY-MM-DD hh:nn TAA
+<hash>	Fra CertUtil .bat fil
+<hash>	Fra info.xml
+
+A2-8   Integritetssikring
+Godkjent IKAMR-Knn YYYY-MM-DD hh:nn TAA
 <hash>	Fra CertUtil .bat fil
 <hash>	Fra info.xml
