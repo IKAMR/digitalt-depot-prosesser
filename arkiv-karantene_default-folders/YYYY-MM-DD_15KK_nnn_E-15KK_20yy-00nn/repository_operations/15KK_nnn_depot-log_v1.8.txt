@@ -3,8 +3,8 @@
 # Innhold: Logg av IKAMR depotoperasjoner med KDRS og IKAMR prosesser og rutiner
 Navn; depot-log
 Depot: IKAMR
-Versjon; 1.8_utkast
-Dato; 2020-06-18
+Versjon; 1.8
+Dato; 2020-06-19
 
 # Header
 Arkivbeskrivelse; 15KK_nnn <system> (yyyy-yyyy)
