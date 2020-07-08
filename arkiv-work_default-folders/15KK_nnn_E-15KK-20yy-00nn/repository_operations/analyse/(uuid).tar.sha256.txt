@@ -1,0 +1,18 @@
+SHA256 hash of 64e70a48-b6e1-4591-9a30-04fc67384dd5.tar:
+241f4e4873c92466f26f85dcd61969d7d5a4e4107cb058075f15e7608a2578d8
+CertUtil: -hashfile command completed successfully.
+
+A3-2   Integritetssikring
+Godkjent IKAMR-G01 2020-07-02 08:21 TAA
+241f4e4873c92466f26f85dcd61969d7d5a4e4107cb058075f15e7608a2578d8	Fra CertUtil .bat fil
+241f4e4873c92466f26f85dcd61969d7d5a4e4107cb058075f15e7608a2578d8	Fra info.xml
+
+A3-2   Integritetssikring
+Godkjent Arbeidsområde 2020-06-11 13:52 TFA
+241f4e4873c92466f26f85dcd61969d7d5a4e4107cb058075f15e7608a2578d8	Fra CertUtil .bat fil
+241f4e4873c92466f26f85dcd61969d7d5a4e4107cb058075f15e7608a2578d8	Fra info.xml
+
+A2-8   Integritetssikring
+Godkjent IKAMR-K01 YYYY-MM-DD hh:nn TAA
+241f4e4873c92466f26f85dcd61969d7d5a4e4107cb058075f15e7608a2578d8	Fra CertUtil .bat fil
+241f4e4873c92466f26f85dcd61969d7d5a4e4107cb058075f15e7608a2578d8	Fra info.xml

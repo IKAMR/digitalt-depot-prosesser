@@ -1,0 +1,13 @@
+15KK_nnn_sysdoc-log.txt
+
+# Arkivskaper/Produsent YYYY-MM-DD #
+<system>_Brukermanual.docx
+<system>_Brukermanual.pdf     taa; Depot lagret som PDF/A
+
+# Depot YYYY-MM-DD tfa #
+<system>_Teknisk-manual.docx
+<system>_Teknisk-manual.pdf     tfa; Depot lagret som PDF/A
+
+# Depot YYYY-MM-DD taa rev-1 #
+<system>_Teknisk-manual.docx
+<system>_Teknisk-manual.pdf     tfa; Depot lagret som PDF/A

@@ -1,0 +1,16 @@
+15KK_nnn_repot-log.txt
+
+# Arkade 5 v1.6.1.0 - Produsent YYYY-MM-DD #
+15KK_nnn_arkade5_v1.6.1.0_rapport.html
+15KK_nnn_arkade5_v1.6.1.0_rapport.xml
+15KK_nnn_arkade5_v1.6.1.0_rapport.pdf     taa; Depot lagret som PDF/A
+
+# Arkade 5 v1.6.1.0 - Depot YYYY-MM-DD tfa #
+15KK_nnn_arkade5_v1.6.1.0_rapport.html
+15KK_nnn_arkade5_v1.6.1.0_rapport.xml
+15KK_nnn_arkade5_v1.6.1.0_rapport.pdf
+
+# Arkade 5 v1.6.1.0 - Depot YYYY-MM-DD taa rev-1 #
+15KK_nnn_arkade5_v1.6.1.0_rapport.html
+15KK_nnn_arkade5_v1.6.1.0_rapport.xml
+15KK_nnn_arkade5_v1.6.1.0_rapport.pdf
