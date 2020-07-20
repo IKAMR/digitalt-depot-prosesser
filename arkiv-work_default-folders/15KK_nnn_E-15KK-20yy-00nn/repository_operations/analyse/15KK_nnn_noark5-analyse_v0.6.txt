@@ -24,10 +24,11 @@ Arkivar 2 kortnavn; tfa
 Innholdsfortegnelse
 Deler i []-klammer er ikke dokumentert i dette dokumentet pr. dato)
 
-[ Del 1: Innledende kopiering oppsett ]
-[ Del 2: Arkade 5 test ]
-[ Del 3: KDRS Query (inkl. sjekksum kontroll arkivuttrekk.xml) ]
-[ Del 4: XML Diff Directories (oXygen XML Editor eller annet verktøy) ]
+Del 0: Notater med resultatet og avvik
+Del 1: Innledende kopiering oppsett
+Del 2: Arkade 5 test
+Del 3: KDRS Query (inkl. sjekksum kontroll arkivuttrekk.xml)
+Del 4: XML Diff Directories (oXygen XML Editor eller annet verktøy)
 Del 5: XQuery/XPath (oXgen XML Editor, BaseX eller annet verktøy)
 [ Del 6: Documaster Noark Extractor Validator ]
 [ Del 7: Filanalyse (Droid, Siegfried eller annet verktøy) ]
@@ -50,6 +51,17 @@ arkivstruktur.xml
 
 ------------------------------------------------------------
 Notat:
+
+------------------------------------------------------------
+Velformet xml og xsd filer
+\repository_operations\analyse\..
+    15KK_nnn_wellformed-control.txt
+
+Resultat:
+- Godkjent
+
+Ikke dokumentert:
+- Verktøy benyttet for å sjekke velformede xml og xsd filer
 
 
 ============================================================
@@ -106,7 +118,7 @@ Resultat:
 
 <slett det som ikke passer inkl. denne linjen merknad>
 
-sysdoc\
+sysdoc\     ikke tatt med
 15KK_nnn_sysdoc.docx
 15KK_nnn_sysdoc.pdf
 15KK_nnn_sysdoc-log.txt
@@ -121,7 +133,6 @@ Resultat:
 ------------------------------------------------------------
 1.d: Noark 5 skjema
 
-Resultat:
 <slett det som ikke passer inkl. denne linjen merknad>
 
 Katalog for Noark 5 v3.1: ..\content\schema\noark5_v3.1\..
@@ -132,12 +143,12 @@ Katalog for Noark 5 v3.1: ..\content\schema\noark5_v3.1\..
 Katalog for Noark 5 v4.0: ..\content\schema\noark5_v4.0\..
 \arkivverket\..
 \uttrekk_n5_v4.0\..
-\mod-1_ephorte\..
+\xsd-n5_v4.0_mod-1\..
 
 Katalog for Noark 5 v5.0: ..\content\schema\noark5_v5.0\..
 \arkivverket\..
 \uttrekk_n5_v5.0\..
-\mod-1_documaster\..
+\xsd-n5_v5.0_mod-1\..
 
 Resultat:
 <slett det som ikke passer inkl. denne linjen merknad>
@@ -151,16 +162,25 @@ Noark 5 v5.0
 ============================================================
 # Del 2: Arkade 5
 
-\repository_operation\..
-15KK_nnn_arkade5_vn.n.n.n_report.xml
-15KK_nnn_arkade5_vn.n.n.n_report.html
-15KK_nnn_arkade5_vn.n.n.n_report.pdf
+<slett det som ikke passer inkl. denne linjen merknad>
 
 \content\report\..
-15KK_nnn_arkade5_vn.n.n.n_report.xml
+15KK_nnn_arkade5_vn.n.n.n_report.xml    vn.n.n.n Levert av Produsent
 15KK_nnn_arkade5_vn.n.n.n_report.html
 15KK_nnn_arkade5_vn.n.n.n_report.pdf
 15KK_nnn_report-log.txt
+
+\repository_operation\..
+\arkade5_vn.n.n.n
+15KK_nnn_arkade5_vn.n.n.n_report.xml    vn.n.n. Depot validering
+15KK_nnn_arkade5_vn.n.n.n_report.html
+15KK_nnn_arkade5_vn.n.n.n_report.pdf
+
+\repository_operation\..
+\arkade5_vn.n.n.n
+15KK_nnn_arkade5_vn.n.n.n_report.xml    vn.n.n. Depot validering rev-1
+15KK_nnn_arkade5_vn.n.n.n_report.html
+15KK_nnn_arkade5_vn.n.n.n_report.pdf
 
 Resultat:
 <slett det som ikke passer inkl. denne linjen merknad>
@@ -182,19 +202,22 @@ Resultat:
 
 KDRS Query mal: 
 ..\repository_operations\queries\noark5\..
-     xml-queries_noark5_2020-01-23.xml
+    xml-queries_noark5_2020-01-23.txt
 
 KDRS Query resultat: 
 ..\repository_operations\analyse\..
-     15KK_nnn_xquery-results.txt
+    15KK_nnn_xquery-results.txt
 
 Mal for Noark 5-rapport
 ..\repository_operations\templates\..
-     15KK_nnn_C_noark5-validering_mal_v1.2.1_IKAMR_2020-07-06.docx
+    15KK_nnn_C_noark5-validering_mal_v1.2.1_IKAMR_2020-07-06.docx
 
 Generer valideringsrapport med data fra KDRS XQuery klar for videre redigering
 ..\repository_operations\..
-     15KK_nnn_C_noark5-validering.docx
+    15KK_nnn_C_noark5-validering.docx
+	15KK_nnn_C_noark5-validering.pdf
+	15KK_nnn_C_noark5-validering_rev-1.docx
+	15KK_nnn_C_noark5-validering_rev-1.pdf
 
 Rapport filnavn settes til:
 ..\repository_operations\15KK_nnn_C_noark5-validering.docx
@@ -206,7 +229,6 @@ men skal flyttes ut til
 ..\repository_operations\..
 
 {Filnavn over må kvalitetsikres i tilfelle hardkoding i KDRS Query eller annet.}
-
 
 Resultat:
 <slett det som ikke passer inkl. denne linjen merknad>
@@ -220,11 +242,11 @@ Resultat:
 
 <slett det som ikke passer inkl. denne linjen merknad>
 
-- Dra og slipp arkivuttrekk.xml inn i applikasjonen, f. eks. fra plassering:
-..\arkiv-work\15KK\15KK_nnn_E-15KK_YYYY_nnnn\content\sip\content\arkivuttrekk.xml
+- Dra og slipp arkivuttrekk.xml inn i applikasjonen fra plassering:
+..\arkiv-work\15KK\15KK_nnn_E-15KK-YYYY-nnnn\content\sip\content\arkivuttrekk.xml
 
 - Målmappe beregnes, f. eks. til plassering:
-..\arkiv-work\15KK\15KK_nnn_E-15KK_YYYY_nnnn\repository_operations\content\
+..\arkiv-work\15KK\15KK_nnn_E-15KK-YYYY-nnnn\repository_operations\analyse\
 
 - Klikk knapp "Run check sum control"
 
@@ -236,7 +258,7 @@ Writing to file \repository_operations\analyse\sjekksum_kontroll.txt
 
 - CheckSumControl målmappe og fil: 
 ..\repository_operations\analyse\..
-     15KK_nnn_checksum-control.txt
+    15KK_nnn_checksum-control.txt
 
 - Kontroller alle sjekksummer er identiske (arkivuttrekk.xml og app beregnede verdier)
 Fri gjenbruk, klipp og lim av listen med sjekksummer i fila
@@ -268,9 +290,9 @@ b. Kjør Diff Directories mot (avhengig av Noark 5 versjon og leverandør/uttrek
 c. Dokumenter avvik i analyse arbeidsdokument 
    iht. maltekster der for xsd skjema Diff Directories
 
-d. Vurdere å ta skjermdump av viktige avvik (vurderes mot teksten i analyse tekstfila)
+- Ingen avvik | Skjermdump av viktige avvik (vurderes mot avvik tekst over)
 
-e. Bilde av resultat:
+d. Bilde av resultat:
 ..\repository_operations\analyse\..
      15KK_nnn_noark5-schema-diff.png
 
@@ -280,6 +302,9 @@ Resultat:
 - Godkjent
 - Godkjent med avvik
 - <skrive noe om innhold>
+- Alle xsd skjema er identiske som publisert av Arkivverket
+- ....xsd har ..... avvik ...
+- Uttrekk har i tilleggg business-specific.xsd, men den er ikke i bruk i uttrekket
 
 
 ============================================================
