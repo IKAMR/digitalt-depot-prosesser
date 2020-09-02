@@ -261,7 +261,7 @@ Writing to file \repository_operations\analyse\sjekksum_kontroll.txt
     15KK_nnn_checksum-control.txt
 
 - Kontroller alle sjekksummer er identiske (arkivuttrekk.xml og app beregnede verdier)
-Fri gjenbruk, klipp og lim av listen med sjekksummer i fila
+  Fri gjenbruk, klipp og lim av listen med sjekksummer i fila
 
 Resultat:
 <slett det som ikke passer inkl. denne linjen merknad>
