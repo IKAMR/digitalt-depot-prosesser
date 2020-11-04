@@ -1,8 +1,15 @@
-tool=XML Queries
-version=0.4
+[PARAMETERS]
+query_name=Noark 5 Standard alene
+query_date=2020-11-03
+query_description=Kjører manuelt aktiverte job_enabled <> 0 Noark 5-queries [QA må gjøres mot xsd skjemaer Noark 5 v3.1, 4.0 & 5.0]
+
 query_type=Noark5
-query_name=Default
-query_date=2020-10-19
+query_subtype=3.1_4.0_5.0
+query_version=0.2
+
+tool_name=XML Queries
+tool_version=0.6
+tool_info=[Standard rapportnavn resultat: "kdrs_query_results_uttrekk.txt". Seksjoner: XML_QUERY og SQL_QUERY. Parameter job_enabled = 0 Kjøres ikke, = 1 Inkluderes i rapport hvis feltet aktivert i rapport, =2 Ikke inkludert i rapport, =3 Inkludert i rapport, men lagret til egen fil (postfix filnavn job_id).]
 
 [XML_QUERY]
 
@@ -12,8 +19,8 @@ job_name=Antall arkiver i arkivstrukturen
 job_description=N5.04 Arkiv og Arkivskaper(e) info
 
 system=noark5 
-subsystem= 
-source= arkivstruktur.xml
+subsystem=
+source=arkivstruktur.xml
 target=noark5_analyse_{dt}.log
 
 #START#
@@ -35,7 +42,7 @@ job_name=Antall arkivdeler i arkivstrukturen
 job_description=N5.05/06 (C02/C04) Arkivdeler info 1
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -58,7 +65,7 @@ job_name=Arkivdelen(e)s status i arkivstrukturen
 job_description=Arkivuttrekk Inngående og Utgående skille
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivuttrekk.xml 
 target=noark5_analyse_{dt}.log
 
@@ -75,7 +82,7 @@ job_name=Antall klassifikasjonssystemer i arkivstrukturen
 job_description=N5.07 Klassifikasjonssystemer info
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -100,7 +107,7 @@ job_name=Antall klasser i arkivstrukturen
 job_description=N5.08 Antall klasser pr. arkivdel
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -119,7 +126,7 @@ job_name=Antall klasser uten underklasser, mapper eller registreringer i det pri
 job_description=N5.09 Antall klasser uten underelementer pr. arkivdel
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -131,13 +138,13 @@ concat("Arkivdel: ", $aid/tittel, ': ', count($aid/klassifikasjonssystem/klasse[
 
 [XML_QUERY]
 
-job_id=N5.C06.01
+job_id=C06.01
 job_enabled=0 
 job_name=Klasse opprettetDato pr. år
-job_description= 
+job_description=N5.08.01
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -150,13 +157,13 @@ return
 
 [XML_QUERY]
 
-job_id=N5.C06.02
+job_id=C06.02
 job_enabled=0 
 job_name=Klasse opprettetDato
-job_description= 
+job_description=N5.08.02 [3][kjøres separat pga. for lang og mulig personlister]
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -168,13 +175,13 @@ return
 
 [XML_QUERY]
 
-job_id=N5.C06.03
+job_id=C06.03
 job_enabled=0 
 job_name=Klasse opprettetAv
-job_description= 
+job_description=N5.08.03
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -187,13 +194,13 @@ return
 
 [XML_QUERY]
 
-job_id=N5.C06.04
+job_id=C06.04
 job_enabled=0 
 job_name=Klasse avsluttetDato pr. år
-job_description= 
+job_description=N5.08.04
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -206,13 +213,13 @@ return
 
 [XML_QUERY]
 
-job_id=N5.C06.05
+job_id=C06.05
 job_enabled=0 
 job_name=Klasse avsluttetDato
-job_description= 
+job_description=N5.08.05
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -225,13 +232,13 @@ return
 
 [XML_QUERY]
 
-job_id=N5.C06.06
+job_id=C06.06
 job_enabled=0 
 job_name=Klasse avsluttetAv
-job_description= 
+job_description=N5.08.06
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -244,13 +251,28 @@ return
 
 [XML_QUERY]
 
+job_id=C07
+job_enabled=0 
+job_name=Antall klasser uten underklasser, mapper eller registreringer
+job_description=N5.09 [DRAFT][Spørring må lages!] I det primære klassifikasjonssystemet
+
+system=noark5 
+subsystem=
+source=arkivstruktur.xml 
+target=noark5_analyse_{dt}.log
+
+#START# 
+#STOP#
+
+[XML_QUERY]
+
 job_id=C08
 job_enabled=0 
 job_name=Antall mapper i arkivstrukturen
 job_description=N5.10 Antall mapper pr. arkivdel og type
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -265,13 +287,13 @@ target=noark5_analyse_{dt}.log
 
 [XML_QUERY]
 
-job_id=N5.C08.01
+job_id=C08.01
 job_enabled=0 
 job_name=Antall mapper pr. mappenivå
-job_description= 
+job_description=N5.10.01
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -290,10 +312,10 @@ concat("Totalt: ", count(//arkivdel/descendant::mappe))
 job_id=C09
 job_enabled=0 
 job_name=Antall mapper per år i arkivstrukturen
-job_description=N5.11 [enabled = 2]
+job_description=N5.11 [2][Hoppes over av rapportgenerering]
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -313,7 +335,7 @@ job_name=Kontroll mappe kun til klasse uten underklasser
 job_description=N5.12 Avvik hvis > 0 (klasse med mappe skal ikke ha klasse under)
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -326,10 +348,10 @@ target=noark5_analyse_{dt}.log
 job_id=C11
 job_enabled=0 
 job_name=Antall mapper pr. klasse pr. arkivdel
-job_description=N5.13 [kjøres separat pga. for lang og mulig personlister]
+job_description=N5.13 [3][kjøres separat pga. for lang og mulig personlister]
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -344,13 +366,13 @@ count(mappe), ', Beskrivelse: ', beskrivelse) )
 
 [XML_QUERY]
 
-job_id=N5.C11.01
+job_id=C11.01
 job_enabled=0 
 job_name=Klasser uten innhold pr. arkivdel
-job_description=N5.C11.01 [kjøres separat pga. for lang]
+job_description=N5.13.01 [3][kjøres separat pga. for lang]
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -367,11 +389,11 @@ return
 
 job_id=C12
 job_enabled=0 
-job_name= Antall mapper uten undermapper eller registreringer
+job_name=Antall mapper uten undermapper eller registreringer
 job_description=N5.14 F. eks. mappe opprettet ved feil eller innhold flyttet til annen mappe
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -389,7 +411,7 @@ job_name=Antall mapper pr. status og totalt pr. arkivdel
 job_description=N5.15
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -414,7 +436,7 @@ job_name=Antall registreringer pr. type og totalt pr. arkivdel
 job_description=N5.16 
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -438,7 +460,7 @@ job_name=Antall journalposter pr. type og med/uten hoveddokument pr. arkivdel
 job_description=N5.17 [SAKSARKIV] Gjelder kun saksarkiv (som har registrering element "journalposttype"
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -460,11 +482,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=C16
 job_enabled=0 
-job_name= Antall registreringer for hvert år
-job_description= Journalposttyper og journalposttilknytning i arkivstrukturen (sakarkiver) [enabled = 2]
+job_name=Antall registreringer pr. år pr. arkivdel
+job_description=N5.18 [2][Hoppes over av rapportgenerering]
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -482,10 +504,10 @@ return
 job_id=C17
 job_enabled=0 
 job_name=Kontroll mappe kun til klasse uten underklasser
-job_description=N5.19 Avvik hvis > 0 [FAGSYSTEM] Gjelder kun fagsysem uten mapper, registrering rett under klasser
+job_description=N5.19 [FAGSYSTEM] Avvik hvis > 0. Gjelder kun fagsysem uten mapper, registrering rett under klasser
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -502,10 +524,10 @@ $a//klasse[klasse]/registrering/concat(../../klasseID, ", ", systemID))
 job_id=C18
 job_enabled=0 
 job_name=Antall registreringer pr. klasse pr. arkivdel
-job_description=N5.20 [FAGSYSTEM] Gjelder kun fagsysem uten mapper, registrering rett under klasser, [kjøres separat pga. for lang og mulig personlister]
+job_description=N5.20 [3][FAGSYSTEM] Gjelder kun fagsysem uten mapper, registrering rett under klasser, [kjøres separat pga. for lang og mulig personlister]
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -523,10 +545,10 @@ count(registrering), ', Beskrivelse: ', beskrivelse) )
 job_id=C18.01
 job_enabled=0 
 job_name=Klasser uten innhold pr. arkivdel
-job_description=N5.20.01 [FAGSYSTEM] Gjelder kun fagsysem uten mapper, registrering rett under klasser
+job_description=N5.20.01 [3][FAGSYSTEM] Gjelder kun fagsysem uten mapper, registrering rett under klasser [kjøres separat pga. for lang hvis innhold]
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -546,7 +568,7 @@ job_name=Antall registreringer uten dokumentbeskrivelse
 job_description=N5.21 
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -564,7 +586,7 @@ job_name=Antall journalposter kategerisert pr. status pr. arkivdel
 job_description=N5.22 [SAKSARKIV] Gjelder kun saksarkiv (som journalpost spesialisering av registrering)
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -583,12 +605,12 @@ target=noark5_analyse_{dt}.log
 [XML_QUERY]
 
 job_id=C20.01
-job_enabled=1 
+job_enabled=0 
 job_name=Antall journalposter kategorisert pr. status generisk
-job_description=N5.22.01 [SAKSARKIV] Gjelder kun saksarkiv (som journalpost spesialisering av registrering)
+job_description=N5.22.01 [NOT WORKING] [SAKSARKIV] Gjelder kun saksarkiv (som journalpost spesialisering av registrering)
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -601,17 +623,15 @@ return
 concat('Antall registreringer uten journalstatus: ', count( concat('Antall mapper uten spesialisering: ', count(descendant::mappe[count(@*)=0])), concat('Antall mapper uten spesialisering: ', count(descendant::mappe[count(@*)=0])),descendant::journalstatus[count(@*)=0])))
 #STOP#
 
-
-
 [XML_QUERY]
 
 job_id=C21
 job_enabled=0 
-job_name= Antall dokumentbeskrivelser
-job_description= 
+job_name=Antall dokumentbeskrivelser
+job_description=N5.23
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -624,11 +644,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=C22
 job_enabled=0 
-job_name= Antall dokumentbeskrivelser uten dokumentobjekt
-job_description= 
+job_name=Antall dokumentbeskrivelser uten dokumentobjekt
+job_description=N5.24
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -641,11 +661,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=C23
 job_enabled=0 
-job_name= Dokumentbeskrivelsens status
-job_description= 
+job_name=Dokumentbeskrivelsens status
+job_description=N5.25
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -660,11 +680,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=C24
 job_enabled=0 
-job_name= Antall forekomster av dokumentobjekt
-job_description= 
+job_name=Antall forekomster av dokumentobjekt
+job_description=N5.26
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -678,11 +698,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=F01
 job_enabled=0 
-job_name= Antall saksparter i arkivstrukturen
-job_description= 
+job_name=Antall saksparter i arkivstrukturen
+job_description=N5.35
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -695,11 +715,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=F02
 job_enabled=0 
-job_name= Antall merknader i arkivstrukturen
-job_description= 
+job_name=Antall merknader i arkivstrukturen
+job_description=N5.36
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -714,11 +734,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=F03
 job_enabled=0 
-job_name= Antall kryssreferanser i arkivstrukturen
-job_description= 
+job_name=Antall kryssreferanser i arkivstrukturen
+job_description=N5.37
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -733,11 +753,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=F04
 job_enabled=0 
-job_name= Antall presedenser i arkivstrukturen
-job_description= 
+job_name=Antall presedenser i arkivstrukturen
+job_description=N5.38
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -751,11 +771,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=F05
 job_enabled=0 
-job_name= Antall korrespondanseparter i arkivstrukturen
-job_description= 
+job_name=Antall korrespondanseparter i arkivstrukturen
+job_description=N5.3
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -769,11 +789,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=F06
 job_enabled=0 
-job_name= Antall avskrivninger i arkivstrukturen
-job_description= 
+job_name=Antall avskrivninger i arkivstrukturen
+job_description=N5.40
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -787,11 +807,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=F07
 job_enabled=0 
-job_name= Antall dokumentflyter i arkivstrukturen
-job_description= 
+job_name=Antall dokumentflyter i arkivstrukturen
+job_description=N5.41
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -805,11 +825,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=F08
 job_enabled=0 
-job_name= Antall skjerminger i arkivstrukturen
-job_description= 
+job_name=Antall skjerminger i arkivstrukturen
+job_description=N5.42
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -826,11 +846,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=F09
 job_enabled=0 
-job_name= Antall graderinger i arkivstrukturen
-job_description= 
+job_name=Antall graderinger i arkivstrukturen
+job_description=N5.43
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -847,11 +867,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=F10
 job_enabled=0 
-job_name= Antall kassasjonsvedtak i arkivstrukturen
-job_description= 
+job_name=Antall kassasjonsvedtak i arkivstrukturen
+job_description=N5.44
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -868,11 +888,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=F11
 job_enabled=0 
-job_name= Antall kassasjonsvedtak i arkivstrukturen
-job_description= 
+job_name=Antall kassasjonsvedtak i arkivstrukturen
+job_description=N5.45
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -885,11 +905,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=F12
 job_enabled=0 
-job_name= Antall kassasjonsvedtak i arkivstrukturen
-job_description= 
+job_name=Antall kassasjonsvedtak i arkivstrukturen
+job_description=N5.46
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -902,11 +922,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=F13
 job_enabled=0 
-job_name= Antall utførte slettinger utenom kassasjon i arkivstrukturen
-job_description= 
+job_name=Antall utførte slettinger utenom kassasjon i arkivstrukturen
+job_description=N5.47
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -919,11 +939,11 @@ target=noark5_analyse_{dt}.log
 
 job_id=H01
 job_enabled=0 
-job_name= Antall journalposter i løpende journal
-job_description= 
+job_name=Antall journalposter i løpende journal
+job_description=N5.52
 
 system=noark5 
-subsystem= 
+subsystem=
 source=loependeJournal.xml 
 target=noark5_analyse_{dt}.log
 
@@ -935,11 +955,11 @@ concat('Antall journalregistreringer i loependeJournal: ', count(//journalregist
 
 job_id=H02
 job_enabled=0 
-job_name= Antall journalposter per år i løpende journal
-job_description=[enabled = 2]
+job_name=Antall journalposter per år i løpende journal
+job_description=N5.53 [2][Hoppes over av rapportgenerering]
 
 system=noark5 
-subsystem= 
+subsystem=
 source=loependeJournal.xml 
 target=noark5_analyse_{dt}.log
 
@@ -951,13 +971,28 @@ return
 
 [XML_QUERY]
 
-job_id=H04
+job_id=H03
 job_enabled=0 
-job_name= Antall skjermede journalposter i løpende journal
-job_description= 
+job_name=Start- og sluttdato for journalpostene i løpende journal
+job_description=N5.54 [DRAFT] Spørring må lages! [SAKSARKIV] Gjelder kun saksarkiv (som har registrering element "journalposttype"
 
 system=noark5 
-subsystem= 
+subsystem=
+source=loependeJournal.xml 
+target=noark5_analyse_{dt}.log
+
+#START#
+#STOP#
+
+[XML_QUERY]
+
+job_id=H04
+job_enabled=0 
+job_name=Antall skjermede journalposter i løpende journal
+job_description=N5.55
+
+system=noark5 
+subsystem=
 source=loependeJournal.xml 
 target=noark5_analyse_{dt}.log
 
@@ -969,11 +1004,11 @@ concat('Antall skjermede journalposter i løpendeJournal: ', count(//journalregi
 
 job_id=H05
 job_enabled=0 
-job_name= Antall journalposter i offentlig journal
-job_description= 
+job_name=Antall journalposter i offentlig journal
+job_description=N5.56
 
 system=noark5 
-subsystem= 
+subsystem=
 source=offentligJournal.xml 
 target=noark5_analyse_{dt}.log
 
@@ -985,11 +1020,11 @@ concat('Antall journalregistreringer i offentligJournal: ', count(//journalregis
 
 job_id=H06
 job_enabled=0 
-job_name= Antall journalposter per år i offentlig journal
-job_description=[enabled = 2]
+job_name=Antall journalposter per år i offentlig journal
+job_description=N5.57 [2][Hoppes over av rapportgenerering]
 
 system=noark5 
-subsystem= 
+subsystem=
 source=offentligJournal.xml 
 target=noark5_analyse_{dt}.log
 
@@ -1001,13 +1036,28 @@ concat($v,": ", count(index-of(//journalregistrering/journalpost/journaldato/sub
 
 [XML_QUERY]
 
-job_id=I01
+job_id=H07
 job_enabled=0 
-job_name= Antall journalposter i arkivuttrekket
-job_description= 
+job_name=Start- og sluttdato for journalpostene i offentlig journal
+job_description=N5.58 [DRAFT] Spørring må lages! [SAKSARKIV] Gjelder kun saksarkiv (som har registrering element "journalposttype"
 
 system=noark5 
-subsystem= 
+subsystem=
+source=loependeJournal.xml 
+target=noark5_analyse_{dt}.log
+
+#START#
+#STOP#
+
+[XML_QUERY]
+
+job_id=I01
+job_enabled=1 
+job_name=Antall journalposter i arkivuttrekket
+job_description=N5.59
+
+system=noark5 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
@@ -1017,13 +1067,28 @@ concat('arkivstruktur.xml: ' , count(//registrering[type='journalpost']))
 
 [XML_QUERY]
 
-job_id=J01
+job_id=I02
 job_enabled=0 
-job_name= Antall endringer i endringslogg
-job_description= 
+job_name=Start- og sluttdato journalposter i arkivuttrekket versus løpende og offentlig journal
+job_description=N5.60 [DRAFT] Spørring må lages! [SAKSARKIV] Gjelder kun saksarkiv (som har registrering element "journalposttype"
 
 system=noark5 
-subsystem= 
+subsystem=
+source=loependeJournal.xml 
+target=noark5_analyse_{dt}.log
+
+#START#
+#STOP#
+
+[XML_QUERY]
+
+job_id=J01
+job_enabled=0 
+job_name=Antall endringer i endringslogg
+job_description=N5.61
+
+system=noark5 
+subsystem=
 source=endringslogg.xml 
 target=noark5_analyse_{dt}.log
 
@@ -1033,24 +1098,53 @@ concat('Første endring: ', min(//endring/endretDato/xs:dateTime(.))),
 concat('Siste endring: ', max(//endring/endretDato/xs:dateTime(.)))
 #STOP#
 
-
 [SQL_QUERY]
 
-job_id=ESA01 
+job_id=J02
 job_enabled=0 
-job_name=Antall saker per arkivdel 
-job_description=
+job_name=Kontroll referanser i endringslogg
+job_description=N5.62
 
 system=noark5 
-subsystem= 
+subsystem=
 source=arkivstruktur.xml 
 target=noark5_analyse_{dt}.log
 
 server=127.0.0.1 
-database=t01testdb04 
-user=t01testdb04u 
+database=t01noark5a1 
+user=t01noark5a1u 
 psw=test
 
 #START# 
 select count(*) from arkiv; 
+#STOP#
+
+[XML_QUERY]
+
+job_id=L01
+job_enabled=0 
+job_name=Skjema for virksomhetsspesifikke metadata iii arkivuttrekk.xmo
+job_description=N5.64 [DRAFT] Spørring må lages!
+
+system=noark5 
+subsystem=
+source=arkivuttrekk.xml 
+target=noark5_analyse_{dt}.log
+
+#START#
+#STOP#
+
+[XML_QUERY]
+
+job_id=L02
+job_enabled=0 
+job_name=Antall virksomhetsspesifikke mdatata pr. element pr. arkivdel
+job_description=N5.65 [DRAFT] Spørring må lages!
+
+system=noark5 
+subsystem=
+source=arkivstruktur.xml 
+target=noark5_analyse_{dt}.log
+
+#START#
 #STOP#
