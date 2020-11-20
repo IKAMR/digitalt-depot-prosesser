@@ -941,7 +941,7 @@ concat("Alle sakspart: ", count(//sakspart)),
 " ", 
 //arkivdel/(concat(
 'sakspark: ', count(descendant::sakspart), 
-'Arkivdel ' , tittel))
+',   Arkivdel ' , tittel))
 #STOP#
 
 [XML_QUERY]
@@ -1402,9 +1402,9 @@ target=noark5_analyse_{dt}.log
 
 #START#
 "N5.53 Antall journalposter per år i løpende journal: ", 
-for $v in distinct-values(//journalregistrering/journalpost/journaldato/substring-before(., "-"))
+sort(for $v in distinct-values(//journalregistrering/journalpost/journaldato/substring-before(., "-"))
 return
-(concat($v,": ", count(index-of(//journalregistrering/journalpost/journaldato/substring-before(., "-"), $v))))
+(concat($v,": ", count(index-of(//journalregistrering/journalpost/journaldato/substring-before(., "-"), $v)))))
 #STOP#
 
 [XML_QUERY]
@@ -1471,9 +1471,9 @@ target=noark5_analyse_{dt}.log
 
 #START#
 "N5.57 Antall journalposter per år i offentlig journal: ", " ", 
-for $v in distinct-values(//journalregistrering/journalpost/journaldato/substring-before(., "-"))
+sort(for $v in distinct-values(//journalregistrering/journalpost/journaldato/substring-before(., "-"))
 return
-concat($v,": ", count(index-of(//journalregistrering/journalpost/journaldato/substring-before(., "-"), $v)))
+concat($v,": ", count(index-of(//journalregistrering/journalpost/journaldato/substring-before(., "-"), $v))))
 #STOP#
 
 [XML_QUERY]
@@ -1507,7 +1507,7 @@ source=arkivstruktur.xml
 target=noark5_analyse_{dt}.log
 
 #START#
-concat('N5.59 Antall journalposter i arkivstruktur.xml: ' , count(//registrering[type='journalpost']))
+concat('N5.59 Antall journalposter i arkivstruktur.xml: ' , count(//registrering[@xsi:type='journalpost']))
 #STOP#
 
 [XML_QUERY]
