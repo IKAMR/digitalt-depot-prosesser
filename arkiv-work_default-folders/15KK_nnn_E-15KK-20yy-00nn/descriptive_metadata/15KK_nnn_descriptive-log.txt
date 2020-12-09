@@ -1,0 +1,15 @@
+15KK_nnn_descriptive-log.txt
+
+# info.xml - Produsent YYYY-MM-DD #
+15KK_nnn_<uuid>_info.xml     		Produsent fra Arkade 5 vn.n.n
+15KK_nnn_system_(yyyy-yyyy).txt		Depot for synlig LABEL
+
+# info.xml rev-1 - Depot YYYY-MM-DD tfa #
+15KK_nnn_<uuid>_info_rev-1.xml     	taa; Depot korrigert innhold info.xml
+- <beskriv endringer>
+
+1.Arkivbeskrivelse
+- Rettet til: LABEL="1502_005 ephorte Pensjonskasse (2008-2020)"
+- Feil verdi: LABEL="1502_005 ephorte Pensjonskasse (2008-2020) - IKAMR 20/84-1; 2020-03-05"
+
+2. osv
