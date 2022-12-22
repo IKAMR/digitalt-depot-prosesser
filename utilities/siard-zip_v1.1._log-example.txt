@@ -1,0 +1,111 @@
+
+D:\_demo-temp\005>REM siard-zip_v1.1.bat
+
+D:\_demo-temp\005>REM mask exit with REM when run ths .bat file
+
+D:\_demo-temp\005>REM set back exit when done to prevent undwanted unpacking
+
+D:\_demo-temp\005>REM exit
+
+D:\_demo-temp\005>REM NO folder nor filenames can contain space below
+
+D:\_demo-temp\005>REM Folder where the unzipped SIARD-structure is located
+
+D:\_demo-temp\005>REM set _unzipfolder="D:\_demo-temp\005\in"
+
+D:\_demo-temp\005>set _unzipfolder=D:\_demo-temp\005\in
+
+D:\_demo-temp\005>REM Folder where the SIARD-file is going to be saved into
+
+D:\_demo-temp\005>REM set _siardfolder="D:\_demo-temp\002\out\"
+
+D:\_demo-temp\005>set _siardfolder=D:\_demo-temp\005\out\
+
+D:\_demo-temp\005>REM Full path of SIARD-file to created from the input folder
+
+D:\_demo-temp\005>REM set _siardfile="sakila_mysql5.6.35_scfc20.03.1583_int_zip64.2.1.80.siard"
+
+D:\_demo-temp\005>set _siardfile=sakila_mysql5.6.35_scfc20.03.1583_int_zip64.2.1.80.siard
+
+D:\_demo-temp\005>REM To be updated as newer version of Zip64 is installed
+
+D:\_demo-temp\005>REM set _zip64root="C:\prog\siardsuite\zip64-2.1.82\"
+
+D:\_demo-temp\005>set _zip64root=C:\prog\siardsuite\zip64-2.1.82\
+
+D:\_demo-temp\005>REM Fixed parameter targeting the java executing file
+
+D:\_demo-temp\005>REM set _zip64path="zip64\lib\zip64.jar"
+
+D:\_demo-temp\005>set _zip64path=zip64\lib\zip64.jar
+
+D:\_demo-temp\005>java -jar C:\prog\siardsuite\zip64-2.1.82\zip64\lib\zip64.jar n -d=D:\_demo-temp\005\in D:\_demo-temp\005\out\sakila_mysql5.6.35_scfc20.03.1583_int_zip64.2.1.80.siard
+zip64 2.1 - handles ZIP64 archives
+Copyright (c) 2010, Hartwig Thomas, Enter AG, Zurich, Switzerland
+This program comes with ABSOLUTELY NO WARRANTY.
+This is open source software, and you are welcome to redistribute it.
+See https://opensource.org/licenses/CDDL-1.0 for details.
+
+Injecting into D:\_demo-temp\005\out\sakila_mysql5.6.35_scfc20.03.1583_int_zip64.2.1.80.siard ...
+inserting content/
+inserting content/schema0/
+inserting content/schema0/table0/
+inserting content/schema0/table0/table0.xml
+inserting content/schema0/table0/table0.xsd
+inserting content/schema0/table1/
+inserting content/schema0/table1/table1.xml
+inserting content/schema0/table1/table1.xsd
+inserting content/schema0/table10/
+inserting content/schema0/table10/lob5/
+inserting content/schema0/table10/lob5/seg0/
+inserting content/schema0/table10/lob5/seg0/rec1.bin
+inserting content/schema0/table10/table10.xml
+inserting content/schema0/table10/table10.xsd
+inserting content/schema0/table11/
+inserting content/schema0/table11/table11.xml
+inserting content/schema0/table11/table11.xsd
+inserting content/schema0/table12/
+inserting content/schema0/table12/table12.xml
+inserting content/schema0/table12/table12.xsd
+inserting content/schema0/table13/
+inserting content/schema0/table13/table13.xml
+inserting content/schema0/table13/table13.xsd
+inserting content/schema0/table14/
+inserting content/schema0/table14/table14.xml
+inserting content/schema0/table14/table14.xsd
+inserting content/schema0/table15/
+inserting content/schema0/table15/table15.xml
+inserting content/schema0/table15/table15.xsd
+inserting content/schema0/table2/
+inserting content/schema0/table2/table2.xml
+inserting content/schema0/table2/table2.xsd
+inserting content/schema0/table3/
+inserting content/schema0/table3/table3.xml
+inserting content/schema0/table3/table3.xsd
+inserting content/schema0/table4/
+inserting content/schema0/table4/table4.xml
+inserting content/schema0/table4/table4.xsd
+inserting content/schema0/table5/
+inserting content/schema0/table5/table5.xml
+inserting content/schema0/table5/table5.xsd
+inserting content/schema0/table6/
+inserting content/schema0/table6/table6.xml
+inserting content/schema0/table6/table6.xsd
+inserting content/schema0/table7/
+inserting content/schema0/table7/table7.xml
+inserting content/schema0/table7/table7.xsd
+inserting content/schema0/table8/
+inserting content/schema0/table8/table8.xml
+inserting content/schema0/table8/table8.xsd
+inserting content/schema0/table9/
+inserting content/schema0/table9/table9.xml
+inserting content/schema0/table9/table9.xsd
+inserting header/
+inserting header/metadata.xml
+inserting header/metadata.xsd
+inserting header/siardversion/
+inserting header/siardversion/2.1/
+58 matching file entries injected.
+
+D:\_demo-temp\005>pause
+Press any key to continue . . .

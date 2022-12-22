@@ -1,0 +1,286 @@
+1505_006_ephorte_sql_analyse.txt
+
+Arkivbeskrivelse; 1505_006 ephorte HIST (1991-2000)
+Arkivskaper; 1505 Kristiansund kommune
+Dato innlevering; 2008-02-18
+Typre uttrekk: Oracle 10.2 dump fil med eksterne dokumenter
+
+Depot navn; Interkommunalt Arkiv for Møre og Romsdal IKS
+Depot kortnavn; IKAMR
+
+Arkivar 1 navn; Tore Fadnes
+Arkivar 1 kortnavn; TFA
+
+Arkivar 2 navn; Torbjørn Aasen
+Arkivar 2 kortnavn; TAA
+
+# Oracle 10.2 # 
+
+# Dump fil transformert til MYSQL via OraDump2MySQL #
+
+==============================================================================================================================
+Uttrekk er et databasedump ehporte historisk base fra Kristiansund kommune. Uttrekket ble innlevert på dvd
+av Geir Harbak (HOSS NUF) i 2008.
+
+Uttrekket er så blitt konvertert til MySQL database med OraDump v7.5 og så videre til SIARD med SCFC v2.1.1624.
+
+================================================================================
+RESULTATER
+-------------------------------------------------------------------
+Antall arkivdeler:
+
+select AD_ARKDEL, AD_BETEGN from  arkivdel;
++-----------+---------------------------------------+
+| AD_ARKDEL | AD_BETEGN                             |
++-----------+---------------------------------------+
+| AVIK      | AVVIKLINGSINST.                       |
+| BIBL      | KRISTIANSUND FOLKEBIBLIOTEK           |
+| BRAN      | BRANNSJEFEN                           |
+| BYGG      | BYGGE- OG EIENDOMSSEKSJONEN           |
+| BYGN      | BYGNINGSSJEFEN                        |
+| BYIN      | BYINGENIØRENS KONTOR                  |
+| DADA      | DALE DAGSENTER OG INTERNATER          |
+| EDRU      | EDRUSKAP                              |
+| ELDR      | ELDRERÅDET                            |
+| FLYK      | FLYKTINGEKONTORET                     |
+| FORL      | FORLIKSRÅDET                          |
+| HAVN      | HAVNEFOGDEN                           |
+| HELS      | HELSESEKSJONEN                        |
+| HJHJ      | HJHJ                                  |
+| HSSJ      | HELSE- OG SOSIALSJEFEN                |
+| HVPU      | HVPU                                  |
+| IDRE      | IDRETTSAVDELINGEN                     |
+| INFO      | INFORMASJONSAVDELINGEN                |
+| IT        | IT-AVDELINGEN                         |
+| KULT      | KULTUR OG UTDANNINGSETATEN            |
+| KURS      | KURSAVDELINGEN                        |
+| LØNN      | PERSONAL- OG ADMINISTRASJONSSEKSJONEN |
+| MUSK      | MUSIKKSKOLEN                          |
+| NÆR       | NÆRINGSAVDELINGEN                     |
+| OMS       | OMSORGSTJENESTEN                      |
+| OMS1      | OMSORGTJENESTEN D.1                   |
+| OMS2      | OMSORGSTJENESTEN D.2                  |
+| OPPM      | OPPMÅLINGSVESENET                     |
+| ORD       | ORDFØREREN                            |
+| PAGR      | PAGR                                  |
+| PARK      | PARKSJEFEN                            |
+| PLAN      | PLANAVDELINGEN                        |
+| SENT      | SENTRALADMINISTRASJON                 |
+| SKAT      | SKATTEAVDELINGEN                      |
+| SKOL      | KULTUR- OG UTDANNINGSETATEN           |
+| SOS       | SOSIALKONTORET                        |
+| SYK       | SYKEHJEMMET                           |
+| TEKN      | TEKNISK SJEF                          |
+| ØKO       | ØKONOMISEKSJONEN                      |
++-----------+---------------------------------------+
+
+
+Antall saker per arkivdel:
+
+select SA_ARKDEL_AD, count(*)  from noarksak group by SA_ARKDEL_AD;
++--------------+----------+
+| SA_ARKDEL_AD | count(*) |
++--------------+----------+
+| AVIK         |        2 |
+| BIBL         |       25 |
+| BRAN         |      293 |
+| BYGG         |      434 |
+| BYGN         |     4888 |
+| BYIN         |      977 |
+| DADA         |        1 |
+| EDRU         |        3 |
+| ELDR         |       39 |
+| FLYK         |        6 |
+| FORL         |        3 |
+| HAVN         |        3 |
+| HELS         |      208 |
+| HJHJ         |        1 |
+| HSSJ         |       92 |
+| HVPU         |        3 |
+| IDRE         |        1 |
+| INFO         |        5 |
+| IT           |       42 |
+| KULT         |      274 |
+| KURS         |       37 |
+| LØNN         |      398 |
+| MUSK         |      155 |
+| NN           |       77 |
+| NÆR          |       41 |
+| OMS          |        2 |
+| OMS1         |        1 |
+| OMS2         |       23 |
+| OPPM         |      695 |
+| ORD          |      200 |
+| PAGR         |       58 |
+| PARK         |      191 |
+| PLAN         |      204 |
+| SENT         |     1582 |
+| SKAT         |       10 |
+| SKOL         |      710 |
+| SOS          |      322 |
+| SYK          |        1 |
+| TEKN         |      145 |
+| ØKO          |      151 |
++--------------+----------+
+
+Totalt: 12303
+-------------------------------------------------------------------
+Journalpost:
+---
+Totalt:
+
+select JP_ARKDEL, count(*) from journpost group by JP_ARKDEL;
++-----------+----------+
+| JP_ARKDEL | count(*) |
++-----------+----------+
+| NULL      |   192476 |
++-----------+----------+
+
+---
+Antall per år:
+
+select JP_JAAR, count(*) from journpost group by JP_JAAR;
++---------+----------+
+| JP_JAAR | count(*) |
++---------+----------+
+|    1991 |    22553 |
+|    1992 |    23439 |
+|    1993 |    20885 |
+|    1994 |    17291 |
+|    1995 |    17696 |
+|    1996 |    17388 |
+|    1997 |    17888 |
+|    1998 |    19015 |
+|    1999 |    18438 |
+|    2000 |    17882 |
+|    2001 |        1 |
++---------+----------+
+
+---
+Antall per arkivdel:
+
+select SA_ARKDEL_AD, count(*) from journpost join noarksak on JP_SAID=SA_ID group by SA_ARKDEL_AD;
++--------------+----------+
+| SA_ARKDEL_AD | count(*) |
++--------------+----------+
+| AVIK         |        4 |
+| BIBL         |       62 |
+| BRAN         |     7788 |
+| BYGG         |    19886 |
+| BYGN         |    26320 |
+| BYIN         |    28108 |
+| DADA         |        1 |
+| EDRU         |      174 |
+| ELDR         |      258 |
+| FLYK         |       68 |
+| FORL         |       11 |
+| HAVN         |        4 |
+| HELS         |     3925 |
+| HJHJ         |        6 |
+| HSSJ         |     1291 |
+| HVPU         |       10 |
+| IDRE         |        1 |
+| INFO         |       14 |
+| IT           |     1156 |
+| KULT         |     8934 |
+| KURS         |      314 |
+| LØNN         |    27238 |
+| MUSK         |     2144 |
+| NN           |      265 |
+| NÆR          |      387 |
+| OMS          |      205 |
+| OMS1         |        1 |
+| OMS2         |       63 |
+| OPPM         |     2652 |
+| ORD          |     1975 |
+| PAGR         |      120 |
+| PARK         |     1054 |
+| PLAN         |     3123 |
+| SENT         |    16463 |
+| SKAT         |       24 |
+| SKOL         |    27279 |
+| SOS          |     8781 |
+| SYK          |        2 |
+| TEKN         |      409 |
+| ØKO          |     1939 |
++--------------+----------+
+
+-------------------------------------------------------------------
+Sakstatus:
+
+select SA_STATUS_SS, count(*) from noarksak group by SA_STATUS_SS;
++--------------+----------+
+| SA_STATUS_SS | count(*) |
++--------------+----------+
+| A            |    12303 |
++--------------+----------+
+
+-------------------------------------------------------------------
+Journalpoststatus:
+
+select JP_STATUS_JS, count(*) from journpost group by JP_STATUS_JS;
++--------------+----------+
+| JP_STATUS_JS | count(*) |
++--------------+----------+
+| J            |   192476 |
++--------------+----------+
+
+-------------------------------------------------------------------
+Dokumentfilstatus: 
+
+select VE_VARIANT_VF, count(*) from dokversjon group by VE_VARIANT_VF;
++---------------+----------+
+| VE_VARIANT_VF | count(*) |
++---------------+----------+
+| P             |    37733 |
++---------------+----------+
+-------------------------------------------------------------------
+Avskrivningsmåter:
+
+Finnes via tabell avsmot (avsender/mottaker), hvor en jp er registrert bade hos mottaker og avsender. 
+Avskrivningsmåte er tilsynelatende kun registrert hos saksbehandler.
+
+select AM_AVSKM, count(*) from journpost join avsmot on JP_ID=AM_JPID where AM_BEHANSV!=0 group by AM_AVSKM;
+'Empty set'
+
+-------------------------------------------------------------------
+
+select VE_DOKFORMAT_LF, count(*) from dokversjon group by VE_DOKFORMAT_LF order by count(*) desc;
++-----------------+----------+
+| VE_DOKFORMAT_LF | count(*) |
++-----------------+----------+
+| WORD            |    37733 |
++-----------------+----------+
+
+================================================================
+## Spørringer som er utført ##
+
+Antall arkivdeler:
+select AD_ARKDEL, AD_BETEGN from  arkivdel;
+
+Antall saker per arkivdel:
+select SA_ARKDEL_AD, count(*)  from noarksak group by SA_ARKDEL_AD;
+
+Antall journalposter per år:
+select JP_JAAR, count(*) from journpost group by JP_JAAR;
+
+Antall journalposter per arkivdel i journalposttabell:
+select JP_ARKDEL, count(*) from journpost group by JP_ARKDEL;
+
+Antall journalposter per arkivdel i journalposttabell join sakstabell:
+select SA_ARKDEL_AD, count(*) from journpost join noarksak on JP_SAID=SA_ID group by SA_ARKDEL_AD;
+
+Antall forskjellig status per sak:
+select SA_STATUS_SS, count(*) from noarksak group by SA_STATUS_SS;
+
+Antall forskjellig status per jp:
+select JP_STATUS_JS, count(*) from journpost group by JP_STATUS_JS;
+
+Antall ulike variantformat:
+select VE_VARIANT_VF, count(*) from dokversjon group by VE_VARIANT_VF;
+
+Antall forskjellige avskrivningsmåter:
+select AM_AVSKM, count(*) from journpost join avsmot on JP_ID=AM_JPID where AM_BEHANSV!=0 group by AM_AVSKM;
+
+Antall dokumentformat sortert etter høyest antall:
+select VE_DOKFORMAT_LF, count(*) from dokversjon group by VE_DOKFORMAT_LF order by count(*) desc;

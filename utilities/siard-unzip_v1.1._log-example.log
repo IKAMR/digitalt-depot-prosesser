@@ -1,0 +1,43 @@
+zip64 2.1 - handles ZIP64 archives
+Copyright (c) 2010, Hartwig Thomas, Enter AG, Zurich, Switzerland
+This program comes with ABSOLUTELY NO WARRANTY.
+This is open source software, and you are welcome to redistribute it.
+See https://opensource.org/licenses/CDDL-1.0 for details.
+
+Extracting from D:\_demo-temp\006\sip\sakila_mysql5.6.35_scfc20.03.1583_int_zip64.2.1.80.siard ...
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table0\table0.xml from content/schema0/table0/table0.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table0\table0.xsd from content/schema0/table0/table0.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table1\table1.xml from content/schema0/table1/table1.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table1\table1.xsd from content/schema0/table1/table1.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table10\lob5\seg0\rec1.bin from content/schema0/table10/lob5/seg0/rec1.bin
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table10\table10.xml from content/schema0/table10/table10.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table10\table10.xsd from content/schema0/table10/table10.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table11\table11.xml from content/schema0/table11/table11.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table11\table11.xsd from content/schema0/table11/table11.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table12\table12.xml from content/schema0/table12/table12.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table12\table12.xsd from content/schema0/table12/table12.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table13\table13.xml from content/schema0/table13/table13.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table13\table13.xsd from content/schema0/table13/table13.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table14\table14.xml from content/schema0/table14/table14.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table14\table14.xsd from content/schema0/table14/table14.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table15\table15.xml from content/schema0/table15/table15.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table15\table15.xsd from content/schema0/table15/table15.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table2\table2.xml from content/schema0/table2/table2.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table2\table2.xsd from content/schema0/table2/table2.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table3\table3.xml from content/schema0/table3/table3.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table3\table3.xsd from content/schema0/table3/table3.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table4\table4.xml from content/schema0/table4/table4.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table4\table4.xsd from content/schema0/table4/table4.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table5\table5.xml from content/schema0/table5/table5.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table5\table5.xsd from content/schema0/table5/table5.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table6\table6.xml from content/schema0/table6/table6.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table6\table6.xsd from content/schema0/table6/table6.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table7\table7.xml from content/schema0/table7/table7.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table7\table7.xsd from content/schema0/table7/table7.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table8\table8.xml from content/schema0/table8/table8.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table8\table8.xsd from content/schema0/table8/table8.xsd
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table9\table9.xml from content/schema0/table9/table9.xml
+extracting D:\_demo-temp\006\sip_unzipped\content\schema0\table9\table9.xsd from content/schema0/table9/table9.xsd
+extracting D:\_demo-temp\006\sip_unzipped\header\metadata.xml from header/metadata.xml
+extracting D:\_demo-temp\006\sip_unzipped\header\metadata.xsd from header/metadata.xsd
+58 matching file entries extracted.

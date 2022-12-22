@@ -1,0 +1,38 @@
+_PARAMETERS_
+query_name=Noark 5 Additional queries - SSIKT ephorte arkivdel, rev1
+query_date=2022-09-18
+query_description=Kjører manuelt aktiverte job_enabled <> 0 Noark 5-queries [QA må gjøres mot xsd skjemaer Noark 5 v3.1, 4.0 & 5.0]
+
+query_type=Noark5
+query_subtype=3.1,4.0,5.0
+query_version=0.2
+
+tool_name=XML Queries
+tool_version=0.6
+tool_info=[Standard rapportnavn resultat: "kdrs_query_results_uttrekk.txt". Seksjoner: XML_QUERY og SQL_QUERY. Parameter job_enabled = 0 Kjøres ikke, = 1 Inkluderes i rapport hvis feltet aktivert i rapport, =2 Ikke inkludert i rapport, =3 Inkludert i rapport, men lagret til egen fil (postfix filnavn job_id).]
+
+[XML_QUERY]
+
+job_id=C02
+job_enabled=1 
+job_name=Arkivdeler i arkivstrukturen
+job_description=N5.05/06 (C02/C04) Arkivdeler info 1
+
+system=noark5 
+subsystem=
+source=arkivstruktur.xml 
+target=noark5_analyse_{dt}.log
+
+#START# 
+concat("N5.05/06 Arkivdeler: ", count(//arkivdel) ), " ", 
+//arkivdel/(concat(position(), ": " , tittel, 
+" [", substring(opprettetDato/text(), 0, 5), "-", substring(avsluttetDato/text(), 0, 5), 
+" ", substring(arkivdelstatus/text(), 1, 6), 
+"]; Mappe=", count(descendant::mappe), 
+", Reg=", count(descendant::registrering), 
+", Doc=", count(descendant::dokumentbeskrivelse), " (@@" ), 
+for $format in distinct-values(descendant::dokumentbeskrivelse/dokumentmedium)
+return
+concat(substring($format, 1, 6), ": ", count(descendant::dokumentbeskrivelse/dokumentmedium[text() = $format]), ", @@" ), 
+"@@ )" )
+#STOP#

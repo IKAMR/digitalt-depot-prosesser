@@ -1,0 +1,87 @@
+Siard Suite Zip64 tips & tricks
+
+How to use Zip64 to manual unzip and zip extractions
+https://github.com/sfa-siard/Zip64File
+ 
+ 
+Create a SIARD file (always creates Zip64-format)
+ 
+java -jar "C:\prog\siardsuite\zip64-2.1.80\zip64\lib\zip64.jar" n "-d=D:\_demo-temp\002\in" "D:\_demo-temp\002\out\sakila_mysql5.6.35_scfc20.03.1583_int_zip64.2.1.80.siard"
+ 
+Unpack a SIARD file (can upack both Zip32- and Zip64-format)
+ 
+java -jar "C:\prog\siardsuite\zip64-2.1.80\zip64\lib\zip64.jar" x "-d=D:\_demo-temp\001\out" "D:\_demo-temp\001\in\sakila_mysql5.6.35_scfc20.03.1583_int.siard"
+ 
+List content of a SIARD file (can list from both Zip32- and Zip64-format)
+•	Will not use the output-folder as the list of content will show in the console window
+•	So if called by a .bat file it is important to add "pause" at bottom of the .bat file to halt closing of console window
+
+java -jar "C:\prog\siardsuite\zip64-2.1.80\zip64\lib\zip64.jar" l "-d=D:\_demo-temp\003\out" "D:\_demo-temp\003\in\sakila_mysql5.6.35_scfc20.03.1583_int.siard"
+ 
+Preferably: Save console list into a text file (direct console output to file)
+ 
+java -jar "C:\prog\siardsuite\zip64-2.1.80\zip64\lib\zip64.jar" l "-d=D:\_demo-temp\004\out" "D:\_demo-temp\004\in\sakila_mysql5.6.35_scfc20.03.1583_int.siard" > "D:\_demo-temp\004\out\sakila_mysql5.6.35_scfc20.03.1583_int_list.txt"
+
+
+Zip64 v2.1.80
+ 
+Usage
+Zip64File implements a command-line zip64 as well as an API for programmers. The use of the API is documented in the developer's manual and in the javadoc documentation. Here we describe the use of the command-line zip64. 
+ 
+zip64 is started by running zip64.cmd (for Windows) or zip64.sh (for LINUX) or explicitly starting it using the appropriate JAVA executable.
+ 
+zip64.cmd <arguments>,
+zip64.sh <arguments>, or
+java -jar <zip64path>/lib/zip64.jar <arguments>
+ 
+where <zip64path> refers to the installation folder of Zip64File and <arguments> refers to the following arguments that can be specified on the command-line:
+ 
+<command> options <zipfile> files…
+ 
+Command
+The command defines the basic operation executed by zip64. It must be one of the following:
+n   for inject overwrites and existing archive or creates a new archive, adding the files,
+x   for extract extracts the files from the archive, or
+l   for list lists the files in the archive.
+
+If the first argument is not one of these commands, then l is assumed as a default.
+ 
+Options
+If zip64 is called with the special option -h a short explanation of the usage is displayed and all other arguments are ignored.
+ 
+Otherwise the following options can be used:
+option	cmd	meaning
+
+-d:<ziproot>	n, x	external directory relative to which the files will be injected or extracted
+                default: current folder
+				
+-c	n	        if present, content will be compressed
+                default: uncompressed storage (ZIP64 file is just used as a container)
+
+-r	n, x	if present, the target files will be replaced/overwritten without warning
+                default: processing skips existing file entries and lists them on stderr.
+
+-q	n, x	    quiet, do not display output on stdout
+                default: listing on stdout
+
+-z:<comment>	n	adds a comment to the ZIP file
+ 
+zipfile
+Archive file in ZIP format. On input this can be either in ZIP32 or in ZIP64 format. The zip64 utility will only write archives in the ZIP64 format, even if the content could be stored in ZIP32 format.
+ 
+files ...
+One or more names of files or @ followed by the name of a plain text file containing the names of files to be injected or extracted. (The text file will be read with the JAVA default character set which can be changed by specifying the JVM parameter file.encoding on the command line.)
+Each filename (on the command line or in the file list) can contain the wildcard characters ?, * or **. The ? indicates a single character at this position in the name. The * indicates any number of characters in a file or folder name. It occurs at most once in a file or folder name. ** indicates any number of characters including the folder separator. It occurs at most once in the full file name.
+If the file... argument is missing, ** is assumed as a default.
+N.B.: Unfortunately the command line is parsed in a half-hearted way by the shell or by JAVA. Therefore you cannot enter a file template starting with „**“. You have to avoid the situation by starting the file name template with another character or use the file name list.
+Also you need to be careful not to start a file name with „/“ on the Windows platform. On this platform „/“ is treated as a variant of „-“ and introduces command-line options.
+ 
+Examples
+java -jar "C:\Programme\Enter AG\zip64-1.0\lib\zip64.jar" n "-d=C:\Dokumente und Einstellungen\Hartwig\Eigene Dateien\SourceFolder" "C:\Dokumente und Einstellungen\Hartwig\Eigene Dateien\Test.zip"
+ 
+recursively packs all files in SourceFolder into test.zip retaining the path name relative to the source folder in the ZIP file. If test.zip already existed, the new content is added, unless its name collides with an existing file entry.
+ 
+java -jar "C:\Programme\Enter AG\zip64-1.0\lib\zip64.jar" x "-d=C:\Dokumente und Einstellungen\Hartwig\Eigene Dateien\TargetFolder" "C:\Dokumente und Einstellungen\Hartwig\Eigene Dateien\Test.zip"
+ 
+recursively extracts all content of test.zip into the TargetFolder. Existing files in the target folder are not overwritten.
+If the two examples are executed one after the other where initially the file test.zip did not exist and the target folder was empty, then the target folder ends up with the same content as the source folder.

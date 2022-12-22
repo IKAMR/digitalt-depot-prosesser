@@ -1,0 +1,76 @@
+_PARAMETERS_
+query_name=Asta 5.4.3 Komplett
+query_date=2021-06-11
+query_description=Kjører manuelt aktiverte job_enabled <> 0 Asta 5.4.3-queries
+
+query_type=Asta5
+query_subtype=5.4.3
+query_version=0.2
+
+tool_name=XML Queries
+tool_version=0.8
+tool_info=[Standard rapportnavn resultat: "kdrs_query_results_uttrekk.txt". Seksjoner: XML_QUERY og SQL_QUERY. Parameter job_enabled = 0 Kjøres ikke, = 1 Inkluderes i rapport hvis feltet aktivert i rapport, =2 Ikke inkludert i rapport, =3 Inkludert i rapport, men lagret til egen fil (postfix filnavn job_id).]
+
+[XML_QUERY]
+
+job_id=A1.01 
+job_enabled=1 
+job_name=Antall arkivenhet
+job_description=A1.01 Antall arkivenhet | concat("A1.01 Antall arkiv: ", count(//ns2:arkivenhet))
+
+system=asta5
+subsystem=
+source=export.xml
+target=asta5_analyse_{dt}.log
+
+#START#
+concat("A1.01 Antall arkiv: ", count(//arkivenhet))
+#STOP#
+
+[XML_QUERY]
+
+job_id=A1.02
+job_enabled=1 
+job_name=
+job_description= | //ns2:arkivenhet/ns2:fullSti
+
+system=asta5
+subsystem=
+source=export.xml
+target=asta5_analyse_{dt}.log
+
+#START#
+concat("A1.02 Antall arkivenhet / fullsti: ", count(//arkivenhet/fullSti))
+#STOP#
+
+[XML_QUERY]
+
+job_id=A1.03
+job_enabled=1 
+job_name=
+job_description= | //ns2:arkivenhet/ns2:fullSti | , //arkivenhet/navn/text()
+
+system=asta5
+subsystem=
+source=export.xml
+target=asta5_analyse_{dt}.log
+
+#START#
+//arkivenhet/(concat(fullSti/text(), ' - ', navn/text()))
+#STOP#
+
+[XML_QUERY]
+
+job_id=A1.04 
+job_enabled=1 
+job_name=Antall urn
+job_description=A1.04 Antall urn
+
+system=asta5
+subsystem=
+source=export.xml
+target=asta5_analyse_{dt}.log
+
+#START#
+concat("A1.04 Antall urn: ", count(//urn))
+#STOP#

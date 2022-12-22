@@ -1,0 +1,25 @@
+siardsuite-addon-connection.txt
+
+SIARD Suite MySQL connection
+
+Modification needed for at least some MySQL server verisons.
+	- MySQL 5.6.35
+
+
+Important notice - Timezone need be set to get MySQL extraction to work
+
+Default suggested conection:
+jdbc:mysql://localhost:3306/testdb04
+
+Necessary added sting for Timezone:
+?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+
+Resulting connect string that works with MySQL:
+jdbc:mysql://localhost:3306/testdb04?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+
+
+Example
+<connection>
+jdbc:mysql://localhost:3306/t02testdb04
+?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC
+</connection>

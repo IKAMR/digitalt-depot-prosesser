@@ -1,0 +1,50 @@
+[PARAMETERS]
+query_name=Noark4 DB S1041 ephorte
+query_date=2022-10-01
+query_description=Eksmpel på SQL Query mot database [DRAFT] [Må legge inn de kjente spørringer mot database-systemet]
+
+query_type=Database
+query_subtype=ESA
+query_version=0.2
+
+tool_name=XML Queries
+tool_version=0.6
+tool_info=[Standard rapportnavn resultat: "kdrs_query_results_uttrekk.txt". Seksjoner: XML_QUERY og SQL_QUERY. Parameter job_enabled = 0 Kjøres ikke, = 1 Inkluderes i rapport hvis feltet aktivert i rapport, =2 Ikke inkludert i rapport, =3 Inkludert i rapport, men lagret til egen fil (postfix filnavn job_id).]
+
+[SQL_QUERY]
+
+job_id=S0000.00
+job_enabled=0 
+job_name=Dummy
+job_description=Added because bug KDRS Query v0.9 skips first SQL Query entry at top
+
+system=fagsystem 
+subsystem=
+source=
+target=
+
+server=
+database=
+user=
+psw=
+[SQL_QUERY]
+
+job_id=ESA01 
+job_enabled=1 
+job_name=Antall saker per arkivdel 
+job_description=
+
+system=noark5 
+subsystem=
+source=
+target=noark4_ephorte_analyse_{dt}.log
+
+server=127.0.0.1 
+database=h1505010ephorte01
+user=root 
+psw=elarkiv7531
+
+#START# 
+use h1505010ephorte01;
+select count(*) from arkiv; 
+#STOP#

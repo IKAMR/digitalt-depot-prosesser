@@ -1,0 +1,130 @@
+_PARAMETERS_
+query_name=SIARD query tests
+query_date=2022-02-16
+query_description=SIARD metadata.xml analyse and 3 examples from System X of table[n].xml counting number columns not NULL (elements c1, c2 etc. exists in the table[n].xml rows)
+
+query_type=Siard
+query_subtype=2.1,2.0,1.0
+query_version=0.2
+
+tool_name=XML Queries
+tool_version=0.8
+tool_info=[Standard rapportnavn resultat: "kdrs_query_results_uttrekk.txt". Seksjoner: XML_QUERY og SQL_QUERY. Parameter job_enabled = 0 Kjøres ikke, = 1 Inkluderes i rapport hvis feltet aktivert i rapport, =2 Ikke inkludert i rapport, =3 Inkludert i rapport, men lagret til egen fil (postfix filnavn job_id).]
+
+[XML_QUERY]
+
+job_id=S01 
+job_enabled=1 
+job_name=metadata.xml
+job_description=S01 metadata.xml analyse
+
+system=siard
+subsystem=
+source=metadata.xml
+target=siard_analyse_{dt}.log
+
+#START#
+concat("S01 metadata.xml analyse: ", "SIARD version = ", /siardArchive/@version),
+/siardArchive/( 
+" ",
+concat("dbname: ", dbname/text()),
+concat("description: ", description/text() ), 
+" ", 
+concat("archiver: ", archiver/text(), ", archiverContact: ", archiverContact/text() ), 
+concat("dataOwner: ", dataOwner/text(), ", dataOriginTimespan: ", dataOriginTimespan/text() ),
+" ",
+concat("lobFolder: ", lobFolder/text() ), 
+concat("producerApplication: ", producerApplication/text() ), 
+concat("archivalDate: ", archivalDate/text() ), 
+concat("clientMachine: ", clientMachine/text() ), 
+concat("databaseUser: ", databaseUser/text() ), 
+" " ,
+concat("databaseProduct: ", databaseProduct/text() ), 
+" " ,
+concat("connection: ", connection/text() ) ), 
+" ", 
+concat("Databasen inneholder ", count(//schema), " schema(s), ", count(//table), " tables"), 
+concat(count(//primaryKey), " primaryKey (Counts Tables with a Primary key)"), 
+concat(count(//foreignKeys), " foreignKeys (Counts Tables with 1 or more Foreign keys)"), 
+concat(count(//foreignKey), " foreignKey (Counts total number of Foreign keys all Tables)"), 
+concat(count(//candidateKeys), " candidateKeys (Counts Tables with 1 or more Candidate keys)"), 
+concat(count(//candidateKey), " candidateKey (Counts total number of Candidate keys all Tables)"), 
+" ", 
+//table/concat(name/text(), ", ", 
+rows/text(), " rows/", count(columns/column), " cols, ",
+../../folder/text(), ", ", folder/text(), ", ",
+count(primaryKey), " PK, ",
+count(foreignKeys/foreignKey), " FK, ",
+count(candidateKeys/candidateKey), " CK, ",
+concat("description: ", description/text() ) )
+#STOP#
+
+[XML_QUERY]
+
+job_id=T01 
+job_enabled=1 
+job_name=MED_PRODUCER table304.xml
+job_description=T01 MED_PRODUCER analyse
+
+system=siard
+subsystem=
+source=table304.xml
+target=siard_analyse_{dt}.log
+
+#START#
+concat("T01 table304.xml MED_PRODUCER: ", count(//row), " rows" ),
+/table/( 
+concat("c1=", count(//c1), ", c2=", count(//c2), ", c3=", count(//c3), ", c4=", count(//c4), ", c5=", count(//c5) ), 
+concat("c6=", count(//c6), ", c7=", count(//c7), ", c8=", count(//c8) ) )
+#STOP#
+
+[XML_QUERY]
+
+job_id=T02 
+job_enabled=1 
+job_name=BRUKERE table40.xml
+job_description=T02 BRUKERE analyse
+
+system=siard
+subsystem=
+source=table40.xml
+target=siard_analyse_{dt}.log
+
+#START#
+concat("T02 table40.xml BRUKERE: ", count(//row), " rows" ), 
+/table/( 
+concat("c1=", count(//c1), ", c2=", count(//c2), ", c3=", count(//c3), ", c4=", count(//c4), ", c5=", count(//c5) ), 
+concat("c6=", count(//c6), ", c7=", count(//c7), ", c8=", count(//c8), ", c9=", count(//c9), ", c10=", count(//c10) ), 
+concat("c16=", count(//c16), ", c17=", count(//c17), ", c18=", count(//c18), ", c19=", count(//c19), ", c20=", count(//c20) ), 
+concat("c21=", count(//c21), ", c22=", count(//c22), ", c23=", count(//c23), ", c24=", count(//c24), ", c25=", count(//c25) ), 
+concat("c31=", count(//c31), ", c32=", count(//c32), ", c33=", count(//c33), ", c34=", count(//c34), ", c35=", count(//c35) ), 
+concat("c36=", count(//c36), ", c37=", count(//c37), ", c38=", count(//c38), ", c39=", count(//c39), ", c40=", count(//c40) ), 
+concat("c41=", count(//c41), ", c42=", count(//c42), ", c43=", count(//c43), ", c44=", count(//c44), ", c45=", count(//c45) ), 
+concat("c46=", count(//c46), ", c47=", count(//c47), ", c48=", count(//c48), ", c49=", count(//c49), ", c50=", count(//c50) ), 
+concat("c51=", count(//c51), ", c52=", count(//c52), ", c53=", count(//c53), ", c54=", count(//c54), ", c55=", count(//c55) ), 
+concat("c56=", count(//c56), ", c57=", count(//c57), ", c58=", count(//c58), ", c59=", count(//c59), ", c60=", count(//c60) ), 
+concat("c61=", count(//c61), ", c62=", count(//c62), ", c63=", count(//c63), ", c64=", count(//c64), ", c65=", count(//c65) ), 
+concat("c66=", count(//c66), ", c67=", count(//c67), ", c68=", count(//c68), ", c69=", count(//c69), ", c70=", count(//c70) ),  
+concat("c71=", count(//c71), ", c72=", count(//c72), ", c73=", count(//c73), ", c74=", count(//c74), ", c75=", count(//c75) ), 
+concat("c76=", count(//c76), ", c77=", count(//c77), ", c78=", count(//c78) ) ) 
+#STOP#
+
+[XML_QUERY]
+
+job_id=T03 
+job_enabled=1 
+job_name=EDIDOCUMENTS table132.xml
+job_description=T03 EDIDOCUMENTS analyse
+
+system=siard
+subsystem=
+source=table132.xml
+target=siard_analyse_{dt}.log
+
+#START#
+concat("T03 table132.xml EDIDOCUMENTS: ", count(//row), " rows" ), 
+/table/( 
+concat("c1=", count(//c1), ", c2=", count(//c2), ", c3=", count(//c3), ", c4=", count(//c4), ", c5=", count(//c5) ), 
+concat("c6=", count(//c6), ", c7=", count(//c7), ", c8=", count(//c8), ", c9=", count(//c9), ", c10=", count(//c10) ), 
+concat("c11=", count(//c11) ) )
+#STOP#
